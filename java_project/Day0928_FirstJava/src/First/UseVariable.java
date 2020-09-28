@@ -26,7 +26,18 @@ public class UseVariable {
 		
 		// 5. 연산의 결과를 출력하자.
 		
-		System.out.println(num3);
+	//	System.out.println(num3);
+		
+		
+		
+		
+		
+		float n1 = 1.0000001f;
+		double n2 = 1.0000002;
+		
+		
+		System.out.println((double)n1);
+		System.out.println(n1+n2);
 
 		
 	}
