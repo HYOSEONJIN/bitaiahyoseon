@@ -62,11 +62,43 @@ public class UseVariable {
 		int i =0;
 		
 		while(check) { // 반복의조건
-			if(1<5) {
+			if(i>5) {
 				break;
 			}
+			
+			System.out.println(i);
+			
 			i++; // 탈출의 조건, 연산식
 		}
-	}
+		
+		
+		
+		final double PI = 3.141592;
+		
+		// PI = 3.14; 저장불가능 재정의불가능
+		
+		
+		
+		
+		// 형변환
+		
+		char ch3='A';
+		int chNumber=ch3;
+		System.out.println("A의 유니코드값은 " + chNumber);
+		System.out.println("A의 유니코드값은 " + (int)ch3);
+		
+		chNumber +=1; // chNumber = ChNumber +1
+		System.out.println(chNumber);
+		System.out.println((char)chNumber);
+		
+		
+		
+		int age=200;
+		System.out.println((byte)age); 
+		// 앞에 숫자 다 짤라버림,,, 역방향으로의 형변환은 주의해야한다.
+	
 
 }
+
+}
+
