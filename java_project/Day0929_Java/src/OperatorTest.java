@@ -1,5 +1,6 @@
 
 import java.lang.Math;
+import java.util.Scanner;
 
 public class OperatorTest {
 	
@@ -83,15 +84,67 @@ public class OperatorTest {
 			System.out.println("i =  " + i + ", j = " +j);
 			
 			
-			// 문자열 처리 : String 클래스 이용 -> 객체 생성 -> 클래스가 가지는 변수와 메서드를 메모리에 로드하낟.
+			// 문자열 처리 : String 클래스 이용 -> 객체 생성 -> 클래스가 가지는 변수와 메서드를 메모리에 로드한다.
 			
 			String str=null;
 			
-			str = "";
+			str = "abc";
+			System.out.println(str.toString());
+			System.out.println(str.equals("abc"));
 			
-			str.toString();
+			if(str != null && !str.equals("")) {
+				System.out.println(str.charAt(1));
+			}
+	
+			num1=50;
+			num2=20;
+			
+			int big=0; // 큰수
+			int diff=0; //두수의차이
+			
+			//삼항 연산자 이용
+			//big = num1>num2 ? num1 : num2;
+			
+			//diff= num1>num2 ? num1-num2 : num2-num1;
+			
+			if (num1>num2) {
+				big = num1;
+				diff =num1-num2;		
+			}else {
+				big=num2;
+				diff = num2-num1;
+				
+			}
 			
 			
+			System.out.println("큰 수는 " + big);
+			System.out.println("큰 수와 작은 수의 차이는 "+ diff);
+			
+			
+			
+			//switch
+			Scanner sc = new Scanner(System.in);
+			
+			int n = sc.nextInt();
+				
+			switch(n) {
+				case 1:
+					System.out.println("입력");
+					System.out.println("심플자바");
+					break;
+				case 2:
+					System.out.println("데이터열람");
+					System.out.println("퍼니자바");
+					break;
+				case 3:
+					System.out.println("정보수정");
+					System.out.println("판타스틱자바");
+					break;
+				case 4:
+					System.out.println("데이터삭제");
+					break;
+					
+			}
 		}
 	
 }
