@@ -29,7 +29,7 @@ public class e2 {
 				char a = small.charAt(i);
 				int asc = (int)a; // 아스키코드로 변경
 				
-				if ( a<97 || a>122 ){
+				if ( asc<97 || asc>122 ){
 					System.out.println("영문만 입력해주세요.");
 					b=true;
 					break;
