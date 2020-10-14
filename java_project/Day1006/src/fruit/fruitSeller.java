@@ -35,6 +35,9 @@ public class fruitSeller {
 		
 	
 		
+
+
+
 		// 정산출력 : 보유한 사과 개수 출력, 보유한 금액 출력 (반환타입이 없으므로 void)
 		// 받는 데이터가 없으므로 매개개 변수 정의하지 않는다
 		void showSaleResult() {
