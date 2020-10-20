@@ -17,29 +17,27 @@ public class memo {
 
 		for (int i = 0; i < num.length; i++) {
 			for (int j = i; j < num.length; j++) {
-				while(true){
-					if(i!=j && num[i]==num[j]) {
-						int c= num[j];
-						num[j]=(int) (Math.random() * 10) + 1;
-						System.out.println((i+1)+"번째숫자 "+num[i]+"이/가" +c+"로"+ (j+1)+"번째 숫자와같아서"+num[j]+"로 변경");
+				while (true) {
+					if (i != j && num[i] == num[j]) {
+						int c = num[j];
+						num[j] = (int) (Math.random() * 10) + 1;
+						System.out.println(
+								(i + 1) + "번째숫자 " + num[i] + ", " + (j + 1) + "번째 숫자와 같아서 이 숫자를" + num[j] + "로/으로 변경");
 						System.out.println();
 						for (int a : num) {
-							System.out.print(a + " ");}
+							System.out.print(a + " ");
+						}
 						System.out.println();
-					}else {
+						i = 0; // i를 초기화해서 또 같은게 없는지 처음부터 끝까지 다찾음
+					} else {
 						break;
-					}
-					
 					}
 				}
 			}
-		
+		}
 
 		System.out.println();
-		for (int a : num) {
-			System.out.print(a + " ");
+		System.out.println("모두 다른 랜덤 숫자 !");
 
-		}
 	}
-
 }
