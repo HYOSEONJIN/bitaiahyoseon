@@ -6,43 +6,47 @@ public class FriendInfoMain {
 
 	public static void main(String[] args) {
 
-		FriendInfoHandler handler = new FriendInfoHandler(10);
 		
+		FriendInfoHandler handler = FriendInfoHandler.getInstance();	
 		
 		Scanner sc = new Scanner(System.in);
 		
+
+		
 		while(true) {
 			System.out.println("** 메뉴선택 **");
-			System.out.println("1 : 입력");
-			System.out.println("2 : 검색");
-			System.out.println("3 : 삭제");
-			System.out.println("4 : 전체 정보 출력 ");
-			System.out.println("5 : 간단 정보 전체 출력 ");
-			System.out.println("6 : 종료 ");
+			System.out.println(Number.INSERT+ " : 입력");
+			System.out.println(Number.SEARCH+ " : 검색");
+			System.out.println(Number.DELETE+ " : 삭제");
+			System.out.println(Number.ALLPRINT+" : 전체 정보 출력 ");
+			System.out.println(Number.SIMPLEPRINT+" : 간단 정보 전체 출력 ");
+			System.out.println(Number.EXIT +" : 종료 ");
 			System.out.println("선택하세요 >>");
 			
 			int choice = sc.nextInt();
 			sc.nextLine();
 			
 			switch(choice) {
-				case 1: 
+				case Number.INSERT: 
 					handler.addFriend();
 					break;
-				case 2:
+				case Number.SEARCH:
 					handler.searchInfo();
 					break;
-				case 3:
+				case Number.DELETE:
 					handler.deleteInfo();
 					break;
-				case 4:
+				case Number.ALLPRINT:
 					handler.showAllData();
 					break;
-				case 5:
+				case Number.SIMPLEPRINT:
 					handler.showAllSimpleData();
 					break;
-				case 6:
+				case Number.EXIT:
 					System.out.println("프로그램을 종료합니다.");
 					return;
+				default:
+					System.out.println("1-6까지의 숫자만입력하세요");
 			
 			}
 		}
