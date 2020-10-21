@@ -3,17 +3,26 @@ package Friend;
 import java.util.Scanner;
 
 public class FriendInfoHandler {
+	Scanner sc = new Scanner(System.in);
 
 	// 친구정보를 저장하는 배열을 필요로함.
 	private Friend[] friends; // 친구의 정보를 저장하는 배열 생성
 	private int numOfFriends; // 저장된 친구의 정보 개수, 배열에 추가 시 count, index로 사용
 
-	// 생성자로 초기화
-	public FriendInfoHandler(int num) {
+	
+	// 생성자로 초기화 // 싱글턴패턴 적용
+	private FriendInfoHandler(int num) {
 		friends = new Friend[num];
 		numOfFriends = 0;
 	}
-	Scanner sc = new Scanner(System.in);
+	
+	// 사용 인스턴스 클래스 내부 생성
+	private static FriendInfoHandler fi = new FriendInfoHandler(100);
+	
+	// 참조값을 제공하는 메서드
+	public static FriendInfoHandler getInstance() {
+		return fi;
+	}
 	
 	// 배열에 친구정보를 저장하는 기능 : 다형성을 이용한 매개변수 정의
 	void addFriendInfo(Friend f) {
@@ -25,8 +34,14 @@ public class FriendInfoHandler {
 	void addFriend() {
 
 		// 기본정보를 입력받자 > 이름, 전화번호, 주소
+		if(numOfFriends==friends.length) {
+			System.out.println("전화번호부가 가득찼습니다");
+		}
 		
-		System.out.println("친구 정보의 입력을 시작합니다. 1) 고교친구 2)대학친구 3)회사친구 4)동호회친구");
+		
+		System.out.println("친구 정보의 입력을 시작합니다.");
+		System.out.println("현재 저장된 친구의 수는 ("+(numOfFriends)+"/100)");
+		System.out.println(Number.HIGH+")고교친구 "+Number.UNIV+")대학친구 "+Number.COM+")회사친구 "+ Number.CLUB+")동호회 친구");
 		int choice=sc.nextInt();
 		sc.nextLine();
 		System.out.println("이름을 입력해주세요 >>");
@@ -36,7 +51,7 @@ public class FriendInfoHandler {
 		System.out.println("주소를 입력해주세요 >>");
 		String addr = sc.nextLine();
 
-		if (choice == 1) {
+		if (choice == Number.HIGH) {
 			// 고교친구 데이터 받고 > 인스턴스 생성 > 배열 저장
 			System.out.println("직업을 입력해 주세요");
 			String work = sc.nextLine();
@@ -45,7 +60,7 @@ public class FriendInfoHandler {
 			// Friend f = new HighFriend(name, pNum, addr, work);
 			addFriendInfo(new HighFriend(name, pNum, addr, work));
 
-		} else if (choice == 2) {
+		} else if (choice == Number.UNIV) {
 			// 대학친구 데이터 받고 > 인스턴스 생성 > 배열 저장
 			System.out.println("전공을 입력해 주세요");
 			String major = sc.nextLine();
@@ -56,14 +71,14 @@ public class FriendInfoHandler {
 
 			addFriendInfo(new UnivFriend(name, pNum, addr, major, year, email));
 
-		} else if (choice == 3) {
+		} else if (choice == Number.COM) {
 			System.out.println("회사를 입력해주세요");
 			String cpn = sc.nextLine();
 			System.out.println("이메일을 입력해주세요");
 			String email = sc.nextLine();
 
-			addFriendInfo(new companyInfor(name, pNum, addr, cpn, email));
-		} else {
+			addFriendInfo(new CompanyInfor(name, pNum, addr, cpn, email));
+		} else if (choice == Number.CLUB) {
 			System.out.println("동호회 이름을 입력하세요 ");
 			String club = sc.nextLine();
 			
@@ -87,6 +102,9 @@ public class FriendInfoHandler {
 		return result;
 	}
 	
+	
+	// 삭제
+	
 	void deleteInfo() {
 		if (numOfFriends==0) {
 			System.out.println("저장된 데이터가 없습니다.");
@@ -107,17 +125,8 @@ public class FriendInfoHandler {
 		}
 	}
 	
-	// 전체 정보를 출력하는 메서드 : showData()
-
-	public void showAllData() {
-		System.out.println("전체 데이터를 출력합니다.");
-		for (int i = 0; i < numOfFriends; i++) {
-			friends[i].showData(); // friend[0] > friend 타입의 참조변수 - 하위클래스의 인스턴스들을 참조
-			System.out.println("------------------------");
-		}
-
-	}
-
+	// 써치
+	
 	void searchInfo() {
 		if (numOfFriends==0) {
 			System.out.println("저장된 데이터가 없습니다.");
@@ -134,9 +143,28 @@ public class FriendInfoHandler {
 		
 	}
 	
+	// 전체 정보를 출력하는 메서드 : showData()
+
+	public void showAllData() {
+		if (numOfFriends==0) {
+			System.out.println("저장된 데이터가 없습니다.");
+		}
+		System.out.println("전체 데이터를 출력합니다.");
+		for (int i = 0; i < numOfFriends; i++) {
+			friends[i].showData(); // friend[0] > friend 타입의 참조변수 - 하위클래스의 인스턴스들을 참조
+			System.out.println("------------------------");
+		}
+
+	}
+
+	
+	
 	// 전체 기본 정보를 출력하는 메서드 : showBasicInfor()
 
 	public void showAllSimpleData() {
+		if (numOfFriends==0) {
+			System.out.println("저장된 데이터가 없습니다.");
+		}
 		System.out.println("전체 기본 정보를 출력합니다.");
 		for (int i = 0; i < numOfFriends; i++) {
 			friends[i].showBasicInfo();
@@ -144,4 +172,6 @@ public class FriendInfoHandler {
 
 		}
 	}
+
+
 }
