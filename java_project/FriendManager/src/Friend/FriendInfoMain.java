@@ -13,28 +13,34 @@ public class FriendInfoMain {
 		
 		while(true) {
 			System.out.println("** 메뉴선택 **");
-			System.out.println("1 : 고교 친구 정보 저장");
-			System.out.println("2 : 대학 친구 정보 저장");
-			System.out.println("3 : 회사 친구 정보 저장");
-			System.out.println("4 : 동호회 친구 정보 저장");
-			System.out.println("5 : 전체 정보 출력 ");
-			System.out.println("6 : 간단 정보 전체 출력 ");
-			System.out.println("7 : 종료 ");
+			System.out.println("1 : 입력");
+			System.out.println("2 : 검색");
+			System.out.println("3 : 삭제");
+			System.out.println("4 : 전체 정보 출력 ");
+			System.out.println("5 : 간단 정보 전체 출력 ");
+			System.out.println("6 : 종료 ");
 			System.out.println("선택하세요 >>");
 			
 			int choice = sc.nextInt();
+			sc.nextLine();
 			
 			switch(choice) {
-				case Menu.INSERT_HIGH: case Menu.INSERT_UNIV: case Menu.INTSERT_COM: case Menu.INSERT_CLUB: 
-					handler.addFriend(choice);
+				case 1: 
+					handler.addFriend();
 					break;
-				case Menu.INSERT_ALL:
+				case 2:
+					handler.searchInfo();
+					break;
+				case 3:
+					handler.deleteInfo();
+					break;
+				case 4:
 					handler.showAllData();
 					break;
-				case Menu.INSERT_BASIC:
+				case 5:
 					handler.showAllSimpleData();
 					break;
-				case Menu.EXIT:
+				case 6:
 					System.out.println("프로그램을 종료합니다.");
 					return;
 			
