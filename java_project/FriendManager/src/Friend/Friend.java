@@ -1,6 +1,6 @@
 package Friend;
 
-public class Friend {
+public class Friend implements Info {
 
 	private String name; // 이름
 	private String PhoneNumber; // 전화번호
@@ -56,6 +56,9 @@ public class Friend {
 		//오버라이딩을 확인하기 위해서 만들어둔 것
 		// 비어있는 처리부를 기능을 추가할 것.
 	}
+
+		
+	}
 	
 	
-}
+
