@@ -13,7 +13,8 @@ public class FriendInfoHandler {
 		friends = new Friend[num];
 		numOfFriends = 0;
 	}
-
+	Scanner sc = new Scanner(System.in);
+	
 	// 배열에 친구정보를 저장하는 기능 : 다형성을 이용한 매개변수 정의
 	void addFriendInfo(Friend f) {
 		friends[numOfFriends] = f;
@@ -21,20 +22,19 @@ public class FriendInfoHandler {
 	}
 
 
-	void addFriend(int choice) {
+	void addFriend() {
 
 		// 기본정보를 입력받자 > 이름, 전화번호, 주소
-		Scanner sc = new Scanner(System.in);
-		System.out.println("친구 정보의 입력을 시작합니다.");
+		
+		System.out.println("친구 정보의 입력을 시작합니다. 1) 고교친구 2)대학친구 3)회사친구 4)동호회친구");
+		int choice=sc.nextInt();
+		sc.nextLine();
 		System.out.println("이름을 입력해주세요 >>");
 		String name = sc.nextLine();
 		System.out.println("전화번호를 입력해주세요 >>");
 		String pNum = sc.nextLine();
 		System.out.println("주소를 입력해주세요 >>");
 		String addr = sc.nextLine();
-
-		// 인스턴스를 생성해서 저장
-		// 인스턴스 생성 : 고교친구와 대학친구가 다르다.
 
 		if (choice == 1) {
 			// 고교친구 데이터 받고 > 인스턴스 생성 > 배열 저장
@@ -73,6 +73,40 @@ public class FriendInfoHandler {
 		System.out.println("입력이 완료되었습니다.");
 	}
 
+	// 인덱스 써치 메서드
+	
+	int searchIndex(String name) {
+		int result=-1;
+		
+		for (int i=0; i<numOfFriends; i++) {
+			if(friends[i].getName().equals(name)) {
+				result=i;
+				break;
+			}
+		}
+		return result;
+	}
+	
+	void deleteInfo() {
+		if (numOfFriends==0) {
+			System.out.println("저장된 데이터가 없습니다.");
+		}
+		System.out.println("정보를 삭제하고자하는 사람의 이름을 입력하세요 ");
+		String name=sc.nextLine();
+		int index=searchIndex(name);
+		
+		if(index<0) {
+			System.out.println("삭제하고자 하는 정보가 존재하지 않습니다.");
+		} else {
+			//삭제
+			for(int i=index;i<numOfFriends-1;i++) {
+				friends[i]=friends[i+1];
+			}
+			numOfFriends--;
+			System.out.println("삭제되었습니다.");
+		}
+	}
+	
 	// 전체 정보를 출력하는 메서드 : showData()
 
 	public void showAllData() {
@@ -84,6 +118,22 @@ public class FriendInfoHandler {
 
 	}
 
+	void searchInfo() {
+		if (numOfFriends==0) {
+			System.out.println("저장된 데이터가 없습니다.");
+		}
+		System.out.println("찾는 사람의 이름을 입력하세요 ");
+		String name=sc.nextLine();
+		int index=searchIndex(name);
+		
+		if(index<0) {
+			System.out.println("찾으시는 사람의 정보가 존재하지 않습니다.");
+		}else {
+			friends[index].showData();
+		}
+		
+	}
+	
 	// 전체 기본 정보를 출력하는 메서드 : showBasicInfor()
 
 	public void showAllSimpleData() {
