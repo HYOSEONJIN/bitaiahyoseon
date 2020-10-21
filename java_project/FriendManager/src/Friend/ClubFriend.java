@@ -19,9 +19,7 @@ public class ClubFriend extends Friend{
 
 	@Override
 	public void showBasicInfo() {
-		System.out.println("이름 : " + getName()); // private이므로 getName생성해서 불러움
-		System.out.println("전화번호 : " + getPhoneNumber());
-		System.out.println("주소 : " + getAddr());
+			super.showData();
 	}
 	
 	
