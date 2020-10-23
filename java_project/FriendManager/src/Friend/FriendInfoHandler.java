@@ -1,23 +1,24 @@
 package Friend;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FriendInfoHandler {
 	Scanner sc = new Scanner(System.in);
 
 	// 친구정보를 저장하는 배열을 필요로함.
-	private Friend[] friends; // 친구의 정보를 저장하는 배열 생성
+	private  ArrayList<Friend> ar1; // 친구의 정보를 저장하는 배열 생성
 	private int numOfFriends; // 저장된 친구의 정보 개수, 배열에 추가 시 count, index로 사용
 
+	// static  ArrayList<FriendInfoHandler> List = new ArrayList<FriendInfoHandler>();
 	
 	// 생성자로 초기화 // 싱글턴패턴 적용
-	private FriendInfoHandler(int num) {
-		friends = new Friend[num];
-		numOfFriends = 0;
+	private FriendInfoHandler() {
+		ar1= new ArrayList<Friend>();
 	}
 	
 	// 사용 인스턴스 클래스 내부 생성
-	private static FriendInfoHandler fi = new FriendInfoHandler(100);
+	private static FriendInfoHandler fi = new FriendInfoHandler();
 	
 	// 참조값을 제공하는 메서드
 	public static FriendInfoHandler getInstance() {
@@ -25,24 +26,13 @@ public class FriendInfoHandler {
 	}
 	
 	// 배열에 친구정보를 저장하는 기능 : 다형성을 이용한 매개변수 정의
-	void addFriendInfo(Friend f) {
-		friends[numOfFriends] = f;
-		numOfFriends++;
-	}
-
 
 	void addFriend() {
 
 		// 기본정보를 입력받자 > 이름, 전화번호, 주소
-		if(numOfFriends==friends.length) {
-			System.out.println("전화번호부가 가득찼습니다");
-		}
-		
 		
 		System.out.println("친구 정보의 입력을 시작합니다.");
-		System.out.println("현재 저장된 친구의 수는 ("+(numOfFriends)+"/100)");
-		System.out.println(Number.HIGH+")고교친구 "+Number.UNIV+")대학친구 "+Number.COM+")회사친구 "+ Number.CLUB+")동호회 친구");
-		int choice=sc.nextInt();
+		System.out.println(Number.HIGH+")고교친구 "+Number.UNIV+")대학친구 "+Number.COM+")회사친구 "+ Number.CLUB+")동호회 친구");		int choice=sc.nextInt();
 		sc.nextLine();
 		System.out.println("이름을 입력해주세요 >>");
 		String name = sc.nextLine();
@@ -57,8 +47,8 @@ public class FriendInfoHandler {
 			String work = sc.nextLine();
 
 			// 배열에 저장
-			// Friend f = new HighFriend(name, pNum, addr, work);
-			addFriendInfo(new HighFriend(name, pNum, addr, work));
+			ar1.add(new HighFriend(name, pNum, addr, work));
+			numOfFriends++;
 
 		} else if (choice == Number.UNIV) {
 			// 대학친구 데이터 받고 > 인스턴스 생성 > 배열 저장
@@ -69,7 +59,8 @@ public class FriendInfoHandler {
 			System.out.println("이메일을 입력해 주세요");
 			String email = sc.nextLine();
 
-			addFriendInfo(new UnivFriend(name, pNum, addr, major, year, email));
+			ar1.add(new UnivFriend(name, pNum, addr, major, year, email));
+			numOfFriends++;
 
 		} else if (choice == Number.COM) {
 			System.out.println("회사를 입력해주세요");
@@ -77,13 +68,15 @@ public class FriendInfoHandler {
 			System.out.println("이메일을 입력해주세요");
 			String email = sc.nextLine();
 
-			addFriendInfo(new CompanyInfor(name, pNum, addr, cpn, email));
+			ar1.add(new CompanyInfor(name, pNum, addr, cpn, email));
+			numOfFriends++;
+			
 		} else if (choice == Number.CLUB) {
 			System.out.println("동호회 이름을 입력하세요 ");
 			String club = sc.nextLine();
 			
-			addFriendInfo(new ClubFriend(name, pNum, addr, club));
-			
+			ar1.add(new ClubFriend(name, pNum, addr, club));
+			numOfFriends++;
 		}
 		System.out.println("입력이 완료되었습니다.");
 	}
@@ -94,7 +87,7 @@ public class FriendInfoHandler {
 		int result=-1;
 		
 		for (int i=0; i<numOfFriends; i++) {
-			if(friends[i].getName().equals(name)) {
+			if(ar1.get(i).getName().equals(name)) {
 				result=i;
 				break;
 			}
@@ -118,7 +111,7 @@ public class FriendInfoHandler {
 		} else {
 			//삭제
 			for(int i=index;i<numOfFriends-1;i++) {
-				friends[i]=friends[i+1];
+				ar1.remove(i);
 			}
 			numOfFriends--;
 			System.out.println("삭제되었습니다.");
@@ -138,7 +131,7 @@ public class FriendInfoHandler {
 		if(index<0) {
 			System.out.println("찾으시는 사람의 정보가 존재하지 않습니다.");
 		}else {
-			friends[index].showData();
+			ar1.get(index).showData();
 		}
 		
 	}
@@ -151,7 +144,7 @@ public class FriendInfoHandler {
 		}
 		System.out.println("전체 데이터를 출력합니다.");
 		for (int i = 0; i < numOfFriends; i++) {
-			friends[i].showData(); // friend[0] > friend 타입의 참조변수 - 하위클래스의 인스턴스들을 참조
+			ar1.get(i).showData(); // friend[0] > friend 타입의 참조변수 - 하위클래스의 인스턴스들을 참조
 			System.out.println("------------------------");
 		}
 
@@ -167,7 +160,7 @@ public class FriendInfoHandler {
 		}
 		System.out.println("전체 기본 정보를 출력합니다.");
 		for (int i = 0; i < numOfFriends; i++) {
-			friends[i].showBasicInfo();
+			ar1.get(i).showBasicInfo();
 			System.out.println("------------------------");
 
 		}
