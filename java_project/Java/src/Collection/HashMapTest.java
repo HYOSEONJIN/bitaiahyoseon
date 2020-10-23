@@ -1,8 +1,8 @@
 package Collection;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.NavigableSet;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class HashMapTest {
@@ -23,13 +23,17 @@ public class HashMapTest {
 		map.put(7, "전정국");
 
 		// NavigableSet<Key Type>
-		Set<Integer> set = map.keySet();
+		NavigableSet<Integer> set = map.navigableKeySet();
 		
 		System.out.println("오름차순 출력...");
 		Iterator<Integer> itr = set.iterator();
 		while (itr.hasNext())
 			System.out.println(map.get(itr.next()));
 
+		System.out.println("내림차순 출력...");
+		itr = set.descendingIterator(); // 내림차순 정렬
+		while (itr.hasNext())
+			System.out.println(map.get(itr.next()));
 	}
 
 }
