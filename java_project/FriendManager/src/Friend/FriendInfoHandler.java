@@ -32,7 +32,8 @@ public class FriendInfoHandler {
 		// 기본정보를 입력받자 > 이름, 전화번호, 주소
 		
 		System.out.println("친구 정보의 입력을 시작합니다.");
-		System.out.println(Number.HIGH+")고교친구 "+Number.UNIV+")대학친구 "+Number.COM+")회사친구 "+ Number.CLUB+")동호회 친구");		int choice=sc.nextInt();
+		System.out.println(Number.HIGH+")고교친구 "+Number.UNIV+")대학친구 "+Number.COM+")회사친구 "+ Number.CLUB+")동호회 친구");
+		int choice=sc.nextInt();
 		sc.nextLine();
 		System.out.println("이름을 입력해주세요 >>");
 		String name = sc.nextLine();
