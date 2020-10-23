@@ -8,8 +8,7 @@ public class FriendInfoHandler {
 
 	// 친구정보를 저장하는 배열을 필요로함.
 	private  ArrayList<Friend> ar1; // 친구의 정보를 저장하는 배열 생성
-	private int numOfFriends; // 저장된 친구의 정보 개수, 배열에 추가 시 count, index로 사용
-
+	
 	// static  ArrayList<FriendInfoHandler> List = new ArrayList<FriendInfoHandler>();
 	
 	// 생성자로 초기화 // 싱글턴패턴 적용
@@ -49,8 +48,7 @@ public class FriendInfoHandler {
 
 			// 배열에 저장
 			ar1.add(new HighFriend(name, pNum, addr, work));
-			numOfFriends++;
-
+			
 		} else if (choice == Number.UNIV) {
 			// 대학친구 데이터 받고 > 인스턴스 생성 > 배열 저장
 			System.out.println("전공을 입력해 주세요");
@@ -61,7 +59,6 @@ public class FriendInfoHandler {
 			String email = sc.nextLine();
 
 			ar1.add(new UnivFriend(name, pNum, addr, major, year, email));
-			numOfFriends++;
 
 		} else if (choice == Number.COM) {
 			System.out.println("회사를 입력해주세요");
@@ -70,14 +67,14 @@ public class FriendInfoHandler {
 			String email = sc.nextLine();
 
 			ar1.add(new CompanyInfor(name, pNum, addr, cpn, email));
-			numOfFriends++;
+			
 			
 		} else if (choice == Number.CLUB) {
 			System.out.println("동호회 이름을 입력하세요 ");
 			String club = sc.nextLine();
 			
 			ar1.add(new ClubFriend(name, pNum, addr, club));
-			numOfFriends++;
+			
 		}
 		System.out.println("입력이 완료되었습니다.");
 	}
@@ -87,7 +84,7 @@ public class FriendInfoHandler {
 	int searchIndex(String name) {
 		int result=-1;
 		
-		for (int i=0; i<numOfFriends; i++) {
+		for (int i=0; i<ar1.size(); i++) {
 			if(ar1.get(i).getName().equals(name)) {
 				result=i;
 				break;
@@ -100,7 +97,7 @@ public class FriendInfoHandler {
 	// 삭제
 	
 	void deleteInfo() {
-		if (numOfFriends==0) {
+		if (ar1.size()==0) {
 			System.out.println("저장된 데이터가 없습니다.");
 		}
 		System.out.println("정보를 삭제하고자하는 사람의 이름을 입력하세요 ");
@@ -111,10 +108,10 @@ public class FriendInfoHandler {
 			System.out.println("삭제하고자 하는 정보가 존재하지 않습니다.");
 		} else {
 			//삭제
-			for(int i=index;i<numOfFriends-1;i++) {
+			for(int i=index;i<ar1.size()-1;i++) {
 				ar1.remove(i);
 			}
-			numOfFriends--;
+			
 			System.out.println("삭제되었습니다.");
 		}
 	}
@@ -122,7 +119,7 @@ public class FriendInfoHandler {
 	// 써치
 	
 	void searchInfo() {
-		if (numOfFriends==0) {
+		if (ar1.size()==0) {
 			System.out.println("저장된 데이터가 없습니다.");
 		}
 		System.out.println("찾는 사람의 이름을 입력하세요 ");
@@ -140,11 +137,11 @@ public class FriendInfoHandler {
 	// 전체 정보를 출력하는 메서드 : showData()
 
 	public void showAllData() {
-		if (numOfFriends==0) {
+		if (ar1.size()==0) {
 			System.out.println("저장된 데이터가 없습니다.");
 		}
 		System.out.println("전체 데이터를 출력합니다.");
-		for (int i = 0; i < numOfFriends; i++) {
+		for (int i = 0; i < ar1.size(); i++) {
 			ar1.get(i).showData(); // friend[0] > friend 타입의 참조변수 - 하위클래스의 인스턴스들을 참조
 			System.out.println("------------------------");
 		}
@@ -156,11 +153,11 @@ public class FriendInfoHandler {
 	// 전체 기본 정보를 출력하는 메서드 : showBasicInfor()
 
 	public void showAllSimpleData() {
-		if (numOfFriends==0) {
+		if (ar1.size()==0) {
 			System.out.println("저장된 데이터가 없습니다.");
 		}
 		System.out.println("전체 기본 정보를 출력합니다.");
-		for (int i = 0; i < numOfFriends; i++) {
+		for (int i = 0; i < ar1.size(); i++) {
 			ar1.get(i).showBasicInfo();
 			System.out.println("------------------------");
 
