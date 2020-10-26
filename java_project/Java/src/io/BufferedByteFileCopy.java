@@ -21,7 +21,6 @@ public class BufferedByteFileCopy {
 			OutputStream out = new FileOutputStream("org_copy.pdf");
 
 		int copyByte=0; // 복사한 사이즈
-//		int bData=0; // 원본에서 복사한 byte 사이즈의 데이터
 		
 		byte[] buf = new byte[1024]; // 1kb 버퍼생성
 		int readLength = 0; // 얼마만큼 읽어왔는지.
@@ -29,17 +28,15 @@ public class BufferedByteFileCopy {
 		System.out.println("복사를 시작합니다.");
 		
 		while(true) {
-//			bData = in.read(); // 더이상 가져올 데이터가 없으면 -1을 반환
+
 			readLength = in.read(buf);
 			
-//			if(bData==-1) { 
 			if(readLength==-1) { 
 				break;
 			}
-//			out.write(bData); // 출력 : 파일에 바이터리 코드를 쓴다.
+
 			out.write(buf,0,readLength);
 			copyByte+= readLength;
-//			copyByte++;
 		}
 		
 		in.close(); // 스트림 인스턴스 소멸
