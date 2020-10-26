@@ -1,51 +1,45 @@
 package Friend;
- 
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
  
-public class FriendInfoMain {
+public class Main implements Serializable{
  
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
+	public static void main(String[] args)   throws Exception {
  
-		FriendInfoHandler handler = FriendInfoHandler.getInstance();
+		Manager handler = Manager.getInstance();
+		handler.call();
+		
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			try {
 				System.out.println("** 메뉴선택 **");
-				System.out.println(Number.CALL + " : 이전정보불러오기");
-				System.out.println(Number.INSERT + " : 입력");
-				System.out.println(Number.SEARCH + " : 검색");
-				System.out.println(Number.DELETE + " : 삭제");
-				System.out.println(Number.ALLPRINT + " : 전체 정보 출력 ");
-				System.out.println(Number.SIMPLEPRINT + " : 간단 정보 전체 출력 ");
-				System.out.println(Number.EXIT + " : 저장하고 종료 ");
+				System.out.println("1 : 입력, 2:찾기 3:지우기 4:전부출력 5:일부출력 6: 종료");
+		
 				System.out.println("선택하세요 >>");
 				
 				int choice = oneSix();
 				
 				switch (choice) {
-				case Number.CALL:
-					handler.deSerial();
-					break;
-				case Number.INSERT:
+				case 1:
 					handler.addFriend();
 					break;
-				case Number.SEARCH:
+				case 2:
 					handler.searchInfo();
 					break;
-				case Number.DELETE:
+				case 3:
 					handler.deleteInfo();
 					break;
-				case Number.ALLPRINT:
+				case 4:
 					handler.showAllData();
 					break;
-				case Number.SIMPLEPRINT:
+				case 5:
 					handler.showAllSimpleData();
 					break;
-				case Number.EXIT:
+				case 6:
 					System.out.println("프로그램을 종료합니다.");
-					handler.makeSerial();
+					handler.save();
 					return;
 				}
 			} catch (InputMismatchException | NumberRange e) {

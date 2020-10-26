@@ -1,6 +1,8 @@
 package Friend;
 
-public class ClubFriend extends Friend{
+import java.io.Serializable;
+
+public class ClubFriend extends Friend implements Serializable {
 
 
 

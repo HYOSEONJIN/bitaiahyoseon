@@ -1,6 +1,8 @@
 package Friend;
 
-public class UnivFriend extends Friend {
+import java.io.Serializable;
+
+public class UnivFriend extends Friend implements Serializable {
 
 	private String major; // 전공
 	private String year ; // 학년 + 추가

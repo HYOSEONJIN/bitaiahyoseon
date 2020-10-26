@@ -1,6 +1,8 @@
 package Friend;
 
-public class HighFriend extends Friend {
+import java.io.Serializable;
+
+public class HighFriend extends Friend implements Serializable {
 
 	private String work; // 직업을 추가해줌
 

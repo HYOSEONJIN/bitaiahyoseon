@@ -2,7 +2,7 @@ package Friend;
 
 import java.io.Serializable;
 
-public class Friend implements Serializable  {
+public class Friend implements Serializable {
 
 	private String name; // 이름
 	private String PhoneNumber; // 전화번호
@@ -47,7 +47,6 @@ public class Friend implements Serializable  {
 	}
 
 
-	// 오버라이딩 처리할 거임 : 상속하는 클래스의 추가 속성을 출력하도록.
 	public void showData() {
 		System.out.println("이름 : " + name);
 		System.out.println("전화번호 : " + PhoneNumber);
@@ -55,12 +54,12 @@ public class Friend implements Serializable  {
 	}
 	
 	public void showBasicInfo() {
-		//오버라이딩을 확인하기 위해서 만들어둔 것
-		// 비어있는 처리부를 기능을 추가할 것.
+	
 	}
 
 		
 	}
 	
 	
+
 

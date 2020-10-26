@@ -1,6 +1,6 @@
 package Friend;
 
-public interface Info {
+public interface Info  {
 
 	
 	void showData();
