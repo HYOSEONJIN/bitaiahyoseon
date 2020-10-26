@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import org.omg.CORBA.portable.OutputStream;
 
 public class ObjectSerializable {
 
