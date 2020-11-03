@@ -1,35 +1,39 @@
 package exam;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class test {
-	   // 파일 저장 메서드
-	ArrayList<Integer> loginInfo = new ArrayList<Integer>();
-	
-	   void saveLogin() throws FileNotFoundException, IOException, ClassNotFoundException {
-	      // 인스턴스 저장을 위한 스트림 생성
-	      ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("LoginInfo.ser"));   
-	      out.writeObject(loginInfo);
-	      out.close();
-	      // 인스턴스 복원을 위한 스트림 생성
-	   }
-	   
-	    void callLogin() throws IOException{
-	      ObjectInputStream in = new ObjectInputStream(new FileInputStream("LoginInfo.ser"));
-	      // 복원
-	      LoginInfo reInfo = (LoginInfo) in.readObject();
-	   }
+public static void main(String[] args) {
+	 
+	// HashSet 인스턴스 생성 : 인스턴스를 저장하기 위한 저장 공간 생성
+	// set : 집합, 저장순서 유지하지않는다.
 
-	    private void addInfo(LoginInfo info) {      
-	      loginInfo.add(info);
-	      // 외부 파일에 저장 (추가(
-	      saveLogin(); 
-	   }
-	   
+	boolean check = false;
+	
+	Set<Integer> set = new HashSet<Integer>();
+	
+
+	set.add(1);
+	set.add(2);
+	set.add(3);
+	set.add(4);   // 중복이라 저장되지 않는다.
+
+
+	System.out.println("set 요소의 개수 : "+ set.size());
+
+	Iterator<Integer> itr=set.iterator();
+	while(itr.hasNext()) {
+		if(itr.next()==1){
+			check=true;
+		}
+			}
+	
+	System.out.println(check);
+
+
+}
+
+
 }
