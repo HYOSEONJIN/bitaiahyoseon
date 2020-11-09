@@ -232,23 +232,26 @@ ORDER BY sal -- asc; 생략 가능 / 오름차순이 default
 -- 급여의 내림차순 정렬 / 큰수>>>작은수
 SELECT *
 FROM emp
-ORDER BY sal desc;
+ORDER BY sal desc
+;
 
 SELECT *
 FROM emp
 ORDER BY comm -- null 값은 맨 아래로 내려간다 (가장큰수마냥..)
 ;
+
+
 
 
 -- 문자 [a>z가 디폴트]
 SELECT *
 FROM emp
-ORDER BY comm -- null 값은 맨 아래로 내려간다 (가장큰수마냥..)
+ORDER BY ename 
 ;
 
 
 
--- 날짜 [오래됨 > 최근이 디폴트]
+-- 날짜 [최근> 오래됨이 디폴트]
 SELECT *
 FROM emp
 ORDER BY hiredate desc
