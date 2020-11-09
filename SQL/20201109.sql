@@ -88,7 +88,7 @@ from emp;
 
 
 -- DISTINCT 중복되는것을 생략해준다
--- DISTINCT 뒤에는 다른 컬럼을 쓸 수 없다.
+-- DISTINCT 뒤에는 다른 컬럼을 쓸 수 없다!
 select distinct deptno
 from emp;
 
