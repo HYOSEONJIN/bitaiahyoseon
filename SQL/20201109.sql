@@ -1,38 +1,38 @@
 --2020.11.09
---select ±âº»
+--select ê¸°ë³¸
 
--- scott °èÁ¤À¸·Î ·Î±×ÀÎ
--- scott °èÁ¤ÀÌ ¼ÒÀ¯ÇÑ Å×ÀÌºí °´Ã¼¸¦ È®ÀÎ
--- : tab > Å×ÀÌºíÀÇ Á¤º¸¸¦ ¾Ë·ÁÁÖ´Â µ¥ÀÌÅÍ µñ¼Å³Ê¸®
+-- scott ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸
+-- scott ê³„ì •ì´ ì†Œìœ í•œ í…Œì´ë¸” ê°ì²´ë¥¼ í™•ì¸
+-- : tab > í…Œì´ë¸”ì˜ ì •ë³´ë¥¼ ì•Œë ¤ì£¼ëŠ” ë°ì´í„° ë”•ì…”ë„ˆë¦¬
 select*from tab;
 
--- DESC : Å×ÀÌºí ±¸Á¶ È®ÀÎ
--- Å×ÀÌºíÀÇ µ¥ÀÌÅÍ¸¦ °Ë»öÇÏ±â Àü ±¸Á¶¸¦ È®ÀÎÇÒ ¶§
+-- DESC : í…Œì´ë¸” êµ¬ì¡° í™•ì¸
+-- í…Œì´ë¸”ì˜ ë°ì´í„°ë¥¼ ê²€ìƒ‰í•˜ê¸° ì „ êµ¬ì¡°ë¥¼ í™•ì¸í•  ë•Œ
 DESC emp;
 desc dept;
 
 select hiredate from emp;
 
 
--- µ¥ÀÌÅÍÀÇ Á¶È¸ ¸í·É : select
--- SELECTÀÇ ÄÃ·³¸í,... FROM Å×ÀÌºí ÀÌ¸§(Á¶È¸ÀÇ´ë»ó) > ±âº» ¹®¹ý
--- SELECTÀÇ °á°ú´Â > TABLEÀÌ´Ù.
+-- ë°ì´í„°ì˜ ì¡°íšŒ ëª…ë ¹ : select
+-- SELECTì˜ ì»¬ëŸ¼ëª…,... FROM í…Œì´ë¸” ì´ë¦„(ì¡°íšŒì˜ëŒ€ìƒ) > ê¸°ë³¸ ë¬¸ë²•
+-- SELECTì˜ ê²°ê³¼ëŠ” > TABLEì´ë‹¤.
 
 SELECT
-    *         -- ÄÃ·³ ÀÌ¸§µéÀ» ±â¼úÇØÁØ´Ù. ±â¼úÇÏ´Â ¼ø¼­¿¡ µû¶ó °á°úµµ ¼ø¼­¿¡ ¸Â°Ô Ãâ·ÂÀÌ µÈ´Ù.
-FROM emp      -- Á¶È¸ÇÏ°íÀÚ ÇÏ´Â Å×ÀÌºí ÀÌ¸§À» ±â¼ú 
-;             --- SQLÀÇ Á¾·á
+    *         -- ì»¬ëŸ¼ ì´ë¦„ë“¤ì„ ê¸°ìˆ í•´ì¤€ë‹¤. ê¸°ìˆ í•˜ëŠ” ìˆœì„œì— ë”°ë¼ ê²°ê³¼ë„ ìˆœì„œì— ë§žê²Œ ì¶œë ¥ì´ ëœë‹¤.
+FROM emp      -- ì¡°íšŒí•˜ê³ ìž í•˜ëŠ” í…Œì´ë¸” ì´ë¦„ì„ ê¸°ìˆ  
+;             --- SQLì˜ ì¢…ë£Œ
 
 
 
--- ºÎ¼­ Å×ÀÌºíÀÇ ¸ðµç µ¥ÀÌÅÍ¸¦ Á¶È¸ÇÏÀÚ
+-- ë¶€ì„œ í…Œì´ë¸”ì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ì¡°íšŒí•˜ìž
 SELECT  *
 FROM dept
 ;
 
 
--- ºÎ¼­Å×ÀÌºí¿¡¼­ > FROM
--- ºÎ¼­ÀÇ ÀÌ¸§°ú À§Ä¡¸¦ Ãâ·Â > SELECT
+-- ë¶€ì„œí…Œì´ë¸”ì—ì„œ > FROM
+-- ë¶€ì„œì˜ ì´ë¦„ê³¼ ìœ„ì¹˜ë¥¼ ì¶œë ¥ > SELECT
 
 SELECT  dname, loc
 FROM dept
@@ -42,18 +42,18 @@ SELECT  loc, dname
 FROM dept
 ;
 
--- ¸ðµç »ç¿øÀÇ Á¤º¸¸¦ Ãâ·ÂÇÏÀÚ
+-- ëª¨ë“  ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¶œë ¥í•˜ìž
 SELECT    *
 FROM emp
 ;
 
--- »ç¿øÀÇ ÀÌ¸§, »ç¹ø, Á÷±Þ(Á÷¹«)¸¦ Æ÷ÇÔÇÏ´Â ¸®½ºÆ® Ãâ·Â
+-- ì‚¬ì›ì˜ ì´ë¦„, ì‚¬ë²ˆ, ì§ê¸‰(ì§ë¬´)ë¥¼ í¬í•¨í•˜ëŠ” ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 SELECT ename, empno, job
 FROM emp
 ;
 
--- SELECT ÀýÀÇ ÄÃ·³ÀÇ »çÄ¢¿¬»ê
--- ÀÓ½ÃÅ×ÀÌºí dual : ÄÃ·³Àº x¸¦ °¡Áö´Â Å×ÀÌºí
+-- SELECT ì ˆì˜ ì»¬ëŸ¼ì˜ ì‚¬ì¹™ì—°ì‚°
+-- ìž„ì‹œí…Œì´ë¸” dual : ì»¬ëŸ¼ì€ xë¥¼ ê°€ì§€ëŠ” í…Œì´ë¸”
 select 100+200, 200-100, 100*10, 100/10
 from dual
 ;
@@ -62,33 +62,73 @@ FROM emp
 ;
 
 
--- ¿¬ºÀÀÇ ²¾»êÀ» sal*12+commÀ¸·Î °è»êÇÏÀÚ
+-- ì—°ë´‰ì˜ ê³„ì‚°ì„ sal*12+commìœ¼ë¡œ ê³„ì‚°í•˜ìž
 SELECT ename, sal, sal*12, comm, sal*12+comm
 FROM emp
 ;
 
--- null : °ªÀº Á¸ÀçÇÏ³ª Á¤ÇØÁöÁö ¾ÊÀº °ª
--- ¿¬»êÀÌ ºÒ°¡ : »çÄ¢/ºñ±³ ¿¬»ê
+-- null : ê°’ì€ ì¡´ìž¬í•˜ë‚˜ ì •í•´ì§€ì§€ ì•Šì€ ê°’
+-- ì—°ì‚°ì´ ë¶ˆê°€ : ì‚¬ì¹™/ë¹„êµ ì—°ì‚°
 
--- nvl ÇÔ¼ö : ÄÃ·³ÀÇ °ªÀÌ nul¤Ó ÀÏ¶§ ´ëÃ¼°ªÀ¸·Î Ä¡È¯ÇØÁØ´Ù.
--- nvl(ÄÃ·³, ´ëÃ¼°ª) ÄÃ·³°ú °°Àº Å¸ÀÔÀÇ ´ëÃ¼°ª
+-- nvl í•¨ìˆ˜ : ì»¬ëŸ¼ì˜ ê°’ì´ nulã…£ ì¼ë•Œ ëŒ€ì²´ê°’ìœ¼ë¡œ ì¹˜í™˜í•´ì¤€ë‹¤.
+-- nvl(ì»¬ëŸ¼, ëŒ€ì²´ê°’) ì»¬ëŸ¼ê³¼ ê°™ì€ íƒ€ìž…ì˜ ëŒ€ì²´ê°’
 
 select ename, comm, sal*12+comm,nvl(comm, 0), sal*12+nvl(comm, 0)
 from emp;
 
--- µ¥ÀÌÅÍ º£ÀÌ½º sql ³»ºÎÀÇ ¹®ÀÚ¿­ Ã³¸®´Â ´ëºÎºÐ ''
--- º°Äª Ã³¸®´Â "" but ¿¡·¯³¯ ¼ö ÀÖÀ¸´Ï ¿µ¹®Ã³¸® ÇÏÀÚ
+-- ë°ì´í„° ë² ì´ìŠ¤ sql ë‚´ë¶€ì˜ ë¬¸ìžì—´ ì²˜ë¦¬ëŠ” ëŒ€ë¶€ë¶„ ''
+-- ë³„ì¹­ ì²˜ë¦¬ëŠ” "" but ì—ëŸ¬ë‚  ìˆ˜ ìžˆìœ¼ë‹ˆ ì˜ë¬¸ì²˜ë¦¬ í•˜ìž
 
-select ename, comm, sal*12+comm sall2, nvl(comm, 0) as com, sal*12+nvl(comm, 0) "12°³¿ù ¿¬ºÀ"
+select ename, comm, sal*12+comm sall2, nvl(comm, 0) as com, sal*12+nvl(comm, 0) "12ê°œì›” ì—°ë´‰"
 from emp;
 
--- Concatenation ¿¬»êÀÚÀÇ Á¤ÀÇ¿Í »ç¿ë
-select ename || ' is a ' || job as "||¿¬»êÀÚ"
+-- Concatenation ì—°ì‚°ìžì˜ ì •ì˜ì™€ ì‚¬ìš©
+select ename || ' is a ' || job as "||ì—°ì‚°ìž"
 from emp;
 
 
--- DISTINCT Áßº¹µÇ´Â°ÍÀ» »ý·«ÇØÁØ´Ù
--- DISTINCT µÚ¿¡´Â ´Ù¸¥ ÄÃ·³À» ¾µ ¼ö ¾ø´Ù!
+-- DISTINCT ì¤‘ë³µë˜ëŠ”ê²ƒì„ ìƒëžµí•´ì¤€ë‹¤
+-- DISTINCT ë’¤ì—ëŠ” ë‹¤ë¥¸ ì»¬ëŸ¼ì„ ì“¸ ìˆ˜ ì—†ë‹¤!
 select distinct deptno
 from emp;
 
+
+-- íŠ¹ì • ë°ì´í„°ë¥¼ ì¶”ì¶œí•˜ëŠ” where ì ˆ
+-- select ì»¬ëŸ¼ëª… from í…Œì´ë¸”ëª… where ì¡°ê±´
+
+
+-- ê¸‰ì—¬ê°€ 3000 ì´ìƒì¸ ì‚¬ì›ì˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•˜ìž
+select ename, job, sal
+from emp
+where sal >=3000
+;
+
+select ename, job, sal
+from emp
+where sal>4000
+;
+
+-- 10ë²ˆ ë¶€ì„œì— ì†Œì†ëœ ì‚¬ì›ë“¤ì˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+SELECT    *
+FROM emp
+where deptno=10
+;
+
+-- ë¬¸ìž ë°ì´í„° ì¡°íšŒ '' ì•ˆì˜ ëŒ€ë¬¸ìž ì†Œë¬¸ìž êµ¬ë¶„í•¨
+SELECT empno, ename, sal
+FROM emp
+where ename = 'FORD'
+;
+
+-- ë‚ ì§œ ë°ì´í„° ì¡°íšŒ
+SELECT *
+FROM emp
+where hiredate='81/11/17'
+;
+
+
+-- 10ë²ˆ ë¶€ì„œ ì†Œì†ì¸ ì‚¬ì›ë“¤ ì¤‘ì—ì„œ
+-- ì§ê¸‰ì´ MANAGERì¸ ì‚¬ëžŒì„ ê²€ìƒ‰í•˜ì—¬ ì‚¬ì›ëª…, ë¶€ì„œë²ˆí˜¸, ì§ê¸‰ì„ ì¶œë ¥
+SELECT ename, deptno, job
+FROM EMP
+WHERE DEPTNO=10 AND JOB='MANAGER';
