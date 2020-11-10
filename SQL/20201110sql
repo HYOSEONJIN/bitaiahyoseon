@@ -38,3 +38,31 @@ select trim(' ' from '   =====from====   ') from dual;
 select REPLACE('JACK and JUE','J','BL') "Changes" FROM DUAL; -- J를 BL로 변경
 select REPLACE('뽀준','준','선') "Changes" FROM DUAL;
 
+
+-- 날짜함수
+select sysdate from dual; -- 오늘날자
+select sysdate+21 from dual; --14일 뒤
+
+select add_months(sysdate, 4) from dual; -- 4개월 더해줌
+select last_day(sysdate) from dual; -- 이달의 마지막날 알려줌..
+
+
+-- 변환함수
+-- TO_CHAR : 날짜 > 문자, 숫자> 문자로
+
+-- 날짜 >문자
+select sysdate from dual;
+select sysdate, to_char(sysdate, 'YYYY-MM-DD') "바뀐날짜" from dual;
+select sysdate, to_char(sysdate, 'YYYY-MM-DD Day dy')from dual;
+select sysdate, to_char(sysdate, 'YYYY-MM-DD Day dy AM PM HH HH24 mi ss') from dual;
+select to_char(sysdate, 'YYYY.MM.DD.  HH24:mi:ss') from dual; -- 네이버st
+
+
+-- 숫자 > 문자
+SELECT TO_CHAR (1230000) FROM DUAL;
+select to_char(10000.123, 'L000,000.00') from dual;
+select to_char(10000, 'L999,999.99') from dual;
+
+select sal, to_char(sal*1100, 'L00,000,000') from emp;
+select sal, to_char(sal*1100, 'L99,999,999') from emp;
+select ename,sal, to_char(sal*1100*12+nvl(comm,0)*1100, 'L99,999,999') from emp order by sal desc; 
