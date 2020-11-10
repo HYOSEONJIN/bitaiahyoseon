@@ -1,0 +1,40 @@
+-- 2020.11.10
+-- 함수
+
+-- 단일행, 집합 함수
+
+-- 단일행 함수 : 숫자, 문자, 날짜, 변환
+
+desc dual;
+
+-- 숫자함수
+select ABS(-15.5) from dual; -- 절대값
+select floor(15.7) from dual; -- 소숫점 절삭
+select round(-15.8) from dual; -- 정수타입으로 반올림
+select round(-15.693, 2) from dual; -- 몇번째 자리까지 표시할 것인지 선택
+select log(10, 100 ) from dual; -- 로그값(지수)구해줌
+select power(3, 2) from dual; -- 제곱
+
+
+-- 문자함수
+
+select concat('나는', '손흥민입니다.') from dual; -- 두개붙여줌
+select concat('저의 이름은', ename) from emp where job='MANAGER'; -- 응용
+
+select LOWER('ABCD') "Lowercase" from dual;
+select lower(ename) from emp;
+
+select lpad('page 1',15,'*') from dual; -- 별표로 가려줌
+select rpad('910119-2',14,'*') from dual;
+
+select substr('ABCEDFG',3,4) from dual; -- 3번째부터 4개 자른다
+select rpad(substr('910119-2000000',1,8),14,'*') from dual; -- 응용
+
+select Ltrim(' =from=','a') from dual; -- 제거
+select Rtrim('    =from=====           ',' ') from dual;
+select trim('=' from '=======from=======') from dual;
+select trim(' ' from '   =====from====   ') from dual;
+
+select REPLACE('JACK and JUE','J','BL') "Changes" FROM DUAL; -- J를 BL로 변경
+select REPLACE('뽀준','준','선') "Changes" FROM DUAL;
+
