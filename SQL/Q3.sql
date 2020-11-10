@@ -14,7 +14,8 @@ select ename, to_char(hiredate, 'YY-MM, DY') from emp;
 
 -- 20. 올해 몇 칠이 지났는지 출력하시오. 현재날짜에서 올해 1월 1일을 뺀 결과를 출력하고
 -- TO_DATE 함수를 사용하여 데이터 형을 일치 시키시오.
-select abs(trunc(to_date('20-01-01','YY-MM-DD')-sysdate)) as "올해 지난날" from dual;
+select abs(trunc(to_date('20-01-01','YY-MM-DD')-sysdate)) as "올해 지난날짜", 
+to_date(sysdate,'YY-MM-DD')-to_date('20-01-01','YY-MM-DD') as "오늘-1월1일" from dual;
 
 -- 21. 사원들의 상관 사번을 출력하되 상관이 없는 사원에 대해서는 NULL 값 대신 0으로 출력하시오.
 select ename, nvl(mgr,0) as "상관사번"
