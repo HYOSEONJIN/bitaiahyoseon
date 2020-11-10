@@ -80,3 +80,110 @@ select trunc(sysdate - to_date('91-01-19','YYYY-MM-DD')) from dual;
 
 -- 문자 > 숫자
 select TO_NUMBER('100.00', '999.99') * to_number('10.00', '99.99') from dual; 
+
+
+-- DECODE 함수 : switch 문과 비슷
+-- 사원 이름, 부서번호, 부서이름 출력
+select ename, deptno,
+decode(deptno,
+        10, 'ACCOUTING',
+        20, 'RESEARCH',
+        30, 'SALES',
+        40, 'OPERATIONS')
+        as dname
+from emp;
+
+
+-- 8. 직급에 따라 급여를 인상하도록 하자.  (DECODE예제)
+-- 직급이 'ANAlYST'인 사원은 5%, 'SALESMAN'인 사원은 10%, 'MANAGER'인 사원은 15%, 
+-- 'CLERK'인 사원은 20%인 인상한다.
+
+	select ename, job, sal,
+decode(job,
+    'ANALYST', sal*1.05,
+    'SALESMAN', sal*1.1,
+    'MANAGER', sal*1.15,
+    'CLERK', sal*1.2)   
+     as sal2
+from emp
+;
+
+-- CASE 함수
+select ename, deptno,
+    case
+        when deptno=10 then 'ACCOUNTING'
+        when deptno=20 then 'RESEARCH'
+        when deptno=30 then 'SALES'
+        when deptno=40 then 'OPERATIONS'
+    end as dname
+from emp
+order by dname
+;
+
+
+-- 그룹함수 : 하나의 행의 컬럼을 대상이 아닌 행의 그룹의 컬럼들을 묶어 그룹화하고 연산하는 함수
+-- SUM, AVG, COUNT, MAX, MIN
+
+select 
+    sum(sal) as "월 급여 총액",
+    to_char(sum(sal), 'L99,999') as "월 급여 총액2",
+    round(avg(sal)) as "월 급여 평균",
+    count(*) as "사원 수",
+    count(comm) as "커미션을 받는 사원수", -- null은 세지 않는다. 0은 셈
+    max(sal) as "가장 큰 급여"
+from emp
+;
+
+select
+    sum(comm),
+    avg(comm),
+    count(comm),
+    max(comm),
+    min(comm)    
+from emp
+where comm is not null and comm>0
+;
+
+-- 전체행을 구한다
+select count(*) as from emp; -- 전체 사원의 수
+select count(*) as from emp where job='MANAGER'; -- 매니저의 수
+-- 매니저의 수, 평균급여, 최고급여
+select count(*), avg(sal), max(sal) from emp where job='MANAGER';
+
+-- 직무의 개수
+select count(distinct job) -- 중복제거
+from emp
+;
+
+
+------------- 특정 컬럼을 기준으로 그룹핑: Group by 컬럼
+
+select deptno
+from emp
+group by deptno --order by deptno와 다르다.
+;
+
+
+-- 부서별 평균 월급
+select deptno, avg(sal)
+from emp
+group by deptno
+;
+
+
+-- 각 부서별 인원을 부서별 인원이 많은 수대로 정렬
+select deptno, count(*)
+from emp
+group by deptno
+order by count(*) desc
+;
+
+-- 각 부서별 인원 및 커미션을 받는 사람.
+select deptno, count(*)as "부서인원", count(comm) as"커미션받는사람 수"
+from emp
+-- where comm is not null and comm>0
+group by deptno
+;
+
+
+
