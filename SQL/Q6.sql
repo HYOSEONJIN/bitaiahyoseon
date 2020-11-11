@@ -8,6 +8,11 @@ from book e, (select bookid from orders where custid=(select custid from custome
 where e.bookid=bi.bookid
 ;
 
+select distinct count(*)
+from book e
+where bookid in (select bookid from orders where custid=(select custid from customer where name='박지성'))
+;
+
 --(6) 박지성이구매한도서의이름, 가격, 정가와판매가격의차이
 select b.bookname, b.price, bi.saleprice-b.price as "판매가격-정가"
 from book b, (select bookid, saleprice from orders where custid=(select custid from customer where name='박지성')) bi
@@ -38,9 +43,7 @@ from orders
 --(10) 고객의이름과고객별구매액
 select cust.name, nvl(sumtable.sumsp,0) as "고객별구매액"
 from customer cust,
-(select o.custid as ci, sum(saleprice) as sumsp from orders o, customer c 
-where o.custid(+)=c.custid
-group by o.custid) sumtable
+(select o.custid as ci from orders o, customer c where o.custid(+)=c.custid group by o.custid) sumtable
 where cust.custid=sumtable.ci(+)
 ;
 
