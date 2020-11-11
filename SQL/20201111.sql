@@ -61,8 +61,32 @@ where e.mgr=m.empno AND e.ename='SMITH'
 ;
 
 
+
+-- outer join : 정보가 부족해도 출력하도록 하는 join
+
 select e.ename, e.mgr, m.ename as MGRNAME
 from emp e, emp m
-where e.mgr=m.empno
+where e.mgr=m.empno(+)
 ;
+
+
+
+-- ANSI JOIN : CROSS JOIN
+select *
+from emp cross join dept
+;
+
+
+-- INNER JOIN
+
+--SELECT ename, dname
+--FROM emp, dept
+--where ename='SCOTT' AND emp.deptno=dept.deptno
+--;
+
+SELECT ENAME, DNAME 
+FROM EMP INNER JOIN DEPT 
+ON EMP.DEPTNO=DEPT.DEPTNO 
+WHERE ENAME='SCOTT';
+
 
