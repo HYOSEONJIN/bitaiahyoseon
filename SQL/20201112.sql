@@ -72,46 +72,129 @@ select * from emp05;
 
 -- selec * from tab; 현재 가진 테이블 보기
 
----------- 테이블 삭제 : 저장공간을 삭제, 저작되어있는 데이터도 모두 삭제
-drop table test_tbl;
+    --------- ALER TABLE
+    -- 테이블 삭제 : 저장공간을 삭제, 저작되어있는 데이터도 모두 삭제
+    drop table test_tbl;
+    
+    -- 모든 로우를 제거하는 truncate : 바로삭제!
+    create table emp06
+    as
+    select * from emp;
+    select * from emp06;
+    
+    truncate table emp06;
+    
+    
+    ---------- 테이블 이름변경
+    -- rename old_name to new_name;
+    rename emp06 to new_emp;
+    
+    
+    
+    
+    ----------  ALTER TABLE : 테이블 구조의 변경
+    -- alter table table_name 
+    -- add (컬럼추가) | modify(컬럼변경) | drop(컬럼삭제) ();
+    
+    -- 기존 테이블에 속성을 추가 : 각 행의 컬럼 데이터는 null값
+    -- emp01에  job 컬럼을 추가. (varchar2(10)
+    desc emp01;
+    
+    alter table emp01 
+    add(JOB varchar2(10));
+    alter table emp01 
+    add(deptno number(2));
+    
+    
+    -- 기존 테이블의 컬럼 변경 modify 
+    -- 새롭게 정의된 컬럼으로 교체하는 것
+    
+    alter table emp01
+    modify (deptno number(10));
+    
+    -- 기존 테이블의 컬럼을 삭제 : 데이터도 사라진다
+    alter table emp01
+    drop (deptno);
+    
 
--- 모든 로우를 제거하는 truncate : 바로삭제!
-create table emp06
-as
-select * from emp;
-select * from emp06;
-
-truncate table emp06;
-
-
----------- 테이블 이름변경
--- rename old_name to new_name;
-rename emp06 to new_emp;
-
-
-
-
-----------  ALTER TABLE : 테이블 구조의 변경
--- alter table table_name 
--- add (컬럼추가) | modify(컬럼변경) | drop(컬럼삭제) ();
-
--- 기존 테이블에 속성을 추가 : 각 행의 컬럼 데이터는 null값
--- emp01에  job 컬럼을 추가. (varchar2(10)
+---------- 제약조건 정의
+-- insert into dept values(10,'test','seoul');
+-- 무결성제약 조건에 위배됩니다
 desc emp01;
+insert into emp01 values(null, null, 1000, 'tester');
+select * from emp01;
 
-alter table emp01 
-add(JOB varchar2(10));
-alter table emp01 
-add(deptno number(2));
+-- emp01 삭제
+drop table emp01;
 
 
--- 기존 테이블의 컬럼 변경 modify 
--- 새롭게 정의된 컬럼으로 교체하는 것
+-- 필수 입력을 위한 제약 조건 :bNOT null 
+-- emp01 테이블 생성 : empno, ename에 null값이 들어가지 않도록 제약
+create table emp01(
+        empno   number(4)       not null,
+        ename   varchar2(10)    not null,
+        job     varchar(9),
+        deptno  number(2)
+        );
+insert into emp01 values(null, null, 'tester', '10');
+-- ORA-01400: NULL을 ("SCOTT"."EMP01"."EMPNO") 안에 삽입할 수 없습니다
 
-alter table emp01
-modify (deptno number(10));
 
--- 기존 테이블의 컬럼을 삭제 : 데이터도 사라진다
-alter table emp01
-drop (deptno);
+-- 데이터의 중복 금지 : UNIQUE
+drop table emp02;
+create table emp02(
+    empno  number(4)    unique,
+    ename  varchar2(9),
+    deptno number(2)
+);
+insert into emp02 values(1, 'tester', '10');
+insert into emp02 values(1, 'tester2', '10');
+-- ORA-00001: 무결성 제약 조건(SCOTT.SYS_C0011060)에 위배됩니다.
 
+-- empno가 not null과 unique 제약을 동시에 적용
+drop table emp03;
+create table emp03(
+    empno   number(4)   not null unique,
+    ename  varchar2(9) not null
+);
+
+insert into emp03 values(null, 'test1');
+insert into emp03 values(1, 'test1');
+insert into emp03 values(2, 'test1');
+select * from emp03;
+
+ 
+-- 기본키 제약 : 기본키 설정 > not null, unique
+drop table emp04;
+create table emp04(
+        empno number(4) primary key,
+        ename varchar2(10) not null
+    );
+    
+insert into emp04 values(null, 'test'); -- null 에러
+insert into emp04 values(1, 'test');
+insert into emp04 values(1, 'test'); -- 무결성제약조건 에러
+
+-- 외래키 제약 : 참조하는 테이블과 컬럼을 정의 (reference's')
+drop table emp05;
+create table emp05(
+    empno number(4) primary key,
+    ename varchar2(10) not null,
+    deptno number(2) references dept(deptno)
+);
+-- emp05의 deptno테이블에는 emp테이블의 dept에 있는 값만 들어갈 수있다
+-- 즉 10,20,30만 들어갈 수 있다. (40,50 X)
+
+insert into emp05 values(1, 'test', 10);
+insert into emp05 values(1, 'test', 40); -- 40X 무결성 에러
+
+
+-- check : 특정 범위 제한 
+create table emp06 (
+    empno   number(4)       primary key,
+    ename   varchar2(10)    not null,
+    sal     number(7,2)        check (sal>=800)
+);
+
+insert into emp06 values (1, 'test', 1000);
+insert into emp06 values (2, 'test', 100); -- 체크 제약조건 위배
