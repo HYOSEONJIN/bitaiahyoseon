@@ -45,7 +45,6 @@ select * from dept01;
 
 
 -- index : 검색을 빠르게 하기 위한 객체
--- 최혜인 馬鹿野郎!
 -- create index index_name on targer_table_name (column_name)
 
 -- index 확인을 하는 user_ind_columns
