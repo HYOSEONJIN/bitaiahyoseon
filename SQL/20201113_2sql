@@ -58,15 +58,15 @@ from user_ind_columns;
 
 
 insert into emp10 select * from emp10;
--- emp10 테이블에 360만개의 행을 만들어준 상태임
+-- emp10 테이블에 500만개의 행을 만들어준 상태임
 insert into emp10 (empno, ename) values (1111, 'COOL');
 
-select empno, ename from emp10 where ename='COOL';  -- 0.12~0.125초
+select empno, ename from emp10 where ename='COOL';  -- 2.765초
 
 -- ename을 인덱스로 정의
 create index index_emp10_ename
 on emp10 (ename);
-select empno, ename from emp10 where ename='COOL';  -- 0.057초로 단축!
+select empno, ename from emp10 where ename='COOL';  -- 1.26초로 단축
 
 
 -- empno index로 생성
