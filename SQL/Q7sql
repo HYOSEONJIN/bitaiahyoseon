@@ -1,0 +1,55 @@
+create table phoneInfo_basic (
+        idx             number(6)       primary key,
+        fr_name         varchar2(20)    not null,
+        fr_phonenumber  varchar2(20)    not null,
+        fr_email        varchar2(20)    default '-',
+        fr_address      varchar2(20)    default '-',
+        fr_regdate      DATE            default sysdate
+);
+
+create table phoneInfo_univ (
+        idx             number(6)       primary key,
+        fr_u_major      varchar2(20)    default 'N',
+        fr_u_year       number(1)       default '1' check (5>=fr_u_year AND fr_u_year>=1),
+        fr_ref          number(7)      references phoneinfo_basic(idx)
+);
+
+
+create table phoneinfo_com(
+        idx             number(6)       primary key,
+        fr_c_company    varchar2(20)    default 'N',
+        fr_ref          number(6)       references phoneinfo_basic(idx)
+);
+
+
+
+-----------------------------------------------------------------------------------
+drop table fr_type;
+create table fr_type(
+    friendty      varchar2(5)    unique
+);
+
+insert into fr_type values ('univ');
+insert into fr_type values ('com');
+insert into fr_type values ('cafe');
+
+select * from fr_type;
+
+-----------------------------------------------------------
+drop table test02;
+select b.idx, b.fr_name, fr_phonenumber, fr_email, fr_address, b.fr_regdate,u.fr_u_major,u.fr_u_year,c.fr_c_company
+from phoneinfo_basic b, phoneinfo_univ u, phoneinfo_com c
+where b.idx=u.idx AND c.idx=u.idx;
+--------------------------------------------------------------------
+drop table phonebook;
+create table phonebook(
+    pdix            number(6)        primary key,
+    friendtype      varchar2(5)      references fr_type(friendty)
+);
+
+desc phonebook;
+
+----------------------------------------------------------------------------
+
+
+
