@@ -141,3 +141,7 @@ where idx=1;
 delete phoneinfo_com where fr_ref=3;
 delete phoneinfo_basic where idx=3;
 
+select *
+from PHONEINFO_BASIC pb , PHONEINFO_COM pc, PHONEINFO_UNIV pu
+where pb.idx=pu.fr_ref(+) and pb.idx=pc.fr_ref(+);
+

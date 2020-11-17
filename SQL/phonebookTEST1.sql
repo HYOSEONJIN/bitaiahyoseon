@@ -1,3 +1,9 @@
+drop table phoneinfo_basic;
+drop table PHONEINFO_COM;
+drop table PHONEINFO_UNIV;
+drop table Friendtype;
+
+
 create table phoneInfo_basic (
         idx             number(6)       primary key,
         fr_name         varchar2(20)    not null,
@@ -7,7 +13,7 @@ create table phoneInfo_basic (
         fr_regdate      DATE            default sysdate
 );
  
-drop table phoneinfo_basic;
+
 create table phoneInfo_univ (
         idx             number(6)       primary key,
         fr_u_major      varchar2(20)    default 'N',
@@ -15,6 +21,14 @@ create table phoneInfo_univ (
         fr_ref          number(7)       not null references phoneinfo_basic(idx)
 );
  
+--	idx number(6),
+--	fr_u_major varchar2(20) default 'N', 
+--	fr_u_year number(1) default 1 check (fr_u_year between 1 and 4),
+--	fr_ref number(6) not null,
+--	constraint pi_univ_idx_PK primary key (idx),
+--	constraint pi_uni_ref_FK foreign key (fr_ref) references phoneinfo_basic (idx)
+--);
+
  
 create table phoneinfo_com(
         idx             number(6)       primary key,
@@ -36,14 +50,15 @@ insert into fr_type values ('cafe');
  
  
 -----------------------------------------------------------
- 
-create table phonebook(
+select * from Friendtype;
+create table Friendtype(
     pidx            number(6)        primary key,
     friendtype      varchar2(5)      references fr_type(friendty)
 );
+
  
 ----------------------------------------------------------------
- -- ÏãúÌÄÄÏä§ ÏÉùÏÑ±
+ -- Ω√ƒˆΩ∫ ª˝º∫
 create Sequence seq_basic_idx MINVALUE 0 start with 1 INCREMENT BY 1;
 create Sequence seq_univ_idx MINVALUE 0 start with 1 INCREMENT BY 1;
 create Sequence seq_com_idx MINVALUE 0 start with 1 INCREMENT BY 1;
@@ -55,64 +70,60 @@ drop sequence seq_com_idx;
 drop SEQUENCE seq_main_idx;
 ----------------------------------------------------------------
 select * from phoneinfo_basic;
-delete from phoneinfo_basic;
+select * from PHONEINFO_UNIV;
+select * from friendtype;
+select * from phoneinfo_com;
 
-insert into phoneinfo_basic values (seq_basic_idx.nextval, 'Ìö®ÏÑ†', '01012345678', 'tomnmo@naver.com', 'ÏÑúÏö∏', sysdate);
-insert into phoneinfo_basic values (seq_basic_idx.nextval, 'ÌïòÌïòÌò∏Ìò∏', '01098765432', 'ttt_111@naver.com', 'Í≤ΩÍ∏∞', sysdate);
-insert into phoneinfo_basic values (seq_basic_idx.nextval, 'Î†àÏì∞ÎπÑ', '01087873383', 'a_3@gmail.com', 'ÎåÄÏ†Ñ', sysdate);
+delete from phoneinfo_basic;
+delete from phoneinfo_com;
 
 commit;
 
+-- ¥Î«–ƒ£±∏ ¿‘∑¬
+insert into phoneinfo_basic values (seq_basic_idx.nextval, '»øº±', '01012345678', 'tomnmo@naver.com', 'º≠øÔ', sysdate);
+insert into PHONEINFO_UNIV values (seq_univ_idx.nextval, '∞‘¿”', '4', seq_basic_idx.currval);
+insert into Friendtype values (seq_main_idx.nextval, 'univ');
 
-------------------------------------------------------------------
-select * from phoneinfo_univ;
-delete from phoneinfo_univ;
-insert into phoneinfo_univ values (seq_univ_idx.nextval, 'Í≤åÏûÑ', '4', '1');
-insert into phoneinfo_univ values (seq_univ_idx.nextval, 'Î¨∏ÏòàÏ∞ΩÏûë', '2', '2');
+-- »∏ªÁƒ£±∏ ¿‘∑¬
+insert into phoneinfo_basic(idx, fr_name, fr_phonenumber) values (seq_basic_idx.nextval, '≈¬«¸', '01012348787');
+insert into phoneinfo_com values (seq_com_idx.nextval, '∑πæ≤∫Ò', seq_basic_idx.currval);
+insert into Friendtype values (seq_main_idx.nextval, 'com');
+
+
+-- √‚∑¬
+select * from PHONEINFO_BASIC pb , PHONEINFO_COM pc, PHONEINFO_UNIV pu
+where pb.idx=pc.FR_REF(+) AND pb.IDX=pu.FR_REF(+);
+
+-- ∫‰
+create or REPLACE view view_test01
+as 
+select pb.IDX, fr_name, fr_email, FR_ADDRESS, FR_REGDATE, FR_C_COMPANY, FR_U_MAJOR,FR_U_YEAR
+from PHONEINFO_BASIC pb , PHONEINFO_COM pc, PHONEINFO_UNIV pu
+where pb.idx=pc.FR_REF(+) AND pb.IDX=pu.FR_REF(+);
+select * from view_test01;
+
+-- ƒ£±∏≈∏¿‘ ∞∞¿Ã √‚∑¬
+select pidx, friendtype, fr_name, FR_EMAIL, FR_ADDRESS, FR_REGDATE, FR_U_MAJOR,FR_U_YEAR,FR_C_COMPANY
+from friendtype, view_test01
+where pidx=idx
+;
+
+-- ∫‰ ª˝º∫
+
+drop view phonebook;
+create or replace view phonebook
+AS
+select pidx as "No.", friendtype as "ƒ£±∏≈∏¿‘", fr_name as "¿Ã∏ß", FR_EMAIL as "¿Ã∏ﬁ¿œ", 
+FR_ADDRESS as "¡÷º“", FR_REGDATE as "µÓ∑œ¿œ" , FR_U_MAJOR as "¿¸∞¯",FR_U_YEAR as "«–≥‚" ,FR_C_COMPANY as "»∏ªÁ¿Ã∏ß"
+from friendtype, view_test01
+where pidx=idx;
+
+
+-- √÷¡æ√‚∑¬π∞
+select *
+from PHONEBOOK;
+
+
+
+commit;
 rollback;
-
-select * from phoneinfo_com;
-delete from phoneinfo_com;
-insert into phoneinfo_com values (seq_com_idx.nextval, 'AI', '3');
-
-------------------------------------------------------------------
-select * from phonebook;
-delete from phonebook;
-insert into phonebook values (seq_main_idx.nextval , 'univ');
-insert into phonebook values (seq_main_idx.nextval , 'com');
-
-------------------------------------------------------------------
-
---drop table testpb1;
---create table testpb1
---as
---select c.FR_REF as ref, fr_name, b.fr_phonenumber, b.fr_email, b.fr_address, b.fr_regdate, c.FR_C_COMPANY
---from phoneinfo_basic b, phoneinfo_com c
---where b.idx=c.fr_ref
---;
---
---select *
---from phoneinfo_basic b NA TURAL JOIN phoneinfo_com c
---;
---
---drop table testpb2;
---
---create table testpb2
---as
---select u.FR_REF as ref, fr_name, b.fr_phonenumber, b.fr_email, b.fr_address, b.fr_regdate, u.fr_u_major,u.fr_u_year
---from phoneinfo_basic b,phoneinfo_univ u
---where b.idx=u.fr_ref
---order by b.idx
---;
---
---select *
---from phoneinfo_basic b NATURAL JOIN phoneinfo_univ u
---;
---
---select *
---from testpb1 NATURAL JOIN testpb2
---;
-
-
-
-
