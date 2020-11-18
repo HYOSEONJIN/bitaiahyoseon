@@ -111,6 +111,7 @@ where pidx=idx
 -- 뷰 생성
 
 drop view phonebook;
+
 create or replace view phonebook
 AS
 select pidx as "No.", friendtype as "친구타입", fr_name as "이름", FR_EMAIL as "이메일", 
