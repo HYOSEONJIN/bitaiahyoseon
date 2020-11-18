@@ -26,9 +26,8 @@ public class JDBCOraclePreparedTest {
 			conn = DriverManager.getConnection(jdbcUrl, user, password);
 			System.out.println("데이터베이스에 접속했습니다.");
 			
-			// 3. statement 인스턴스생성
-			
-//			Statement stmt = conn.createStatement();
+		
+			//Statement stmt = conn.createStatement();
 			
 			System.out.println("부서 이름을 입력해주세요.");
 			String userDname= sc.nextLine();
