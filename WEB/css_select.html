@@ -232,10 +232,55 @@
             background-color: bisque
         }
         
+        /*문자선택자
+        ::first-letter
+        ::frist-line*/
+        
+        p::first-letter{
+            font-size:300%;
+        }
+        p::first-line{
+            color : darkgreen;
+        }
+        p::selection{
+            background-color: crimson;
+            color : bisque;
+        }
+        
+        /* 링크 선택자
+        :link
+        :visited */
+        
+        a:link{
+            color : black;
+            text-decoration-line: none;
+        }
+        a:visited{
+            color : red;
+            text-decoration-line: none;
+        }
+        a:hover{
+            color : blue;
+        }
+        
+        a:link:after{
+            /*가상태그*/
+            content : ' - ' attr(href);    
+        }
+        
+        a:link:before{
+            content : attr(href) ' - ' ;    
+        }
+        
     </style>
 </head>
 
 <body>
+    
+    <!--링크선택자-->
+    <h3> 
+    <a href="http://naver.com">네이버</a>
+    </h3>
     
     
     <!--구조선택자-->
@@ -323,7 +368,7 @@
     <div id="content" class="color_black">content</div>
 
     <br>
-    <!--태그선택자 예제-->
+    <!--태그선택자 / 문자선택자 예제-->
     <h1 class="color_black">방탄소년단, 'Life Goes On' 1억뷰 기록 ”韓가수 최다”</h1>
 
     <p>
