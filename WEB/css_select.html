@@ -15,56 +15,221 @@
             color : purple;
         }*/
 
-        
+
         /* 태그선택자 */
+        /*
         h1, p, body {margin: 0; padding: 0;}
+*/
 
-        h1 {background-color: #E2A9F3;
-            color: white;}
+        h1 {
+            background-color: #E2A9F3;
+            color: white;
+        }
 
-        p {color: purple;}
-        
-        
-        div{
-            height: 50px;
-            width: 400px;
-            text-align: center                
-            }
-        
+        p {
+            color: purple;
+        }
+
+
+        div {
+            text-align: center
+        }
+
+        form {
+            border: 1px solid grey;
+        }
+
+        ul {
+            border: 1px solid blue;
+        }
+
+        li {
+            border: 1px solid red;
+            color: green;
+        }
+
         /* 아이디 선택자 : #id */
-        
+
         #header {
             background-color: #A9E2F3;
-            }
+        }
+
         #aside {
             background-color: #F6CECE;
         }
-        #content{
+
+        #content {
             background-color: #E0F8EC;
         }
-        
+
         /* 클래스 선택자 : 요소의 class 속성이 있는 것을 지정하는 선택자 */
-        
+
         /* div를 붙이면 div이고 클래스가 color_white인 요소 */
-      
-        div.color_black{
-            color : black;
+
+        div.color_black {
+            color: black;
         }
-        
-        .color_red{
-            color : red;
+
+        .color_red {
+            color: red;
         }
-        
-        .font_size_32{
-            font-size : 32px;
+
+        .font_size_32 {
+            font-size: 32px;
         }
-        
-        .font_weight_bold{
+
+        .font_weight_bold {
             font-weight: 1000;
         }
+
+        .font_italic {
+            font-style: italic;
+        }
+
+        /* 속성 선택자 : 선택자[속성이름]*/
+        input[type] {
+            background-color: darkkhaki;
+            color: white;
+        }
+
+        /* 속성 선택자 : 선택자[속성이름=값] */
+        input[type=button] {
+            background-color: aqua;
+            padding: 8px;
+            margin: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /*  선택자[속성이름=값 */
+        img[src$=png] {
+            border: 3px solid red;
+        }
+
+        img[src$=gif] {
+            border: 3px solid blue;
+        }
+
+        img[src$=jpg] {
+            border: 3px solid black;
+        }
+
+        /* 후손 선택자 : 선택자A 선택자B
+        A 태그 하위에 존재하는 태그를 기준으로 B선택자로 선택 */
+
+        #header1 h1 {
+            background-color: black;
+            color: aliceblue;
+            font-size: 16px;
+        }
+
+        /* 자손 선택자 : 선택자A(부모) > 선택자B(자손)
+        선택자 A로 선택된 태그 바로 아래의 태그들 중 선택자B로 선택 */
+        #header1>h1 {
+            border: 5px solid pink;
+            font-style: italic;
+        }
+
+        #nav h1 {
+            border: 5px solid aqua;
+        }
+
+        /*동위 선택자 : 범위를 한정해서 선택
+        선택자A+선택자B > A선택자 태그 바로 뒤에 있는 선택자B
+        선택자A~선택자B > A선택자 바로뒤에있는 선택자B 전부. */
         
-        .font_italic{
-            font-style : italic;
+        #div1>h1+h2{
+            background-color : red;
+            color : yellow;
+        }
+        
+        /*h1~h2로 하면 h2 다바뀜*/
+        #div1>h1+h2~h2 { 
+            background-color :black;
+            color: aqua;
+        }
+        
+        /* 반응 선택자
+        :hover  > 마우스 커서가 특정 태그 위로 올라갈 때
+        :active > 마우스 버튼 누르고 있는 상태 */
+        
+        h1:hover {
+            background-color: green;
+            cursor: pointer;
+        }
+        
+        h2:active {
+            background-color : blue;
+            color : white;
+        }
+        
+        /* 상태선택자 
+        :check > 체크 상태의 input 태그 선택 > checkox, radio
+        :focus > 초점이 맞추어진 input 태그 선택 > 모든 input
+        :enabled > 사용 가능한 input 태그 선택
+        :disabled >사용 불가능한 input 태그 선택 */
+        
+        input:enabled{
+            border : 1px solid blue;
+            background-color: aqua;
+        }
+        
+        input:disabled{
+            border : 1px solid red;
+            background-color: grey;
+        }
+        
+        input:focus{
+            background-color: yellow;
+        }
+        
+        #msg {
+            padding:20px;
+            background-color : bisque;
+            display : none;
+        }
+        
+        input[type=checkbox]:checked+#msg{
+            display: block
+        }
+        
+        /*구조선택자*/
+        /*잘보기위해 테두리와 ㅇ 없앰*/
+        #nav, #nav>li {
+            border : 0;
+            list-style: none; 
+            margin:0;
+            padding:0;
+        }
+        
+        #nav{
+            margin : 20px 0;
+            overflow : hidden;
+            /*float : left 속성을 #nav안으로 한정한다*/
+        }
+        
+        #nav>li{
+            /* >>> 쪽으로 바뀜 */
+            float : left;
+            /* 상하 좌우 픽셀*/
+            padding : 0 20px;            
+            border : 1px solid gray;
+        }
+        
+        #nav>li:first-child{
+            border-radius: 10px 0 0 10px;
+        }
+        
+        #nav>li:last-child{
+            border-radius: 0 10px 10px 0;
+        }
+        
+        #nav>li:nth-child(2n){
+            background-color: mediumaquamarine;
+        }
+        
+        #nav>li:nth-child(2n+1){
+            background-color: bisque
         }
         
     </style>
@@ -72,12 +237,94 @@
 
 <body>
     
-    <div id="header" class="color_black font_size_32 font_italic">header</div>
-    <div id="aside"  class="color_red font_weight_bold">aside</div>
-    <div id="content"  class="color_black">content</div>
     
+    <!--구조선택자-->
+    <ul id="nav">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>        
+    </ul>
+    
+    <!--상태선택자-->
+    숨기기 <input type="checkbox">
+    <div id="msg" style="text-align: left">
+        체크박스를 체크하면 보입니다~
+    </div>
     <br>
-    <h1 class ="color_black">방탄소년단, 'Life Goes On' 1억뷰 기록 ”韓가수 최다”</h1>
+    <input value="입력가능"> <br>
+    <input disabled value="입력불가능">
+    
+    
+    <!--반응선택자-->
+    <div id="div2">
+        <h1>hover - 1</h1>
+        <h2>hover - 2</h2>
+    </div>
+    <!--동위선택자예제-->
+    <div id="div1">
+        <h1>Header - 1</h1>
+        <h2>Header - 2</h2>
+        <h2>Header - 2</h2>
+        <h2>Header - 2</h2>
+        <h2>Header - 2</h2>
+    </div>
+
+
+    <!--후손/자손선택자예제-->
+    <div id="header1">
+        <h1 class="title">Lorem ipsum</h1>
+        <div id="nav">
+            <h1>Navigation</h1>
+        </div><br>
+    </div><br><br><br>
+
+
+    <div id="section">
+        <h1 class="title">Lorem ipsum</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+
+    <!--선택자[속성이름=값] 특정예제-->
+    <img src="image/tae1.jpg" width="100">
+    <img src="tae6.jpg" width="100">
+    <img src="image/tae3.png" width="100">
+
+    <!--속성선택자-->
+    <h1>form tag -> input</h1>
+    <br>
+    <form>
+        <ul>
+            <li>
+                <input type="text">
+            </li>
+            <li>
+                <input type="button" value="Button">
+            </li>
+            <li>
+                <input type="password" value="Button">
+            </li>
+            <li>
+                <input type="button" value="new Button">
+            </li>
+        </ul>
+
+    </form>
+
+    <br>
+    <!--아이디선택자 / 클래스 선택자 예제-->
+    <div id="header" class="color_black font_size_32 font_italic">header</div>
+    <div id="aside" class="color_red font_weight_bold">aside</div>
+    <div id="content" class="color_black">content</div>
+
+    <br>
+    <!--태그선택자 예제-->
+    <h1 class="color_black">방탄소년단, 'Life Goes On' 1억뷰 기록 ”韓가수 최다”</h1>
 
     <p>
         그룹 방탄소년단이 1억뷰 뮤직비디오를 추가하고 한국 가수 최다 억대 뮤직비디오를 보유하게 됐다. 방탄소년단이 지난 20일 발표한 새 앨범 ‘BE (Deluxe Edition)’의 타이틀곡 ‘Life Goes On’ 뮤직비디오 유튜브 조회수가 11월 22일 오후 5시 48분경 조회수 1억 건을 넘었다. 이로써 방탄소년단은 통산 27번째 억뷰 뮤직비디오를 보유하게 됨과 동시에 한국 가수 최다 기록을 자체 경신했다. 방탄소년단의 ‘BE (Deluxe Edition)’는 지금까지 이들이 선보인 정규 시리즈 앨범과는 다른 형태의 앨범으로, 지금 이 순간에 느끼는 솔직한 감정, 나아가 앞으로 계속 살아가야 하는 ‘우리’라는 존재에 관한 이야기를 담고 있다. 방탄소년단은 ‘Life Goes On’을 통해 열심히 달리다 멈춰 설 수밖에 없는, 원치 않는 상황과 마주했지만 “그럼에도 삶은 계속된다”라는 위로의 메시지를 전한다.
