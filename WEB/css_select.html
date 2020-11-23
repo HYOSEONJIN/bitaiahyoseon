@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 선택자</title>
+
+    <style>
+        /* 선택자{
+            속성이름 : 속성값;
+            }  */
+
+        /* 전체선택자 : 전체 폰트 컬러 값 등을 지정 
+        *{
+            color : purple;
+        }*/
+
+        
+        /* 태그선택자 */
+        h1, p, body {margin: 0; padding: 0;}
+
+        h1 {background-color: #E2A9F3;
+            color: white;}
+
+        p {color: purple;}
+        
+        
+        div{
+            height: 50px;
+            width: 400px;
+            text-align: center                
+            }
+        
+        /* 아이디 선택자 : #id */
+        
+        #header {
+            background-color: #A9E2F3;
+            }
+        #aside {
+            background-color: #F6CECE;
+        }
+        #content{
+            background-color: #E0F8EC;
+        }
+        
+        /* 클래스 선택자 : 요소의 class 속성이 있는 것을 지정하는 선택자 */
+        
+        /* div를 붙이면 div이고 클래스가 color_white인 요소 */
+      
+        div.color_black{
+            color : black;
+        }
+        
+        .color_red{
+            color : red;
+        }
+        
+        .font_size_32{
+            font-size : 32px;
+        }
+        
+        .font_weight_bold{
+            font-weight: 1000;
+        }
+        
+        .font_italic{
+            font-style : italic;
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+    <div id="header" class="color_black font_size_32 font_italic">header</div>
+    <div id="aside"  class="color_red font_weight_bold">aside</div>
+    <div id="content"  class="color_black">content</div>
+    
+    <br>
+    <h1 class ="color_black">방탄소년단, 'Life Goes On' 1억뷰 기록 ”韓가수 최다”</h1>
+
+    <p>
+        그룹 방탄소년단이 1억뷰 뮤직비디오를 추가하고 한국 가수 최다 억대 뮤직비디오를 보유하게 됐다. 방탄소년단이 지난 20일 발표한 새 앨범 ‘BE (Deluxe Edition)’의 타이틀곡 ‘Life Goes On’ 뮤직비디오 유튜브 조회수가 11월 22일 오후 5시 48분경 조회수 1억 건을 넘었다. 이로써 방탄소년단은 통산 27번째 억뷰 뮤직비디오를 보유하게 됨과 동시에 한국 가수 최다 기록을 자체 경신했다. 방탄소년단의 ‘BE (Deluxe Edition)’는 지금까지 이들이 선보인 정규 시리즈 앨범과는 다른 형태의 앨범으로, 지금 이 순간에 느끼는 솔직한 감정, 나아가 앞으로 계속 살아가야 하는 ‘우리’라는 존재에 관한 이야기를 담고 있다. 방탄소년단은 ‘Life Goes On’을 통해 열심히 달리다 멈춰 설 수밖에 없는, 원치 않는 상황과 마주했지만 “그럼에도 삶은 계속된다”라는 위로의 메시지를 전한다.
+    </p>
+</body></html>
