@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS 속성</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
 
     <style>
         h1.title {
@@ -15,6 +17,7 @@
         body {
             /*url은 경로를 표현한다*/
             background-image: url(image/tae4.jpg);
+            background-attachment: fixed;
         }
     </style>
 
@@ -86,10 +89,11 @@
 
         }
     </style>
+    
     <style>
         /*박스속성 : width, height, border, padding, margin*/
 
-        #box {
+        #box1 {
             background-color: black;
             color: wheat;
 
@@ -101,18 +105,116 @@
             border: 10px solid pink;
 
             /*테두리와 텍스트 사이의 간격*/
-            padding: 15px;
+            padding: 15px; /*padding-top: 50px;*/
+            
+            /*요소 태그들과의 간격*/
+            margin : 20px;
+            margin-left : 300px;
+        
+        }
+    </style>
+    
+    <style>
+    
+        #box2 {
+            background-color: pink;
+            width : 100px; height: 100px;
+            padding:10px; margin:10px;
+            border : 10px solid grey;
+            /*raidus 순서 : 11시 방향부터 시계방향*/
+            /*border-radius: 10px 30px 10px 30px*/
+            border-radius: 100px;
+            background-image : url(image/tae1.jpg);
+            background-size : contain;
+            
         }
     </style>
 
+    <style>
+        
+        #display span{
+            background-color : #FFFFF0;
+            width:100px;
+            height: 100px;
+        }
+    
+        #display>span:nth-child(1){
+            /*화면에서 요소 태그를 표현하지 않는다*/
+            /*display: none;*/
+            
+        }
+        #display>span:nth-child(2){
+            /*블럭속성*/
+            display :inline-block;
+            
+        }
+        #display>span:nth-child(3){
+            
+        }
+    
+    
+    
+    </style>
+    
+    <style>
+    
+        #font{
+            font-family: 'Nerko One', cursive;
+            font-size : 4em;
+            font-weight: bold;
+            font-style : italic;
+            color : darkorchid;
+            text-align: center
+        }
+    </style>
+    
+    <style>
+        h3{
+            text-align: center; 
+            text-shadow: 5px 5px 6px gray;
+        }
+        h3+h4{
+            text-align: right;
+            margin-right: 50px;
+        }
+        h3+h4+p{
+            line-height: 180%;
+            border : 1px solid #EEE;
+            width: 80%;
+            box-shadow: 5px 5px 5px gray;
+            
+        }
+    </style>
 </head>
 
 <body>
+    
+    
+    <h1 class="title">텍스트의 중앙 정렬</h1>
+    <h3>텍스트 수평 방향의 정렬</h3>
+    <h4>2020.11.24</h4>
+    <p>에스콰이어는 방탄소년단에 대해 “멤버들은 팝의 정상에 올랐고, ‘인기’를 새롭게 정의했으며, 전통적인 ‘남성성’에 정면 도전했다”라고 소개했다. 이어 “멤버 간 서로에 대한 애정, 자신의 인생이나 가사를 통해 본인의 약점과 감정을 드러내는 (방탄소년단의) 방식이, 스스로에게는 물론이고 서로에게 정형화한 틀을 끊임 없이 강요하는 전통적인 남성들의 방식보다 더 어른스럽고 남성적으로 보인다”라고 평가했다.</p>
+    
+    
+        
+   <h1 class="title">폰트 속성 : font-family, -size, -style -weight</h1>
+    <div id="font">
+        Hello! we are BTS!
+    </div>
+    <h1 class="title">Display 속성 : none, block, inline, inline-block</h1>
+    <div id="display">
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+        
+    </div>
+    
 
     <h1 class="title"> 박스 속성 : width, height, border, padding, margin</h1>
 
     <div>
-        <div id="box">BOX BOX BOX BOX BOX BOX BOX BOX BOX BOX </div>
+        <div id="box2">BOX2</div>
+        <div id="box1">BOX BOX BOX BOX BOX BOX BOX BOX BOX BOX </div>
     </div>
 
     <h1 class="title">color를 표현하는 단위</h1>

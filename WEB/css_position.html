@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSITION 속성 </title>
+</head>
+    
+    <style>
+        div.box{
+            width : 100px;
+            height: 100px;
+            border : 10px solid black;
+            text-align: center;
+            line-height: 100px;
+            font-size : 30px;
+            color : wheat;
+            /*포지션 앱솔루트*/
+            position: absolute;
+            margin : 0;
+        }
+        
+        #box1{
+            background-image: url(image/tae1.jpg);
+            background-size : 100%;
+            /*위치설정*/
+            left : 50px;
+            top : 50px;
+            /*숫자가 클수록 앞에온다*/
+            z-index: 2; 
+        }
+          
+        #box2{
+            background-image: url(image/tae1.jpg);
+            background-size : 100%;
+            left : 100px;
+            top: 100px;
+            z-index: 3;
+        }
+          
+        #box3{
+            background-image: url(image/tae1.jpg);
+            background-size : 100%;
+            left : 150px;
+            top : 150px;
+            z-index: 1;
+        }
+        
+        #box4{
+            background-image : url(image/tae1.jpg);
+            background-size : 100%;
+            right : 50px;
+            bottom : 50px;
+        }
+        
+        
+    </style>
+
+<body>
+    
+    <div id="box1" class="box">1</div>
+    <div id="box2" class="box">2</div>
+    <div id="box3" class="box">3</div>
+    <div id="box4" class="box">4</div>
+    
+</body>
+</html>

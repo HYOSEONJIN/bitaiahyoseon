@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>one true layout :)</title>
+</head>
+    
+    <!--레이아웃-->
+    <style>
+        body{
+            background-color: #EEEEEE;
+        }
+        
+        *{
+            margin : 0;
+            padding : 0;
+        }
+        div{
+            background-color: white;
+            
+        }
+        
+        #frame2{
+            width: 1020px;
+            height: 850px;
+            left : 10px;
+            top : 10px;
+            position: relative;
+            border-radius: 10px;
+        }
+        #frame{
+            width: 1000px;
+            height: 850px;
+            left : 10px;
+            position: relative;
+            border-radius: 10px;
+        }
+        
+        #header{
+            border-radius: 10px 10px 0px 0px;
+            width: 1000px;
+            height : 150px;
+            display: table-cell;
+            vertical-align: middle;            
+        }
+        #navi{
+            width: 1000px;
+            height : 40px;
+            line-height: 20px;
+            border-top : 1px solid grey;
+            border-bottom : 1px solid grey;
+            line-height: 40px;
+        }
+        /* 350 : 150 */
+        
+        #content{ 
+            width: 700px;
+            height : 600px;
+            line-height: 10px;
+            float: left;
+        }
+        
+        #aside{ 
+            width: 300px;
+            height : 130px;
+
+            float: left;
+        }
+        #bside{ 
+            width: 300px;
+            height : 470px;
+            float: left;
+        }
+        
+        #footer {            
+            clear:both;
+            border-radius: 0px 0px 10px 10px;
+            width : 1000px;
+            height: 50px;                
+        }
+    
+    
+        
+    
+        
+    </style>
+    
+    <!--헤더-->
+    <style>
+        #header>h1{
+            padding-left: 30px;
+        }
+        #header>p{
+            padding-left: 30px;
+            font-size : 14px;
+        }
+    </style>
+
+    <!--네비게이션-->
+    <style>
+        #navi {
+            font-size : 12px;            
+        }
+        
+        #navi p{
+            padding-left: 30px;    
+        }
+        
+        
+    </style>
+    
+<body>
+    
+    <div id="frame2">
+    <div id="frame">
+        
+    <div id="header">
+        
+        <h1> html어쩌구</h1>
+        <p>한빛 어쩌구</p>
+        
+        </div> <!--hearder end-->
+        
+    <div id="navi">
+        
+        HTML5<input type="text">
+        
+        </div> <!--navi end-->
+    <div id="content">C O N T E N T</div>
+    <div id="aside">A S I D E</div>
+    <div id="bside">B S I D E</div>
+    <div id="footer">F O O T E R</div>
+    </div> <!--frame END-->
+    </div> <!--frame2 end-->
+</html>
+</body>
+</html>
