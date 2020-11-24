@@ -6,13 +6,19 @@
     <title>CSS 속성</title>
 
     <style>
-        
-        h1{
-            background-color:black;
-            color :pink;
-            font-size : 30 px
+        h1.title {
+            background-color: black;
+            color: pink;
+            font-size: 30 px
         }
-        
+
+        body {
+            /*url은 경로를 표현한다*/
+            background-image: url(image/tae4.jpg);
+        }
+    </style>
+
+    <style>
         #size1>div:nth-child(1) {
             font-size: 100%;
         }
@@ -24,9 +30,9 @@
         #size1>div:nth-child(3) {
             font-size: 200%;
         }
+    </style>
 
-
-
+    <style>
         #size2>div:nth-child(1) {
             font-size: 1.0em;
         }
@@ -38,8 +44,9 @@
         #size2>div:nth-child(3) {
             font-size: 2.0em;
         }
+    </style>
 
-
+    <style>
         #size3>div:nth-child(1) {
             font-size: 16px;
         }
@@ -51,15 +58,74 @@
         #size3>div:nth-child(3) {
             font-size: 32px;
         }
+    </style>
+
+    <style>
+        #color>h4:nth-child(1) {
+            /*키워드를 이용한 색상 표현*/
+            background-color: aquamarine;
+            color: blue;
+        }
+
+        #color>h4:nth-child(2) {
+            /*rgb를 이용한 색상 표현*/
+            background-color: rgb(255, 225, 255);
+            color: rgb(0, 150, 150);
+        }
+
+        #color>h4:nth-child(3) {
+            /*#rgba를 이용한 색상표현 : 투명도 표현*/
+            background-color: rgba(100, 200, 240, 0.7);
+            color: rgb(0, 0, 150);
+        }
+
+        #color>h4:nth-child(4) {
+            /*#000000을 이용한 색상표현*/
+            background-color: #1F158A;
+            color: #FF889A;
 
         }
     </style>
+    <style>
+        /*박스속성 : width, height, border, padding, margin*/
+
+        #box {
+            background-color: black;
+            color: wheat;
+
+            /*표현영역*/
+            width: 100px;
+            height: 100px;
+
+            /*테두리*/
+            border: 10px solid pink;
+
+            /*테두리와 텍스트 사이의 간격*/
+            padding: 15px;
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <h1 id="title">Font-size : 단위를 확인</h1>
-    
+    <h1 class="title"> 박스 속성 : width, height, border, padding, margin</h1>
+
+    <div>
+        <div id="box">BOX BOX BOX BOX BOX BOX BOX BOX BOX BOX </div>
+    </div>
+
+    <h1 class="title">color를 표현하는 단위</h1>
+    <div id="color">
+
+        <h4> 키워드를 이용한 색상 표현</h4>
+        <h4> rag (R,G,B) 이용 색상 표현</h4>
+        <h4> rgba(R,G,B,A) 이용 색상표현</h4>
+        <h4> #000000</h4>
+    </div>
+
+    <h1 class="title">Font-size : 단위를 확인</h1>
+
     <div id="size1">
         <div>font-size : 100 %</div>
         <div>font-size : 150 %</div>
