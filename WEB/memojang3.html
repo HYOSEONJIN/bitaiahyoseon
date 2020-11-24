@@ -10,6 +10,7 @@
     <style>
         body{
             background-color: #EEEEEE;
+            
         }
         
         *{
@@ -22,19 +23,24 @@
         }
         
         #frame2{
-            width: 1020px;
-            height: 850px;
-            left : 10px;
-            top : 10px;
-            position: relative;
-            border-radius: 10px;
+            height: 1470px;
+            margin : 0px;
+            padding: 0px;
+            background-color: #EEEEEE;
         }
         #frame{
-            width: 1000px;
-            height: 850px;
+            width: 1020px;
+            height: 1450px;
             left : 10px;
+            top : 10px;
+            
             position: relative;
             border-radius: 10px;
+  /*          width: 1000px;
+            height: 100px;
+            left : 10px;
+            position: relative;
+            border-radius: 10px;*/
         }
         
         #header{
@@ -45,39 +51,51 @@
             vertical-align: middle;            
         }
         #navi{
-            width: 1000px;
+            width: 980px;
+            margin:0 auto;
             height : 40px;
             line-height: 20px;
             border-top : 1px solid grey;
             border-bottom : 1px solid grey;
             line-height: 40px;
+            position: relative;            
         }
         /* 350 : 150 */
         
         #content{ 
-            width: 700px;
-            height : 600px;
-            line-height: 10px;
+            width: 680px;
+            padding-top: 20px;
+            padding-left: 20px;
+            height : 1200px;
             float: left;
+            line-height: 140%;
+            overflow: hidden;
         }
         
         #aside{ 
-            width: 300px;
-            height : 130px;
-
+            width: 260px;
+            padding-right: 20px;
+            height : 200px;
             float: left;
         }
         #bside{ 
-            width: 300px;
-            height : 470px;
+            width: 260px;
+            padding-right : 20px;
+            height : 1000px;
             float: left;
         }
         
         #footer {            
             clear:both;
+            bottom : 10px;
             border-radius: 0px 0px 10px 10px;
-            width : 1000px;
-            height: 50px;                
+            width : 1020px;
+            height: 40px;   
+        }
+        
+         #searchinput{   
+            position : absolute;
+            right : 10px;
         }
     
     
@@ -89,50 +107,166 @@
     <!--헤더-->
     <style>
         #header>h1{
-            padding-left: 30px;
+            padding-left: 50px;
         }
         #header>p{
-            padding-left: 30px;
+            padding-left: 50px;
             font-size : 14px;
         }
     </style>
 
     <!--네비게이션-->
     <style>
+        intput{
+            margin:0;
+        }
+        
+        input[type="text"]{
+            width:70%;
+            height:20px;
+            border: 1px solid #EEEEEE;
+            border-radius: 10px 0px 0px 10px;
+            font-size:1em;
+            padding-left: 5px;
+            display:inline;
+           /* outline:none;*/
+            box-sizing: border-box;
+
+        }
+        input[type=button]{
+            width: 30%;
+            height:20px;
+            background-color: lightgray;
+            border: 1px solid #EEEEEE;
+            border-radius: 0px 10px 10px 0px;
+            font-size:1em;
+            display:inline;
+            margin-left: -10px;
+            box-sizing: border-box;
+            }
+        
         #navi {
-            font-size : 12px;            
+            font-size : 12px;
         }
         
-        #navi p{
+        #navi li{
+            list-style: none;
             padding-left: 30px;    
+            float: left;
+            overflow: hidden;
         }
         
+        
+
+    </style>
+    
+    <!--content-->
+    <style>
+           
+        #content>h1 {
+            /*padding-left : 20px;*/
+        }
+        #content>h1{
+            padding-left : 20px;
+            padding-top : 20px;
+            font-weight: 500;
+        }
+        #content>p{
+            padding-left : 20px;
+            padding-right: 20px;
+            text-align: justify;
+        }
+        
+        #taeimage{
+            padding-left : 20px;
+            padding-bottom: 20px;
+        }
+        
+     
+    
+    </style>
+    
+    <!--side-->
+    <style>
+        div.side{
+            padding-top : 10px;
+        }
+        
+        li{
+            list-style: none;
+            color : grey;
+            padding-left: 5px;
+        }
         
     </style>
     
+    <!--footer-->
+    <style>
+        #footer>p{
+            padding-left : 20px;
+            color : blue;
+        }
+    </style>
 <body>
-    
     <div id="frame2">
-    <div id="frame">
+        <div id="frame">
+
+        <div id="header">
+
+            <h1>Hello! we are BTS</h1>
+            <p>빅히트엔터테인먼트</p>
+
+            </div> <!--hearder end-->
+
+        <div id="navi">
+
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JAVA</li>
+            </ul> <!--navi end-->
+            <div id="searchinput">
+                <input type="text" name="sc">
+                <input type="button" name="sb" value="검색">
+            </div>
+            </div> <!--navi end-->
         
-    <div id="header">
-        
-        <h1> html어쩌구</h1>
-        <p>한빛 어쩌구</p>
-        
-        </div> <!--hearder end-->
-        
-    <div id="navi">
-        
-        HTML5<input type="text">
-        
-        </div> <!--navi end-->
-    <div id="content">C O N T E N T</div>
-    <div id="aside">A S I D E</div>
-    <div id="bside">B S I D E</div>
-    <div id="footer">F O O T E R</div>
-    </div> <!--frame END-->
-    </div> <!--frame2 end-->
-</html>
+            <div id="content">
+                <h1>Dynamite</h1> <br>
+                <p>2020년 08월 21일</p><br>
+                <img src="image/tae1.jpg" height=280 width=430 id="taeimage"><br>
+                <p>Cause I-I-I'm in the stars tonight So watch me bring the fire and set the night alight Shoes on, get up in the morn' Cup of milk, let's rock and roll King Kong, kick the drum, rolling on like a Rolling Stone Sing song when I'm walking home Jump up to the top, LeBron Ding dong, call me on my phone Ice tea and a game of ping pong This is getting heavy Can you hear the bass boom? I'm ready (woo hoo) Life is sweet as honey Yeah, this beat cha-ching like money, huh Disco overload, I'm into that, I'm good to go I'm diamond, you know I glow up Hey, so let's go  </p><br>
+            <hr id="line">
+                <h1>Dynamite</h1> <br>
+                <p>2020년 08월 21일</p><br>
+                <img src="image/tae1.jpg" height=280 width=430 id="taeimage"><br>
+                <p>Cos ah ah I’m in the stars tonight So watch me bring the fire and set the night alight Shining through the city with a little funk and soul So I’mma light it up like dynamite, woah Bring a friend join the crowd Whoever wanna come along Word up talk the talk just move like we off the wall Day or night the sky’s alight So we dance to the break of dawn</p><br>
+                <p>BTS - Dynamite</p><br>
+                <hr id="line">
+            
+            </div> <!--content END-->
+        <div id="aside" class="side">
+            
+            <h4>카테고리</h4>
+            <li>데이터</li>
+            <li>데이터</li>
+            <li>데이터</li>
+            <li>데이터</li>
+            
+            </div>
+        <div id="bside" class="side">
+            <h4>카테고리</h4>
+            <li>데이터</li>
+            <li>데이터</li>
+            <li>데이터</li>
+            <li>데이터</li>
+            </div>
+            
+            
+        <div id="footer">           
+                <p>ㅇㅇ</p></div>
+        </div> <!--frame END-->
+    </div>
+    
 </body>
 </html>
