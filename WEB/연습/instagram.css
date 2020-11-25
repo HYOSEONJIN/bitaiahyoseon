@@ -143,42 +143,41 @@ button.headerbutton:nth-child(2){
     float:right;
     position: relative;
     overflow: hidden;
+    color : #585858; 
 }
-id{
-    background-color: yellow;
-    width: 30px;
-    height: 30px;
-}
-
-id h1{
+div.infodiv{ 
+    /*border : 1px solid black;*/
+    width: 500px;
+    height: 45px;
+    background-color: #fafafa;
+    position: relative;
     padding-left: 30px;
-    font-weight: 100;
-    float:left;
-    color : #585858;
-   
 }
-#info>table{
-    border: 1px solid black;
-    width: 300px;
+
+#info1 h1{
+   font-weight: 100;
+    float:left;  
 }
-#info td{
-    padding-left:30px;
+
+#info2 li{
+    float: left;
+    list-style: none;
+    font-weight: 800;
     padding-top:10px;
-    
+    padding-right: 30px;
 }
-#info td:nth-child(1){
-    background-color: red;
-    width: 100px;
+
+#info3 p{
+    font-size : 15px;
+}
+#info3 a{
+    text-decoration-line: none;
+    font-weight: bold;
+    color: #045FB4;
     
 }
 
-#info td:nth-child(2){
-    background-color: blue;
-    width: 100px;
-    
-}
-
-button.headerbutton:nth-child(4){
+button.headerbutton:nth-child(3){
     background-color: #0095F6;
     color : white;
     font-weight: 1000;
@@ -210,6 +209,7 @@ button.headerbutton:nth-child(4){
 }
 
 div.story{
+    padding : 3px;
     float: left;
     width: 90px;
     height: 90px;
