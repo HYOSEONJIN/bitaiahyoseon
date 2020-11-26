@@ -14,8 +14,205 @@ body{
     background-color : #f5f6f7;
 }
 
-#top{    
-    background-color: red;
-    width: 100%;
-    height: 100px;    
+#top{
+    height: 50px;
+    margin : 0 autu;
+}
+
+header{
+    padding-top: 10px;
+    padding-right: 30%;
+    float: right
+}
+select {
+    width: 98px;
+    height: 30px;
+    padding : 6px 5px 7px 8px;
+    border-color : #cccccc;
+    font-size: 13px;
+}
+
+
+#body{
+    height: auto;
+    width: 90%;    
+    margin: 0 auto;
+}
+
+#wrap{
+    position: relative;
+    width: 460px;    
+    margin: 0 auto;
+    /*background-color: blue;*/
+
+}
+
+
+#logo{
+    text-align: center;
+}
+
+#check{
+    padding-top : 30px;
+    padding-left :20px;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+#check input[type=checkbox] + label { 
+    display: inline-block; 
+    cursor: pointer; 
+    line-height: 22px; 
+    padding-left: 22px; 
+    background: url(pc_check_off_24.png)left/24px no-repeat;
+    position: relative;
+}
+
+#check input[type=checkbox]:checked + label {
+    background-image: url(pc_check_on_l_24.png);
+}
+
+#check p{
+    font-size: 15px;
+    color : #333333;
+    font-weight: 700;
+    cursor: pointer;
+    padding-left: 10px;
+    text-decoration-line: underline;
+    line-height: 21px;    
+}
+
+
+
+
+div.check{
+    padding-top : 30px;
+
+}
+
+
+
+input[type=checkbox] + label {
+    display: inline-block; 
+    cursor: pointer; 
+    line-height: 22px; 
+    padding-left: 4px; 
+    background: url(pc_chcek_off_s_20.png)left/20px no-repeat;
+    position: relative;
+}
+
+input[type=checkbox]:checked + label {
+    background-image: url(pc_chcek_on_s_20.png);
+}
+
+/*#check1 p{*/
+div.check p {
+    font-size: 15px;
+    color : #333333;
+    font-weight: 700;
+    cursor: pointer;
+    padding-left: 25px;
+    line-height: 21px;    
+}
+
+div.terms{
+    margin-left: 18px;
+    margin-top: 10px;
+    width: 435px;
+    height: 80px;
+    background-color: #FFFFFF;
+    padding : 15px 10px 1px 10px;
+    overflow-y: scroll;
+    font-size : 12px;
+    font-family: '돋움';
+    line-height: 16px;
+    color : #666666;
+    text-align: left;
+    border: 1px solid #cccccc;    
+}
+#blabla2{
+    height: 73px;
+}
+
+#blabla3{
+    height : 73px;
+}
+#blabla4{
+    width: 460px;
+    padding-top : 15px;
+    padding-left: 15px;
+    padding-bottom: 30px;
+
+}
+#blabla4 p{
+    font-size: 12px;
+    font-family: '돋움';
+    color : #666666;
+}
+
+#box{
+    position: relative;
+    height: 54px;    
+    width: 460px;
+    margin-left: 15px;
+    overflow: hidden;
+}
+
+div.btn{
+    height: 53px;
+    width: 225px;
+    float : left;
+}
+
+#cancel{
+    margin-right: 5px;
+    background-color: #828282;
+    text-align: center;
+    line-height: 53px;
+    color : white;
+    font-family: '돋움';
+    font-weight: lighter;
+    font-size : 18px;
+}
+#okok {
+    margin-right: 5px;
+    background-color: #03C75A;
+    text-align: center;
+    line-height: 53px;
+    color : white;
+    font-family: '돋움';
+    font-weight: lighter;
+    font-size : 18px;
+}
+
+#groupjoin {
+    height: 54px;    
+    width: 460px;
+    margin-left: 15px;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 15px;
+    font-size: 13px;
+    color : #666666;
+    
+}
+
+footer{
+    height: 54px;    
+    width: 460px;
+    margin-left: 15px;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    color : #666666;
+}
+
+li{
+    /*list-style-image : url(sli.jpg);*/
+    list-style: none;
+    float: left;
+    margin-right: 5px;
 }
