@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하이로우 게임</title>
+    
+    <script>
+    
+        // 하이로우 게임 
+        //: 숫자 맞추기 높다 낮다 판별해서 
+        //: 몇번째에 맞추는지 카운팅
+        //: 미션 성공의 조건은 : 10회 이전, 30초 이전에 맞추기
+        
+        
+        // 기본 하이로우 게임 만들기
+        
+        // 랜덤 숫자        
+        var number = Math.random()*100; 
+        // 0~99.0000000
+        number = Math.floor(number);
+        
+        var cnt = 0;
+        
+        
+        // 게임 function
+        function game(){
+        while(true){
+            var userInput = prompt('1-100사이의 숫자를 입력해주세요');
+            cnt = cnt+1;
+            if(cnt==11){
+                alert('10번의 기회를 모두 사용하셨습니다');
+                break;
+            }
+            
+            if(userInput==number){
+                alert('정답입니다 시도한횟수 :'+ cnt);
+                break;
+            }else if(userInput!=number){
+                if(userInput>number){
+                alert('정답은 더 작은 수입니다! 시도한횟수 :'+ cnt);
+                }else{
+                    alert('정답은 더 큰수입니다! 시도한횟수 :'+ cnt );
+                }
+                continue;
+            }
+            
+        }
+        }
+        
+        var intervalId = setTimeout(game(),1000);
+     
+        setTimeout(function(){
+            clearInterval(intervalId);            
+        }, 10*1000);
+        
+        
+        
+    </script>
+</head>
+
+<body>
+    
+</body>
+</html>
