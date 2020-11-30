@@ -3,43 +3,58 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>json</title>
-    
-    
+    <title>Javascript JSON</title>
     <script>
-    
+        
         var book = {
-            name:'first java',
-            price : 25000,
-            publisher : 'FIRST'            
+            name: 'first Java',
+            price: 25000,
+            publisher: 'FIRST'
         };
         
-        
-        // 자바 스크립트의 오브젝트를 > String(JSON규격)
-        // JSON.stringify(자바스크립트 오브젝트) : String으로 반환
-        
+        // javaScript object -> string (JSON)
+        // JSON.stringify(javascript Object) : string
         var jsonStr = JSON.stringify(book);
         
-        window.onload = function(){
+        window.onload =function(){
             document.getElementById('view').innerHTML=jsonStr;
             
-            var str= '{"name":"first java","price":25000,"publisher":"FIRST"}';
             
-            // json String > 자바 오브젝트
+            var str = '{"name":"first Java","price":25000,"publisher":"FIRST"}';
+            
+            // JSON String -> javaScript Object
             var obj = JSON.parse(str);
             console.log(typeof(obj));
             console.log(obj);
             
+            
         };
-        
+    
+    
+    
     
     </script>
 </head>
 
 <body>
     
-    
     <h1 id="view"></h1>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 </body>
 </html>

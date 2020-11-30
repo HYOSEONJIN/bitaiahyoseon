@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+
+<style>
+    h1 {
+        border: 1px solid #999;
+    }
+</style>
+
+<script>
+    
+    window.onload = function(){
+        
+    
+        
+//        // 캐스팅
+//        var btn1 = document.getElementById('btn1'); //버튼id
+//        var btn2 = document.getElementById('btn2');
+//        
+//        var cnt1 = document.getElementById('count-a');
+//        var cnt2 = document.getElementById('count-b');
+//        
+//        // btn 문서객체에 클릭이벤트 적용
+//        btn1.onclick = function(){
+//            // 클릭하면 숫자증가 
+//            cnt1.innerHTML = Number(cnt1.innerHTML)+1;
+//            // a를 누르면 b 버튼 카운트도 같이 증가하고 싶다면
+//            //btn2.onclick();
+//            
+//        };
+//        
+//        btn2.onclick = function(){     //inner나 text나 둘다상관없음
+//            cnt2.innerHTML = Number(cnt2.textContent)+1;            
+//        };
+//        
+//        
+        
+    };
+    
+    
+    function clickH1(){
+        alert('인라인 방식으로 이벤트 처리');
+    }
+</script>
+
+<body>
+    
+    <h1 onclick="clickH1();">인라인 방식의 이벤트 정의</h1>
+<!--
+        
+    <button id="btn1">Button-A</button>
+    <button id="btn2">Button-B</button>
+    <h1>Button-A : <span id="count-a">0</span></h1>
+    <h1>Button-B : <span id="count-b">0</span></h1>
+    
+
+    <h1 id="header"> C L I C K ! </h1>
+-->
+
+</body></html>
