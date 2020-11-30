@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java scripit window object</title>
+
+    <script>
+//        var output = '';
+//        for (var key in window) {
+//            output += '[' + key + '] : ' + window[key] + '<br><br>';
+//
+//        }
+//
+//        window.onload = function() {
+//            document.body.innerHTML = output;
+//        };
+//        //console.log(window);
+//
+//        window.onload = function() {
+//            //윈도우생성
+//            window.open();
+//            window.open('http://naver.com', 'newWin',
+//                'width=600, height=300', true);
+//            var child = window.open('', 'child', 'width=300, height=200');
+//
+//            child.document.write('<h1 onclick="self.close();">From Parent window</h1>');
+//        };
+
+        window.onload = function() {
+            // 스크린 객체 확인
+            // f12 누르고 보면 가로세로 길이 이런거나옴
+            console.log(screen);
+            // 로케이션 객체 확인
+            console.log(location);
+            // 문서객체로 캐스팅
+            // 버튼을 캐스팅
+            document.getElementById('go_naver_btn').onclick = fuction() {
+
+                if (confirm('네이버 페이지로 이동하시겠습니까?')) {
+                    location.href = 'http://www.naver.com';
+                }
+
+            };
+        };
+    </script>
+</head>
+
+<body>
+
+
+    <input type="button" value="네이버로 이동" id="go_naver_btn">
+</body></html>
