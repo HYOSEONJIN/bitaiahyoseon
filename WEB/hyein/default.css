@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Stylish&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
 
-* {
-    padding:0;
-    margin:0;
+*{
+    padding: 0;
+    margin: 0;
 }
 
 body {
-    font-family: 'Stylish', sans-serif;
- }
+    font-family: 'Yeon Sung', cursive;
+}
 
-/* 프로그램 타이틀 선택 */
+/*프로그램 타이틀 선택*/
 h1.header {
-    margin:20px;
+    margin: 20px;
 }
 
 hr {
     border: 0;
-    border-top: 1px solid #ccc
+    border-top: 1px solid #BBB;
 }
 
 h2.title {
@@ -24,22 +24,22 @@ h2.title {
 }
 
 #regform {
-    margin: 10px 40px;
+    margin: 10px 30px;
 }
 
 #regform>table {
-    width: 600px;
+    width: 500px;
 }
 
 #regform>table td {
     width: 120px;
-    padding: 5px;
+    padding: 10px;
     vertical-align: top;
 }
 
 #regform>table input {
     width: 80%;
-    padding : 5px;
+    padding: 5px;
 }
 
 #regform>table label {
@@ -47,37 +47,36 @@ h2.title {
 }
 
 #regform>table input[type=submit] {
-    width:100px;
-    height: 50px;
-    background-color: #BDBDBD;
-    border: 2px solid #aaa;
+    width: 100px;
+    height: 40px;
+    background-color: lightsteelblue;
+    border: 2px solid #CCC;
+    
 }
 
 div.msg {
-    color : red;
-    display : none;
+color: brown;
+display: none;
 }
 
+
 table.table {
-    margin: 10px 40px;
+     margin: 10px 40px;
     width: 600px;
     border-collapse: collapse;
 }
 
-table.table td, table.table th {
+table.table td,table.table th {
     padding: 10px;
-    border: 1px solid #aaa;
+    border:  1px solid #aaa;
     background-color: #fff;
-    
+   
     text-align: center;
 }
 
 div.edit_div {
-    
-    background-color: #E0ECF8;
-    width : 300px;
-    padding:10px;
-    
+    width: 300px;
+    padding: 10px;
     border: 1px solid #aaa;
     border-radius: 10px;
     
@@ -85,66 +84,53 @@ div.edit_div {
     
     position: absolute;
     
-    top: 100px;
-    left: 200px;
-    
-    
+    top: 50px;
+    left: 100px;
+       
     display: none;
-    
+    background-color: lightsteelblue;
     /*margin: 0 auto;*/
 }
 
 div.edit_div>div.edit_for_header {
     overflow: hidden;
-    padding:5px;
+    padding: 5px;
 }
 
 div.edit_div>div.edit_for_header>h2 {
     float: left;
 }
-
 div.edit_div>div.edit_for_header>a {
-    float:right;
+    float: right;
 }
 
 #editform {
-    
     margin: 5px;
 }
 
 #editform>table {
-    width:100%;
+    width: 100%;
 }
 
 #editform>table td {
-    padding:5px;
+    padding: 5px;
     text-align: center;
 }
 
 #editform input[type=submit] {
-    background-color:#BDBDBD;
+    background-color: azure;
     padding: 10px;
     width: 50%;
     font-size: 1.2em;
-    font-family: 'Stylish', sans-serif;
+    font-family: 'Yeon Sung', cursive;
     font-weight: bold;
-    color: black;
+    color: darkseagreen;
     
-    border: 1px solid #585858;
+    border:  3px solid darkseagreen;
     
+
     
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

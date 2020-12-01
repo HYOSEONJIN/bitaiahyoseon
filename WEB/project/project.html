@@ -73,17 +73,15 @@
         </table>
     
     </div>
-    <!--회원 리스트 끝-->
+    <!--회원 리스트 종료-->
     
-    <!--수정폼 시작-->
-    <div class="edit_div"
-         onsubmit="return editMemberData();">
+    <div class="edit_div">
         <div class="edit_for_header">
             <h2>데이터 수정</h2>
-            <a href="javascript:editMemberClose()">닫기</a>
-            <hr>
+            <a href="javascript:editMemberClose();">닫기</a>
         </div>
-        <form id ="editform">
+        <hr>
+        <form id="editform" onsubmit="return editMemberData();">
             <input type="hidden" name="index" id="index">
             <table>
                 <tr>
@@ -104,8 +102,7 @@
                         <input type="password" 
                                name="pw" 
                                id="editpw" required>
-                        <div class="msg">공백 문자는 허용하지 않습니다.</div>
-                        
+                        <div class="msg">필수 항목입니다.</div>
                     </td>
                 </tr>
                 <tr>
@@ -126,20 +123,21 @@
                         <input type="text" 
                                name="username" 
                                id="editname" required>
-                        <div class="msg">공백 문자는 허용하지 않습니다.</div>
+                        <div class="msg">필수 항목입니다.</div>
                     </td>
+                </tr>
                 <tr>
-                     <td colspan="2">
-                        <input type="submit" value="수정"> 
+                    <td colspan="2">
+                        <input type="submit" value="수정">
                     </td>
                 </tr>
             </table>
-        
-        
-        
         </form>
     
     </div>
+    
+    
+    
 </body></html>
 
 
