@@ -31,12 +31,15 @@ function savesubmit() {
         iname.value = '';
     });
 
+    pnum.addEventListener('focus', function () {
+        document.querySelector('#pnum+div.msg').style.display = 'none';
+        inum.value = '';
+    });
 
 
     if (check) {
         return false;
     }
-
     return false;
 
 
