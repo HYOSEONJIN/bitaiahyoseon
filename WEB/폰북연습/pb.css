@@ -33,32 +33,47 @@ h2 {
     margin-bottom: 20px;
 }
 
-#inputnum table {
-    width: 600px;
-    margin: 0 auto;
-    padding : 10px;
+#phonebookinput p{
+    margin-left: 100px;
 }
 
+#inputnum table {
+    border : 1px solid black;
+    width: 750px;
+    height: 70px;
+    margin: 0 auto;
+    padding : 10px;
+    
+}
+
+
+#inputnum table td{    
+    vertical-align: top;
+}
 #inputnum input[type=text]{
     width: 100px;
     margin-left: 10px;
+    margin-right : 10px;
 }
 
 
 #inputnum input[type=tel]{
     width: 150px;
     margin-left: 10px;
+    margin-right : 10px;
 }
 
 #inputnum select{
     width : 100px;
     margin-left: 10px;
+    margin-right : 10px;
 }
 
 #inputnum input[type=submit]{
     width: 50px;
     height: 30px;
     margin-left: 10px;
+    margin-right : 10px;
 }
 
 
@@ -68,12 +83,21 @@ h2 {
     padding : 10px;
 }
 
+#tableheader th{
+    padding : 5px;
+}
+
+
 #tableheader{
     border-bottom: 1px solid black;
 }
 
-table.numlist tr{
-    padding : 30px;
+#numlist td{
+    padding : 5px;
 }
 
+div.msg {
+    color : red; 
+    display: none;   
+}
 
