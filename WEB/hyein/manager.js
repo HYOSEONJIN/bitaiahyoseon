@@ -169,7 +169,7 @@ function setlist() {
         tbody += ' <td>' + members[i].userid + '</td>';
         tbody += ' <td>' + members[i].userpw + '</td>';
         tbody += ' <td>' + members[i].username + '</td>';
-        tbody += ' <td><a href="javascript:editMember(' + index + ')">수정</a> <a href="javascript:delmember(' + index + ')">삭제</a></td>';
+        tbody += ' <td><a href="javascript:editMember(' + i + ')">수정</a> <a href="javascript:delmember(' + i+ ')">삭제</a></td>';
         tbody += '<tr>';
 
     }
@@ -240,7 +240,7 @@ function editMemberData() {
 
     // 캐스팅
     // index
-    var eidx = document.querySelector('#index');
+    var eidx = document.querySelector('#index').value;
     // id
     var eid = document.querySelector('#editid');
     // pw

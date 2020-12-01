@@ -1,15 +1,88 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hyoseon phonebook</title>
+    <link rel="stylesheet" href="pb.css">
 </head>
 
 <body>
-    
-    <div><header><h1>hello world!</h1></header></div>
-    
-    
-</body>
-</html>
+
+    <div id="frame">
+        <!--전체 범위 지정용 div-->
+        <!--헤더부분-->
+        <div id="header" name="header">
+            <header>
+                <h1>hello world!</h1>
+            </header>
+        </div>
+
+        <hr>
+
+
+        <!--전화번호부 정보 입력 부분-->
+        <div id="inputnum">
+            <h2> 전화번호부 저장</h2>
+            <form id="phonebookinput" submit="------------미지정-------">
+                <table id="savatable">
+                    <tr>
+                        <td>
+                            <label for="name">이름</label>
+                            <input type="text" id="name" name="name" required>
+                        </td>
+                        <td>
+                            <label for="pnum">전화번호</label>
+                            <input type="tel" id="pnum" name="pnum" required>
+                        </td>
+                        <td>
+                            분류
+                            <select name="ftype" id="ftype" name="ftype">
+                                <option></option>
+                                <option>대학동기</option>
+                                <option>고교동창</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="submit" value="저장" id="fsave">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <hr>
+
+        <!--저장된 전화번호 출력하는 부분-->
+        <div id="showlist">
+            <h2>LIST</h2>
+
+            <table id="tableheader">
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>분류</th>
+                <th>관리</th>
+            </table>
+            <form id="pnumlist">
+                <table id="numlist">
+                    <tbody id="listrow">
+                        <tr>
+                            <td>이름</td>
+                            <td>전화번호</td>
+                            <td>분류</td>
+                            <td>관리</td>
+                        </tr>
+                        <tr>
+                            <td>이름</td>
+                            <td>전화번호</td>
+                            <td>분류</td>
+                            <td>관리</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+    </div>
+</body></html>
