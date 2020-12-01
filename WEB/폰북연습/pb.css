@@ -38,8 +38,7 @@ h2 {
 }
 
 #inputnum table {
-    border : 1px solid black;
-    width: 750px;
+    width: 650px;
     height: 70px;
     margin: 0 auto;
     padding : 10px;
@@ -51,17 +50,11 @@ h2 {
     vertical-align: top;
 }
 #inputnum input[type=text]{
-    width: 100px;
+    width: 120px;
     margin-left: 10px;
     margin-right : 10px;
 }
 
-
-#inputnum input[type=tel]{
-    width: 150px;
-    margin-left: 10px;
-    margin-right : 10px;
-}
 
 #inputnum select{
     width : 100px;
@@ -84,16 +77,34 @@ h2 {
 }
 
 #tableheader th{
-    padding : 5px;
+    padding : 5px;    
 }
+
+
+#tableheader th:nth-child(1){
+    width: 10%;  
+}
+
+#tableheader th:nth-child(2){
+    width: 20%; 
+}
+
+#tableheader th:nth-child(3){
+    width: 30%;
+}
+
+#tableheader th:nth-child(4){
+    width: 20%;
+}
+
+#tableheader th:nth-child(5){    
+    width: 20%;
+}
+
 
 
 #tableheader{
     border-bottom: 1px solid black;
-}
-
-#numlist td{
-    padding : 5px;
 }
 
 div.msg {
@@ -101,3 +112,49 @@ div.msg {
     display: none;   
 }
 
+#showlist table{
+    width: 600px;
+    margin: 0 auto;
+    padding : 10px;
+}
+
+#numlist td:nth-child(1) {
+     width: 10%; 
+}
+#numlist td:nth-child(2){
+    width: 20%; 
+}
+#numlist td:nth-child(3){
+    width: 30%;
+}
+
+#numlist td:nth-child(4){
+    width: 20%;
+}
+#numlist td:nth-child(5){    
+    width: 20%;
+}
+
+#edit {
+    width: 300px;
+    height: 200px;
+    background-color: lightpink;    
+    
+    position: absolute;
+    top : 200px;
+    left : 300px;
+    border-radius: 20px;
+}
+
+#edit > h2{
+    padding-top:17px;
+    padding-bottom: 0px;
+}
+
+#edit table{
+    margin-left: 30px;
+}
+
+#edit select{
+    width: 100%;
+}

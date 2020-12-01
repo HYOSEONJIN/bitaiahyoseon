@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hyoseon phonebook</title>
     <link rel="stylesheet" href="pb.css">
-     <script src="pbjs.js"></script>
+    <script src="pbjs.js"></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <label for="pnum">전화번호*</label>
-                            <input type="text" id="pnum" name="pnum" required onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>            
+                            <input type="text" id="pnum" name="pnum" required onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
                             <div class="msg">공백 입력 NO!</div>
                         </td>
                         <td>
@@ -63,6 +63,7 @@
             <h2>LIST</h2>
 
             <table id="tableheader">
+                <th>no.</th>
                 <th>이름</th>
                 <th>전화번호</th>
                 <th>분류</th>
@@ -71,22 +72,56 @@
             <form id="pnumlist">
                 <table id="numlist">
                     <tbody id="listrow">
-                        <tr>
-                            <td>이름</td>
-                            <td>전화번호</td>
-                            <td>분류</td>
-                            <td>관리</td>
-                        </tr>
-                        <tr>
-                            <td>이름</td>
-                            <td>전화번호</td>
-                            <td>분류</td>
-                            <td>관리</td>
-                        </tr>
+                        <!--              <tr>
+                        <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            
+                        </tr>-->
                     </tbody>
                 </table>
             </form>
         </div>
 
+
+        <!--수정 창-->
+        <div id="edit">
+            <h2>수정하기</h2>
+            <form id="editform" onsubmit="-----아직!">
+                <table border="1px">
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="text" id="ename" name="ename" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>전화번호</td>
+                        <td><input type="text" id="enum" name="enum" required onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>분류</td>
+                        <td><select name="etype" id="etype">
+                                <option></option>
+                                <option>대학동기</option>
+                                <option>고교동창</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        <button>닫기</button>
+                        <input type="submit" value="수정"></td>
+                    </tr>
+
+
+
+                </table>
+            </form>
+
+
+        </div>
     </div>
 </body></html>
