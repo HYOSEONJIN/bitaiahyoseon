@@ -1,10 +1,8 @@
-
-
 // 정보 저장할 함수
 var phoneinfo = [];
 
 // 집어넣기 위한 생성자 함수!
-function Pinfo(name, pnum, ftype){
+function Pinfo(name, pnum, ftype) {
     this.Sname = name;
     this.Snum = pnum;
     this.Stype = ftype;
@@ -54,59 +52,124 @@ function savesubmit() {
     if (check) {
         return false;
     }
-    
-    var info = new Pinfo(iname, inum, itype);    
-    console.log(itype + ' : ' +  inum + ' : ', itype);
-    
+
+    var info = new Pinfo(iname, inum, itype);
+    console.log(itype + ' : ' + inum + ' : ', itype);
+
     // 배열에 저장
-    phoneinfo.push(info);    
+    phoneinfo.push(info);
     console.log('phoneinfo', phoneinfo);
-    
-    document.querySelector('#phonebookinput').reset();    
+
+    document.querySelector('#phonebookinput').reset();
     alert('등록완료!');
-    
+
     // 리스트 출력
     addlist();
-    
+
     return false;
 }
 
 /*리스트 추가해주는 함수*/
-function addlist(){
-    
+function addlist() {
+
     /*tbody가져오기 <tr><td> 들어있는 것*/
-    var listrow = document.getElementById('listrow'); 
-    
-    var tbody='';
-    
-    for (var i=0; i<phoneinfo.length; i++){
-        
-        tbody+='<tr>';
-        tbody+='<td>'+i+'</td>';
-        tbody+='<td>'+phoneinfo[i].Sname+'</td>';
-        tbody+='<td>'+phoneinfo[i].Snum+'</td>';
-        tbody+='<td>'+phoneinfo[i].Stype+'</td>';
-        tbody+='<td><a>수정</a> <a href="javascript:delinfo('+i+')">삭제</a></td>';
-        tbody+='</tr>';
-        
+    var listrow = document.getElementById('listrow');
+
+    var tbody = '';
+
+    for (var i = 0; i < phoneinfo.length; i++) {
+
+        tbody += '<tr>';
+        tbody += '<td>' + i + '</td>';
+        tbody += '<td>' + phoneinfo[i].Sname + '</td>';
+        tbody += '<td>' + phoneinfo[i].Snum + '</td>';
+        tbody += '<td>' + phoneinfo[i].Stype + '</td>';
+        tbody += '<td><a href="javascript:editinfo(' + i + ')">수정</a> <a href="javascript:delinfo(' + i + ')">삭제</a></td>';
+        tbody += '</tr>';
+
     }
-    
+
     listrow.innerHTML = tbody;
-    
-    
+
+
 }
 
 
 /*삭제기능*/
-function delinfo(index){    
-    
+function delinfo(index) {
+
     var delChk = confirm('삭제하시겠습니까?');
-    
-    if(delChk){
-        phoneinfo.splice(index,1);
-        
+
+    if (delChk) {
+        phoneinfo.splice(index, 1);
+
         alert('삭제완료!');
-              
+
         addlist();
     }
+}
+
+/*수정하기*/
+function editinfo(index) {
+    console.log(index);
+    console.log(phoneinfo[index]);
+
+    // 수정화면 캐스팅
+    var editDiv = document.querySelector('div.edit_div');
+    editDiv.style.display = 'block';
+
+    // form 안에 있는 input 캐스팅
+    var ename = document.querySelector('#ename');
+    var eenum = document.querySelector('#enum');
+    var etype = document.querySelector('#etype');
+    var idx = document.querySelector('#index');
+
+    // 수정칸에 원래 이름이랑 정보들을 넣어주는 기능이다.
+    idx.value = index;
+    ename.value=phoneinfo[index].Sname;
+    eenum.value=phoneinfo[index].Snum;
+    etype.value=phoneinfo[index].Stype;
+
+}
+
+function editinfoSubmit() {
+
+    // 캐스팅
+    var eidx = document.querySelector('#index').value;
+    var ename = document.querySelector('#ename');
+    var eenum = document.querySelector('#enum');
+    var etype = document.querySelector('#etype');
+
+
+    // 스페이스입력하면 원래 정보로 함.
+    if (ename.value.trim().length < 1) {
+        ename = phoneinfo[eidx].Sname;
+    }
+    if (eenum.value.trim().length < 1) {
+        eenum = phoneinfo[eidx].Snum;
+    }
+
+    console.log(eidx);
+    console.log(phoneinfo[eidx]);
+
+    // 문제 없으면 수정
+    phoneinfo[eidx].Sname = ename.value;
+    phoneinfo[eidx].Snum = eenum.value;
+    phoneinfo[eidx].Stype = etype.value;
+
+    alert('수정되었습니다.');
+
+    addlist();
+
+    document.querySelector('div.edit_div').style.display = 'none';
+
+    return false;
+
+}
+
+
+/*수정창끄기*/
+function editClose() {
+    var editDiv = document.querySelector('div.edit_div');
+    editDiv.style.display = 'none';
 }

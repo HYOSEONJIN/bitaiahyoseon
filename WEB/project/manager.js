@@ -30,16 +30,16 @@ Member.prototype.makeHtml = function (index) {
 
 window.onload = function () {
 
-    // localStorage 저장하는 key -> memberss
-    // localStorage.getItem('memberss') 저장 값이 없으면 null 반환
-    if (localStorage.getItem('memberss') == null) {
+    // localStorage 저장하는 key -> members
+    // localStorage.getItem('members') 저장 값이 없으면 null 반환
+    if (localStorage.getItem('members') == null) {
         // 초기배열 저장 : 배열을 문자열로 변경해서 저장
-        localStorage.setItem('memberss', JSON.stringify(members));
+        localStorage.setItem('members', JSON.stringify(members));
     } else {
         members = JSON.parse(localStorage.getItem('members'));
-
+        
         console.log(members);
-
+        
         setlist();
 
     }
@@ -167,19 +167,21 @@ function setlist() {
     tbody += '</tr>';
 
     for (var i = 0; i < members.length; i++) {
-        // tbody += members[i].makeHtml(i + 1);
+        //tbody += members[i].makeHtml(i);
+        
         tbody += '<tr>';
         tbody += ' <td>' + i + '</td>';
         tbody += ' <td>' + members[i].userid + '</td>';
         tbody += ' <td>' + members[i].userpw + '</td>';
         tbody += ' <td>' + members[i].username + '</td>';
         tbody += ' <td><a href="javascript:editMember(' + i + ')">수정</a> <a href="javascript:delmember(' + i + ')">삭제</a></td>';
-        tbody += '<tr>';
-
+        tbody += '</tr>';
+        
     }
 
     listrow.innerHTML = tbody;
 }
+
 
 // 배열의 데이터를 삭제
 function delmember(index) {
@@ -294,7 +296,7 @@ function editMemberData() {
     // members[index] -> pw, name 수정
     members[eidx].username = ename.value.trim();
     members[eidx].userpw = epw.value;
-
+    
     // localStorage 저장
     localStorage.setItem('members', JSON.stringify(members));
 

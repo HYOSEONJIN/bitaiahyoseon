@@ -87,9 +87,18 @@
 
 
         <!--수정 창-->
-        <div id="edit">
-            <h2>수정하기</h2>
-            <form id="editform" onsubmit="-----아직!">
+        <div class="edit_div">
+            <div id="edit_for_header">
+                <h2>데이터 수정</h2>
+                <a href="javascript:editClose();">닫기</a>
+            </div>
+            <!--
+            <dic id="editheader">
+            <h2>수정하기</h2><a href="javascript:editClose();">닫기</a>
+            </dic>
+-->
+            <form id="editform" onsubmit="return editinfoSubmit();">
+                 <input type="hidden" name="index" id="index">
                 <table border="1px">
                     <tr>
                         <td>이름</td>
@@ -111,9 +120,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
-                        <button>닫기</button>
-                        <input type="submit" value="수정"></td>
+                        <td colspan="2"><input type="submit" value="수정"></td>
                     </tr>
 
 

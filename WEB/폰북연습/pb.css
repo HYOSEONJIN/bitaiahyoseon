@@ -135,26 +135,38 @@ div.msg {
     width: 20%;
 }
 
-#edit {
+div.edit_div {
     width: 300px;
     height: 200px;
     background-color: lightpink;    
     
     position: absolute;
     top : 200px;
-    left : 300px;
+    left :  35%;
     border-radius: 20px;
+    display: none;
 }
 
-#edit > h2{
+#edit_for_header{
+    border: 1px solid black;
+}
+div.edit_div h2{
     padding-top:17px;
-    padding-bottom: 0px;
+    margin: 0px;
+
+    
 }
 
-#edit table{
+div.edit_div table{
     margin-left: 30px;
 }
 
-#edit select{
+div.edit_div select{
     width: 100%;
 }
+
+#edit_for_header a{
+       
+}
+
+
