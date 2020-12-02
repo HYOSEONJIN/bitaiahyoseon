@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 베이직</title>
+
+    <!--제이쿼리 라이브러리 로드-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+
+
+    <script>
+        // 제이쿼리 객체를 만들고 객체의 메소드를 사용하는 형태
+        // jquery(자바스크립트 객체 또는 선택자) : jquery 객체 생성
+        $(document).ready(function() {
+            //            alert('1');
+        });
+
+        $(document).ready(function() {
+            //            alert('2');
+        });
+
+        $(document).ready(function() {
+            //            alert('3');
+        });
+
+        //선택자로 제이쿼리 객체 생성 : $('선택자')
+        $(document).ready(function() {
+            console.log('onload=ready()')
+            $('*').css('color', 'gray');
+        });
+
+        $(document).ready(function() {
+            // 속성타입으로 선택
+            $('input[type=text]').css('padding', 10);
+            $('input:text').css('color', 'pink');
+            $('input:button').css('background-color', 'black');
+        });
+
+        $(document).ready(function() {
+            // 체크상태 선택            
+            var chk = $('input:checkbox').val();
+            console.log(chk);
+            if(chk) {
+                $('div').css('display','block');
+            };
+            
+        });
+
+
+        $(document).ready(function() {
+            // select에서 선택한 항목
+            var value = $('select>option:selected').val(); // get 기능
+            console.log(value);
+
+            setTimeout(function() {
+                var value = $('select>option:selected').val();
+                console.log(value);
+            }, 3 * 1000)
+        });
+
+        $(document).ready(function() {
+            // 0부터 시작해서 012345~ 이므로 홀수처럼보임..뭐지?
+            $('table tr:odd').css('background', 'pink');
+            $('table tr:even').css('background', 'black');
+
+            $('table tr:first').css('background', 'blue');
+            $('table tr:last').css('background', 'green');
+        });
+
+        $(document).ready(function() {
+            // $('h1').addClass('title');
+
+            $('h1').each(function(index, item) {
+                if (index % 2 == 0) {
+                    /*$(item).css('color', 'red');*/
+                    $(item).addClass('title')
+                }
+            });
+
+        });
+    </script>
+    <style>
+        .title {
+            background-color: beige;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1> h1 - 1 </h1>
+    <h1> h1 - 2 </h1>
+    <h1> h1 - 3 </h1>
+    <h1> h1 - 4 </h1>
+    <h1> h1 - 5 </h1>
+
+
+    <table border="1" style="width: 400px">
+        <tr>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>8</td>
+        </tr>
+
+
+    </table>
+
+    <br><br>
+
+    <select>
+        <option>2021</option>
+        <option>2020</option>
+    </select>
+
+    개인정보 보호정책 보기<input type="checkbox">
+    <div style="display:none">안녕하세요</div>
+
+
+    <br>
+    <input type="text"><br><br>
+    <input type="button" value="버튼"><br>
+
+    <h1>jquery test</h1>
+    <p>제이쿼리 테스트</p>
+
+
+
+
+
+
+</body></html>

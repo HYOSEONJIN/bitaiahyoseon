@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_selector</title>
+
+
+    <!--제이쿼리 라이브러리 로드-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+
+        });
+
+
+        $(document).ready(function() {
+
+            //            $('h3:even').css({
+            //                background: 'black',
+            //                color: 'orange'
+            //            });
+
+//            $('h3').filter(':even').css({
+//                background: 'black',
+//                color: 'orange'
+//            })
+
+        });
+
+
+
+        $(document).ready(function() {
+
+//            $('h3').filter(function(index) {
+//                return index % 3 == 0;
+//            }).css({
+//                background: 'black',
+//                color: 'red'
+//            });
+
+        });
+
+
+        $(document).ready(function() {
+
+            //end (), filter를 이용한 선택의 한단계 위로 이동.
+/*            $('h1').css('background-color', 'orange')
+                .filter(':even').css('color', 'white')
+                .end().filter(':odd').css('color', 'red');*/
+
+        });
+
+        $(document).ready(function() {
+            
+//            $('h1').eq(0).css('background','orange');
+//            $('h1').eq(-3).css('background','orange');
+//            $('h1').last().css('background','orange');
+            
+            $('h1').css('border','5px solid #333')
+            .add('h3').css('color','blue');
+
+        });
+        
+        $(document).ready(function() {
+            
+            // xml 문서 구조의 문자열 
+            var xmlStr = '';
+            xmlStr += '<links>';
+            xmlStr += '     <link>';
+            xmlStr += '         <name>네이버</name>';            
+            xmlStr += '         <url>http://www.naver.com</url>';            
+            xmlStr += '     </link>';
+            xmlStr += '     <link>';
+            xmlStr += '         <name>구글</name>';            
+            xmlStr += '         <url>http://www.google.com</url>';            
+            xmlStr += '     </link>';
+            xmlStr += '     <link>';
+            xmlStr += '         <name>다음</name>';            
+            xmlStr += '         <url>http://www.daum.net</url>';            
+            xmlStr += '     </link>';
+            xmlStr += '</links>';
+            
+            // 문자열 > xml 문서 객체로 만듦
+            var xmlDoc = $.parseXML(xmlStr);
+            
+            // xml문서 객체 > 제이쿼리 객체로 만듦 > find() 사용 가능
+            $(xmlDoc).find('link').each(function(index){
+                // <link></link>가 하나의 this가 된다.
+                var name = $(this).find('name').text();
+                var url = $(this).find('url').text();
+                
+                var html ='';
+                html += '<div class="card">';
+                html += '   <h2>'+name+'</h2>';
+                html += '   <a href="'+url+'">방문하기</a>';
+                html += '</div>';
+                
+                $('body').html(html+$('body').html());
+            });
+            
+      
+        });
+
+        
+        
+    </script>
+
+
+</head>
+
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        div.card{
+            border : 1px solid #aaa;
+            width: 30%;
+            float : left;
+            margin: 5px;
+        }
+        
+        
+        div.card > h2 {
+            background-color: palevioletred;            
+            text-align: center;
+        }
+        
+        div.card > a{
+            display: block;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            text-decoration: none;
+            color : black;
+            background-color: pink;
+        }
+    </style>
+<body>
+
+<!--
+    <h1> header1-0 </h1>
+    <h1> header1-1 </h1>
+    <h1> header1-2 </h1>
+    <h1> header1-3 </h1>
+    <h1> header1-4 </h1>
+    <h1> header1-5 </h1>
+    <h1> header1-6 </h1>
+    <h1> header1-7 </h1>
+
+    <h3> header3-0 </h3>
+    <h3> header3-1 </h3>
+    <h3> header3-2 </h3>
+    <h3> header3-3 </h3>
+    <h3> header3-4 </h3>
+    <h3> header3-5 </h3>
+    <h3> header3-6 </h3>
+    <h3> header3-7 </h3>
+-->
+
+
+</body></html>
