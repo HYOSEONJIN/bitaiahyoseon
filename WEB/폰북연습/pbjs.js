@@ -188,7 +188,7 @@ function editinfoSubmit() {
 
 }
 
-
+                                           
 /*수정창끄기*/
 function editClose() {
     var editDiv = document.querySelector('div.edit_div');
