@@ -126,9 +126,9 @@ function editinfo(index) {
 
     // 수정칸에 원래 이름이랑 정보들을 넣어주는 기능이다.
     idx.value = index;
-    ename.value=phoneinfo[index].Sname;
-    eenum.value=phoneinfo[index].Snum;
-    etype.value=phoneinfo[index].Stype;
+    ename.value = phoneinfo[index].Sname;
+    eenum.value = phoneinfo[index].Snum;
+    etype.value = phoneinfo[index].Stype;
 
 }
 
@@ -140,27 +140,48 @@ function editinfoSubmit() {
     var eenum = document.querySelector('#enum');
     var etype = document.querySelector('#etype');
 
+    var chkNum = 0;
+
 
     // 스페이스입력하면 원래 정보로 함.
     if (ename.value.trim().length < 1) {
+        console.log('OK');
+        console.log(phoneinfo[eidx].Sname);
         ename = phoneinfo[eidx].Sname;
+        chkNum = 1;
     }
     if (eenum.value.trim().length < 1) {
         eenum = phoneinfo[eidx].Snum;
+        chkNum = 2;
     }
 
     console.log(eidx);
     console.log(phoneinfo[eidx]);
+    console.log(chkNum);
+
 
     // 문제 없으면 수정
-    phoneinfo[eidx].Sname = ename.value;
-    phoneinfo[eidx].Snum = eenum.value;
-    phoneinfo[eidx].Stype = etype.value;
+
+    if (chkNum = 0) {
+        phoneinfo[eidx].Sname = ename.value;
+        phoneinfo[eidx].Snum = eenum.value;
+        phoneinfo[eidx].Stype = etype.value;
+
+    } else if (chkNum = 1) {
+        phoneinfo[eidx].Snum = eenum.value;
+        phoneinfo[eidx].Stype = etype.value;
+
+    } else if (chkNum = 1) {
+        phoneinfo[eidx].Sname = ename.value;
+        phoneinfo[eidx].Stype = etype.value;
+
+    }
 
     alert('수정되었습니다.');
 
     addlist();
 
+    console.log(phoneinfo[eidx]);
     document.querySelector('div.edit_div').style.display = 'none';
 
     return false;
