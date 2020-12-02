@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_DOM / 문서객체 컨트롤</title>
+
+
+    <!--제이쿼리 라이브러리 로드-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            
+            $('button').first().click(function(){
+                
+                $('h1').addClass('float_left');
+                
+            });
+            $('button').last().click(function(){
+                $('h1').removeClass('float_left');
+            });
+
+
+
+        });
+    </script>
+    <style>
+        h1 {
+            border: 5px solid #ddd;
+        }
+
+        .float_left {
+            float: left;
+            widows: 32%;
+        }
+        button{
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1> 네이버 </h1>
+    <h1> 카카오 </h1>
+    <h1> 페이스북 </h1>
+
+    <button>변경</button><button>초기화</button>
+</body></html>

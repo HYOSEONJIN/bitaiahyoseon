@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동적 태그 추가</title>
+
+    <!--제이쿼리 라이브러리 로드-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $('input[type=button]').click(function() {
+
+                var links = [
+                    {name:'네이버', url:'http://www.naver.com'},
+                    {name:'다음', url:'http://www.daum.net'},
+                    {name:'구글', url:'http://www.google.com'},
+                ];
+                
+                $('h1').append(function(index){
+                    var item = links[index];
+                    var output = '<a href="'+item.url+'">'+item.name+'</a>';
+                    
+                    return output;
+                    
+                });
+
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div>
+        <h1> 네이버 </h1>
+        <h1> 카카오 </h1>
+        <h1> 페이스북 </h1>
+    </div>
+
+    <input type="button" value="동적tag추가">
+
+</body></html>
