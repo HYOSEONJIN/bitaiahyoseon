@@ -8,7 +8,21 @@ function Pinfo(name, pnum, ftype) {
     this.Stype = ftype;
 }
 
+window.onload = function () {
+    if (localStorage.getItem('PHONEINFOSAVE') == null) {
+        console.log('save 없음');
+        localStorage.setItem('PHONEINFOSAVE', JSON.stringify(phoneinfo));
+    } else {
+        console.log('save 있음');
+        phoneinfo = JSON.parse(localStorage.getItem('PHONEINFOSAVE'));
+        console.log(phoneinfo);
 
+        addlist();
+
+    }
+
+
+}
 
 
 /*전화번호를 저장하는 함수*/
@@ -60,8 +74,12 @@ function savesubmit() {
     phoneinfo.push(info);
     console.log('phoneinfo', phoneinfo);
 
+    localStorage.setItem('PHONEINFOSAVE', JSON.stringify(phoneinfo));
+    console.log('폰인포는', phoneinfo);
     document.querySelector('#phonebookinput').reset();
     alert('등록완료!');
+
+
 
     // 리스트 출력
     addlist();
@@ -104,6 +122,7 @@ function delinfo(index) {
         phoneinfo.splice(index, 1);
 
         alert('삭제완료!');
+        localStorage.setItem('PHONEINFOSAVE', JSON.stringify(phoneinfo));
 
         addlist();
     }
@@ -145,8 +164,8 @@ function editinfoSubmit() {
 
     // 스페이스입력하면 원래 정보로 함.
     if (ename.value.trim().length < 1) {
-        console.log('OK');
-        console.log(phoneinfo[eidx].Sname);
+        /*        console.log('OK');
+                console.log(phoneinfo[eidx].Sname);*/
         ename = phoneinfo[eidx].Sname;
         chkNum = 1;
     }
@@ -161,23 +180,22 @@ function editinfoSubmit() {
 
 
     // 문제 없으면 수정
-
     if (chkNum = 0) {
         phoneinfo[eidx].Sname = ename.value;
         phoneinfo[eidx].Snum = eenum.value;
         phoneinfo[eidx].Stype = etype.value;
-
     } else if (chkNum = 1) {
         phoneinfo[eidx].Snum = eenum.value;
         phoneinfo[eidx].Stype = etype.value;
 
-    } else if (chkNum = 1) {
+    } else if (chkNum = 2) {
         phoneinfo[eidx].Sname = ename.value;
         phoneinfo[eidx].Stype = etype.value;
 
     }
 
     alert('수정되었습니다.');
+    localStorage.setItem('PHONEINFOSAVE', JSON.stringify(phoneinfo));
 
     addlist();
 
@@ -188,7 +206,7 @@ function editinfoSubmit() {
 
 }
 
-                                           
+
 /*수정창끄기*/
 function editClose() {
     var editDiv = document.querySelector('div.edit_div');

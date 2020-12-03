@@ -1,27 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 
-*{
+* {
     padding: 0px;
     margin: 0px;
 }
 
-body{
+body {
     font-family: 'Gamja Flower', cursive;
 }
 
-#frame{
-    width: 800px;    
+#frame {
+    width: 800px;
     overflow: hidden;
     margin: 0 auto;
     text-align: center;
 }
 
-#header{
+#header {
     margin: 30px;
 }
 
-#header h1{
-    font-size : 70px;
+#header h1 {
+    font-size: 70px;
 }
 
 hr {
@@ -33,7 +33,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-#phonebookinput p{
+#phonebookinput p {
     margin-left: 100px;
 }
 
@@ -41,132 +41,129 @@ h2 {
     width: 650px;
     height: 70px;
     margin: 0 auto;
-    padding : 10px;
-    
+    padding: 10px;
+
 }
 
 
-#inputnum table td{    
+#inputnum table td {
     vertical-align: top;
 }
-#inputnum input[type=text]{
+
+#inputnum input[type=text] {
     width: 120px;
     margin-left: 10px;
-    margin-right : 10px;
+    margin-right: 10px;
 }
 
 
-#inputnum select{
-    width : 100px;
+#inputnum select {
+    width: 100px;
     margin-left: 10px;
-    margin-right : 10px;
+    margin-right: 10px;
 }
 
-#inputnum input[type=submit]{
+#inputnum input[type=submit] {
     width: 50px;
     height: 30px;
     margin-left: 10px;
-    margin-right : 10px;
+    margin-right: 10px;
 }
 
 
-#showlist table{
+#showlist table {
     width: 600px;
     margin: 0 auto;
-    padding : 10px;
+    padding: 10px;
 }
 
-#tableheader th{
-    padding : 5px;    
+#tableheader th {
+    padding: 5px;
 }
 
 
-#tableheader th:nth-child(1){
-    width: 10%;  
+#tableheader th:nth-child(1) {
+    width: 10%;
 }
 
-#tableheader th:nth-child(2){
-    width: 20%; 
+#tableheader th:nth-child(2) {
+    width: 20%;
 }
 
-#tableheader th:nth-child(3){
+#tableheader th:nth-child(3) {
     width: 30%;
 }
 
-#tableheader th:nth-child(4){
+#tableheader th:nth-child(4) {
     width: 20%;
 }
 
-#tableheader th:nth-child(5){    
+#tableheader th:nth-child(5) {
     width: 20%;
 }
 
 
 
-#tableheader{
+#tableheader {
     border-bottom: 1px solid black;
 }
 
 div.msg {
-    color : red; 
-    display: none;   
+    color: red;
+    display: none;
 }
 
-#showlist table{
+#showlist table {
     width: 600px;
     margin: 0 auto;
-    padding : 10px;
+    padding: 10px;
 }
 
 #numlist td:nth-child(1) {
-     width: 10%; 
+    width: 10%;
 }
-#numlist td:nth-child(2){
-    width: 20%; 
+
+#numlist td:nth-child(2) {
+    width: 20%;
 }
-#numlist td:nth-child(3){
+
+#numlist td:nth-child(3) {
     width: 30%;
 }
 
-#numlist td:nth-child(4){
+#numlist td:nth-child(4) {
     width: 20%;
 }
-#numlist td:nth-child(5){    
+
+#numlist td:nth-child(5) {
     width: 20%;
 }
 
 div.edit_div {
     width: 300px;
     height: 200px;
-    background-color: lightpink;    
-    
+    background-color: lightpink;
+
     position: absolute;
-    top : 200px;
-    left :  35%;
+    top: 30%;
+    left: 40%;
     border-radius: 20px;
     display: none;
 }
 
-#edit_for_header{
-    border: 1px solid black;
-}
-div.edit_div h2{
-    padding-top:17px;
+div.edit_div h2 {
+    padding-top: 17px;
     margin: 0px;
-
-    
 }
 
-div.edit_div table{
-    margin-left: 30px;
+div.edit_div table {
+    margin-left: 38px;
 }
 
-div.edit_div select{
+div.edit_div select {
     width: 100%;
 }
 
-#edit_for_header a{
-       
+div.edit_div input[type=button] {
+    margin-top: 10px;
 }
-
-

@@ -16,7 +16,7 @@
         <!--헤더부분-->
         <div id="header" name="header">
             <header>
-                <h1>hello world!</h1>
+                <h1>Phonebook</h1>
             </header>
         </div>
 
@@ -90,16 +90,10 @@
         <div class="edit_div">
             <div id="edit_for_header">
                 <h2>데이터 수정</h2>
-                <a href="javascript:editClose();">닫기</a>
             </div>
-            <!--
-            <dic id="editheader">
-            <h2>수정하기</h2><a href="javascript:editClose();">닫기</a>
-            </dic>
--->
             <form id="editform" onsubmit="return editinfoSubmit();">
-                 <input type="hidden" name="index" id="index">
-                <table border="1px">
+                <input type="hidden" name="index" id="index"><br>
+                <table>
                     <tr>
                         <td>이름</td>
                         <td><input type="text" id="ename" name="ename" required>
@@ -120,7 +114,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="수정"></td>
+
+                        <td colspan="2">
+                            <input type="button" onclick="javascript:editClose();" value="닫기">
+                            <input type="submit" value="수정">
+                        </td>
+
                     </tr>
 
 
