@@ -24,13 +24,15 @@
                 var inputStrLen = $(this).val().length;
                 
                 
-                if(inputStrLen>150){
+                
+                if(inputStrLen>50){
                     $('span').addClass('rudrh');
-                    //alert('150자까지만 입력가능!');
-                    var userInput = $(this).val().substr(0,150);
+                    alert('50자까지만 입력가능!');                    
+                    var userInput = $(this).val().substr(0,50);
                     $(this).val(userInput);
-                    userInput = 150;
-                    
+                    userInput = 50;                    
+                }else{
+                    $('span').removeClass('rudrh');
                 }
                 
                 $('span').text(inputStrLen);
@@ -48,7 +50,7 @@
 <body>
     
     <textarea rows="10" cols="50"></textarea>
-    <h1><span>0</span>/150</h1>
+    <h1><span>0</span>/50</h1>
     
 </body>
 </html>
