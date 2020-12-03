@@ -15,9 +15,9 @@
             // 체크박스 이벤트 처리 : change() 메소드 사용
             $('#check-all').change(function(){
                 if(this.checked){
-                    $('#check-iem').children().prop('checked','true');
+                    $('#check-item').children().prop('checked',true);
                 }else {
-                    $('#check-iem').children().prop('checked','false');
+                    $('#check-item').children().prop('checked',false);
                 }
             });
         
@@ -28,7 +28,8 @@
 </head>
 
 <body>
-
+    
+    개인정보활용 동의 <input type="checkbox" id="agree"><br>.
     <input type="checkbox" id="check-all"><label> 전체선택</label>
     <br><br>
     <div id="check-item">
