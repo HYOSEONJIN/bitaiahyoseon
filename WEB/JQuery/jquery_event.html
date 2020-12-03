@@ -36,56 +36,41 @@
     </style>
 
 
+    <!--jquery 라이브러리 로드-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
     <script>
-        
-        //        
-        //        $('documnet').ready(function() {
-        //            // 이벤트 연결 : on(이벤트타입,핸들러)
-        //            $('h1').on('click', function() {
-        //
-        //                // 클릭이 발생하면 이벤트가 발생한 객체의 문자열을 변경
-        //                // this는 이벤트가 발생한 객체
-        //                $(this).html($(this).html() + '+');
-        //                $(this).html(function(index, html) {
-        //
-        //                    return html + '+'
-        //                });
-        //                
-        //            });
-        //
-        //        });
-        //
+        $(document).ready(function() {
 
+            // 이벤트 연결 : on(이벤트타입, 핸들러)
+            /*$('h1').on('click',function(){
+                // 클릭이 발생하면 이벤트가 발생한 객체의 문자열를 변경
+                // this -> 이벤트가 발생한 객체
+                //$(this).html($(this).html()+'+');
+                $(this).html(function(index, html){
+                    return html+'+'
+                });
+            });*/
 
-
-        $('documnet').ready(function() {
-
-            // 여러개의 이벤트를 등록할 때 객체 형식으로 정의
+            // 여러개의 이벤트를 등록할 때 객체형식으로 정의
             $('h1').on({
-                    mouseenter: function() {
-                        $(this).addClass('over'); // style에 .h1over만들어놓음
-                    },
-                    mouseleave: function() {
-                        $(this).removeClass('over');
-                    },
-                    click: function() {
-                        console.log(event);
-                        $(this).html(function(index, html) {
-                            return html + '*'
-                        });
-//                        $(this).off('click');
+                mouseenter: function() {
+                    $(this).addClass('over');
+                },
+                mouseleave: function() {
+                    $(this).removeClass('over');
+                },
+                click: function(event) {
+                    console.log(event);
+                    $(this).html(function(index, html) {
+                        return html + '+';
+                    });
+                    //$(this).off('click');
 
-                        // 버블링을 멈춰줌
-                        event.stopPropagation();
-                    }
-
-                })
+                    event.stopPropagation();
+                }
             });
-        
 
-
-
-        $('documnet').ready(function() {
             $('h2').hover(function() {
                 $(this).addClass('over');
             }, function() {
@@ -94,77 +79,69 @@
             });
 
 
-            $('documnet').ready(function() {
+            $('div').click(function() {
 
-                $('div').click(function() {
+                var header = $('h1', this).text();
+                var paragraph = $('p', this).text();
 
-                    var header = $('h1', this).text();
-                    var paragraph = $('p', this).text();
-
-                    alert(header + ' : ' + paragraph);
-
-                });
+                alert(header + ' : ' + paragraph);
             });
-        });
 
 
-        $('documnet').ready(function() {
-            
-            $('a').click(function(event){
-                alert('네이버못가!');
-                event.preventDefault();
+            /*setInterval(function(){
+                $('h1').last().trigger('click');
+            }, 1000);*/
+
+            $('a').click(function(event) {
+                alert('네이버 못가요');
+                //event.preventDefault();
+                return false;
             });
-            
-            $('form').submit(function(){
-                alert('이동금지~');
-                event.preventDefault();
+
+            $('form').submit(function() {
+                alert('내부에서만 처리합니다. 이동하지 않아요');
+                //event.preventDefault();
                 return false;
             });
 
         });
-        
+
     </script>
 
 </head>
 
 <body>
-
-
     <form action="http://www.naver.com">
         <input type="submit">
     </form>
 
-        
-
-    
-    <h3>
-        <a href="http://www.naver.com">네이버</a>
-    </h3>
-
-        
 
     <div>
-        <h1> header - 1 </h1>
-        <p> paragraph - 1 </p>
+        <h1>Header 1</h1>
+        <p>paragraph 1</p>
+
+        <h3>
+            <a href="http://www.naver.com">네이버</a>
+        </h3>
+
     </div>
+
     <div>
-        <h1> header - 2 </h1>
-        <p> paragraph - 2 </p>
+        <h1>Header 2</h1>
+        <p>paragraph 2</p>
     </div>
+
     <div>
-        <h1> header - 2 </h1>
-        <p> paragraph - 2 </p>
+        <h1>Header 3</h1>
+        <p>paragraph 3</p>
     </div>
-
-
-
-
-    
 
     <h2>hover()</h2>
 
-    <h1> CLICK1 </h1>
-    <h1> CLICK2 </h1>
-    <h1> CLICK3 </h1>
+    <h1>CLICK1 </h1>
+    <h1>CLICK2 </h1>
+    <h1>CLICK3 </h1>
 
-</body></html>
+</body>
+
+</html>
