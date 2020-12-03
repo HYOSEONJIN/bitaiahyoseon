@@ -7,6 +7,8 @@
     <title>제이쿼리 이벤트</title>
     <!--jQuery 라이브러리 로드-->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    
+
 
     <style>
         * {
@@ -53,31 +55,6 @@
             });*/
 
             // 여러개의 이벤트를 등록할 때 객체형식으로 정의
-            $('h1').on({
-                mouseenter: function() {
-                    $(this).addClass('over');
-                },
-                mouseleave: function() {
-                    $(this).removeClass('over');
-                },
-                click: function(event) {
-                    console.log(event);
-                    $(this).html(function(index, html) {
-                        return html + '+';
-                    });
-                    //$(this).off('click');
-
-                    event.stopPropagation();
-                }
-            });
-
-            $('h2').hover(function() {
-                $(this).addClass('over');
-            }, function() {
-                $(this).removeClass('over');
-                $('h2').off();
-            });
-
 
             $('div').click(function() {
 
@@ -88,20 +65,15 @@
             });
 
 
-            /*setInterval(function(){
-                $('h1').last().trigger('click');
-            }, 1000);*/
-
             $('a').click(function(event) {
-                alert('네이버 못가요');
                 //event.preventDefault();
                 return false;
             });
 
             $('form').submit(function() {
                 alert('내부에서만 처리합니다. 이동하지 않아요');
-                //event.preventDefault();
-                return false;
+                event.preventDefault();
+                //return false;
             });
 
         });
@@ -115,7 +87,6 @@
         <input type="submit">
     </form>
 
-
     <div>
         <h1>Header 1</h1>
         <p>paragraph 1</p>
@@ -125,22 +96,6 @@
         </h3>
 
     </div>
-
-    <div>
-        <h1>Header 2</h1>
-        <p>paragraph 2</p>
-    </div>
-
-    <div>
-        <h1>Header 3</h1>
-        <p>paragraph 3</p>
-    </div>
-
-    <h2>hover()</h2>
-
-    <h1>CLICK1 </h1>
-    <h1>CLICK2 </h1>
-    <h1>CLICK3 </h1>
 
 </body>
 

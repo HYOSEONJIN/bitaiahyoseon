@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 키보드 이벤트</title>
+    <!--제이쿼리 라이브러리 로드-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <style>
+    
+        .rudrh{
+            color:red;
+        }
+    </style>
+
+    <script>
+    
+        $('document').ready(function(){
+            
+            $('textarea').keyup(function(){
+                
+                //현재 입력 문자열의 길이
+                var inputStrLen = $(this).val().length;
+                
+                
+                if(inputStrLen>150){
+                    $('span').addClass('rudrh');
+                    //alert('150자까지만 입력가능!');
+                    var userInput = $(this).val().substr(0,150);
+                    $(this).val(userInput);
+                    userInput = 150;
+                    
+                }
+                
+                $('span').text(inputStrLen);
+                
+            })           
+                        
+        });
+        
+    </script>
+    
+</head>
+    
+    
+
+<body>
+    
+    <textarea rows="10" cols="50"></textarea>
+    <h1><span>0</span>/150</h1>
+    
+</body>
+</html>

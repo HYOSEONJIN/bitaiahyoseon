@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체크박스</title>
+
+    <!--jQuery 라이브러리 로드-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    
+        <script>
+        $('document').ready(function(){
+           
+            // 체크박스 이벤트 처리 : change() 메소드 사용
+            $('#check-all').change(function(){
+                if(this.checked){
+                    $('#check-iem').children().prop('checked','true');
+                }else {
+                    $('#check-iem').children().prop('checked','false');
+                }
+            });
+        
+            
+        });
+    </script>
+    
+</head>
+
+<body>
+
+    <input type="checkbox" id="check-all"><label> 전체선택</label>
+    <br><br>
+    <div id="check-item">
+        <input type="checkbox"> 게시물 1 <br>
+        <input type="checkbox"> 게시물 2 <br>
+        <input type="checkbox"> 게시물 3 <br>
+        <input type="checkbox"> 게시물 4 <br>
+        <input type="checkbox"> 게시물 5 <br>        
+    </div>
+</body>
+
+</html>
