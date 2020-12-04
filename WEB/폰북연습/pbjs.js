@@ -153,14 +153,13 @@ function editinfo(index) {
 
 function editinfoSubmit() {
 
-    // 캐스팅
+    // 캐스팅    
     var eidx = document.querySelector('#index').value;
     var ename = document.querySelector('#ename');
     var eenum = document.querySelector('#enum');
     var etype = document.querySelector('#etype');
 
     var chkNum = 0;
-
 
     // 스페이스입력하면 원래 정보로 함.
     if (ename.value.trim().length < 1) {

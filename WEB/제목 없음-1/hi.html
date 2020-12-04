@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+
+    <script type="text/javascript" src="data.json"></script>
+
+    <script>
+        window.onload = function() {
+            getItem();
+        }
+        var count=[];
+        function getItem() {
+            var mydata = JSON.parse(data1);
+            var appendHtml = "";
+            for (var i = 0; i < mydata.length; i++) {
+                appendHtml += '<div> 이름은 : ';
+                appendHtml += mydata[i].name;
+                appendHtml += ' </div>';
+                appendHtml += '<input type="image" src="'
+                appendHtml += mydata[i].src ;
+                appendHtml += '">' + '</input>';
+                count[i] = 0;
+            }
+            var ht = document.getElementById("ve");
+            console.log(appendHtml);
+            ht.innerHTML = appendHtml;
+
+        };
+        
+        
+        function order(){
+            
+        }
+        
+        
+    </script>
+
+
+</head>
+
+<body>
+    gdkdsgasd
+    <div>
+
+        <div id="ve">
+            <!--<li id="ve"></li>-->
+
+        </div>
+
+    </div>
+
+    <h1 id="view"></h1>
+    
+    <input type="button"></input>
+</body>
+</html>
