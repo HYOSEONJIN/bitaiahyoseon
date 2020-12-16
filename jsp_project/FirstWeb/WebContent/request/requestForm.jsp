@@ -15,7 +15,8 @@
 	
 	
 	<!-- 중요 -->
-	<form action="requestResult.jsp" method="get">
+	<!-- <form action="requestResult.jsp" method="get"> -->
+	<form action="result.jsp" method="get">
 	
 	<table>
 		<tr>
