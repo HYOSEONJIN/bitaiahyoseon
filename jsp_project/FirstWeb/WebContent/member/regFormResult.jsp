@@ -2,11 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	regFormData rData = new regFormData();
 
+
+request.setCharacterEncoding("UTF-8");
+
+regFormData rData = new regFormData();
 
 String userId = request.getParameter("userid");
-String pass =  request.getParameter("pw");
+String pass = request.getParameter("pw");
 String userName = request.getParameter("username");
 Object fileName = request.getParameter("userPhoto");
 
@@ -16,8 +19,6 @@ rData.setUserName(userName);
 rData.setFile(fileName);
 
 request.setAttribute("regData", rData);
-
-
 %>
 
-<jsp:forward page="regFormview.jsp"/>
+<jsp:forward page="regFormview.jsp" />
