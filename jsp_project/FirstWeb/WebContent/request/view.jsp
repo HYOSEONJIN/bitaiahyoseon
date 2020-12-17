@@ -15,7 +15,7 @@
 <body>
 
   <h1>회원이 작성한 데이터 출력</h1>
-  <%= data %>
+  <%= data %> <!-- tostring출력 -->
    <table>
       <tr>
          <td>이름</td>

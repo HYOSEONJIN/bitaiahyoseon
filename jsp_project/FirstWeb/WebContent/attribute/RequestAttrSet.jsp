@@ -13,13 +13,16 @@
 </head>
 <body>
 
-	<%-- <% <jsp:forward page="forward.jsp"/> %> --%>
+
+	<%-- <jsp:forward page="forward.jsp" /> --%>
+
 	<!-- ko가 나온다  리퀘스트공유 > 포워드 or 인클루드 -->
-	
 	<%
 		response.sendRedirect("forward.jsp");
-		/* null이나온다 */
+	/* null이나온다 */
 	%>
-	
+
+
+
 </body>
 </html>

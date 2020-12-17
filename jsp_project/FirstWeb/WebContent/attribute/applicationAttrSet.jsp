@@ -14,5 +14,6 @@ application.setAttribute("age", "26");
 <body>
 
 	<h1><a href="applicationAttrView.jsp">application 속성 확인</a></h1>
+	
 </body>
 </html>
