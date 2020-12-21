@@ -13,7 +13,7 @@
  String userName = request.getParameter("userName");
  String job = request.getParameter("job");
  String[] interest = request.getParameterValues("interest");
- 
+                                
  // beans에 데이터를 바인딩(저장)
  formData.setName(userName); // 이름 저장
  formData.setJob(job); // 직업 저장
