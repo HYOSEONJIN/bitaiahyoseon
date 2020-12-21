@@ -2,7 +2,10 @@ package member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.mysql.cj.protocol.Resultset;
 
 import member.Member;
 import sun.security.jca.GetInstance;
@@ -57,4 +60,37 @@ public class MemberDao {
 		return resultCnt;
 	}
 
+	
+	// 로그인 위한 select
+	
+	public Member selectMemberLogin(Connection conn, String uid, String pw) {
+		
+		Member member= null;
+		String sqlSelect = "select * from open.member where memberid=? and password=?";
+		
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sqlSelect);
+			pstmt.setString(1, uid);
+			pstmt.setString(2, pw);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member = new Member(rs.getString("memberid"),
+									rs.getString("password"),
+									rs.getString("membername"),
+									rs.getString("memberphoto"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return member;
+	}
+	
+	
 }

@@ -60,6 +60,10 @@ public class Member {
 	}
 	
 	
+	// Member -> LoginInfo
+	public LoginInfo toLoginInfo() {		
+		return new LoginInfo(this.userId, this.userName, this.userPhoto);
+	}
 	
 
 	
