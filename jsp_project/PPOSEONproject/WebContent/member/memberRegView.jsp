@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+	int result = (Integer)request.getAttribute("result");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +23,19 @@
 
 
 	<div class="contents">
-		<h2 class="content_title">index</h2>
+		<h2 class="content_title">회원가입 완료</h2>
 		<hr>
-		<div class="content">인덱스페이지입니다</div>
+		<div class="content">
+		
+		<%
+			if(result>0){
+				out.println("회원가입이 정상적으로 처리되었습니다.");
+			}else{
+				out.println("회원가입이 실패했습니다.");
+			}
+		%>
+		
+		</div>
 	</div>
 
 	<%@ include file="/include/footer.jsp" %>

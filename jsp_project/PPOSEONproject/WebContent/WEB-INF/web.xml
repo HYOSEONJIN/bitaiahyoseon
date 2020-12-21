@@ -3,10 +3,15 @@
   <display-name>PPOSEONproject</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+  <!-- 서블릿등록 -->
+  <!-- 로드온스타트업 > 몇번 실행할것인지 -->
+  <servlet>
+  	<servlet-name>Loader</servlet-name>
+  	<servlet-class>jdbc.Loader</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
 </web-app>
