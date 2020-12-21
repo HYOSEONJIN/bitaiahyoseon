@@ -12,11 +12,13 @@
         if(loginInfo==null){
         %>
         
-        <a href="<%= request.getContextPath()%>/memberlogin/LoginMain.jsp">로그인</a>
+        <a href="<%= request.getContextPath()%>/memberlogin/LoginMain.jsp" class="login_a">로그인</a>
         
         <%}else{%>
         
-        <a href="<%= request.getContextPath()%>/memberlogin/mypage.jsp"><%= loginInfo.getUserName()%>님, 안녕하세요</a>
+       <a><%= loginInfo.getUserName()%>님, 안녕하세요</a><br>
+       <a href="<%= request.getContextPath()%>/memberlogin/logout.jsp">로그아웃</a>
+       <a href="<%= request.getContextPath()%>/memberlogin/mypage.jsp">마이페이지&nbsp;&nbsp;</a>
         	
         <% }
         
