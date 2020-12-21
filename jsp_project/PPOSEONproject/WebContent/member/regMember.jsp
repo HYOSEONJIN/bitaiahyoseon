@@ -14,7 +14,7 @@ int result = 0;
 // Connetction 객체의 참조변수도 전달해줘야한다.
 
 // 커넥션 로드
-Connection conn= ConnectionProvider.getCooConnection();
+Connection conn= ConnectionProvider.getConnection();
 // DAO
 MemberDao dao = MemberDao.getInstance();
 
