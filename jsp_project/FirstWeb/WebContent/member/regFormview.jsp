@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	regFormData rData = (regFormData) request.getAttribute("regData");
+	 regFormData rData = (regFormData) request.getAttribute("regData"); 
 %>
 <!DOCTYPE html>
 <html>
@@ -19,20 +19,24 @@
 	<table>
 		<tr>
 			<td>아이디</td>
-			<td><%= rData.getUserId()%></td>
+			<td>${regData.userId}</td>
+			<%-- <td><%= rData.getUserId()%></td> --%>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><%= rData.getPass()%></td>
+			<td>${regData.pass}</td>
+			<%-- <td><%= rData.getPass()%></td> --%>
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><%= rData.getUserName()%></td>
+			<td>${regData.userName}</td>
+			<%-- <td><%= rData.getUserName()%></td> --%>
 		</tr>
-		<tr>
+<%-- 		<tr>
 			<td>파일</td>
+			<td>${regData.File}</td>
 			<td><%= rData.getFile()%></td>
-		</tr>
+		</tr> --%>
 
 	</table>
 </body>

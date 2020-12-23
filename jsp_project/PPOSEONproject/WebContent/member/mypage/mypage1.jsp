@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/default.css">
+	href="${pageContext.request.contextPath}/css/default.css">
 
 <style>
 </style>
@@ -27,15 +27,18 @@
 		<hr>
 		<div class="content">
 
-			<%=session.getAttribute("loginInfo")%> <br>
+			<%-- <%=session.getAttribute("loginInfo")%>  --%>
+			${loginInfo}<br>
 			
 			<%
+			
 			LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 			
 			if(loginInfo != null){
 			
 			%>
-			<img alt="프로필사진" src="<%= request.getContextPath()%>/images/<%=loginInfo.getUserPhoto()%>" height="100">
+			<%-- <img alt="프로필사진" src="<%= request.getContextPath()%>/images/<%=loginInfo.getUserPhoto()%>" height="100"> --%>
+			<img alt="프로필사진" src="${pageContext.request.contextPath}/images/${loginInfo.userPhoto}" height="100">
 			
 			<%} %>
 			

@@ -26,7 +26,7 @@
 		<table>
 			<tr>
 				<th><label for="userid">아이디</label></th>
-				<td><input type="text" id="userid" name="userid" value="<%= saveId%>"></td>
+				<td><input type="text" id="userid" name="userid" value="${cookie.uid.value}"></td>
 			</tr>
 			<tr>
 				<th><label for="pw">비밀번호</label></th>

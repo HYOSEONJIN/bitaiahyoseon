@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입폼</title>
-<link rel="stylesheet" href="<%= request.getContextPath()%>/css/default.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
 
 </head>
 <body>

@@ -4,7 +4,7 @@
     
     <%
     	
-    LoginFormData loginData =  (LoginFormData) request.getAttribute("loginData");
+    /* LoginFormData loginData =  (LoginFormData) request.getAttribute("loginData"); */
     
     %>
 <!DOCTYPE html>
@@ -20,11 +20,13 @@
 <table>
 	<tr>
 	<td>아이디</td>
-	<td><%= loginData.getUserId() %></td>
+	<%-- <td><%= loginData.getUserId() %></td> --%>
+	<td>${loginData.userId}</td>
 	</tr>
 	<tr>
 	<td>패스워드</td>
-	<td><%= loginData.getPass() %></td>
+<%-- 	<td><%= loginData.getPass() %></td> --%>
+	<td>${loginData.pass}</td>
 	</tr>
 </table>
 	<h3><a href="loginSessionCheck.jsp">로그인 여부 체크 페이지</a></h3>

@@ -3,7 +3,8 @@
     pageEncoding="UTF-8"%>
     <%
     
-    LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+   // LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+    
     %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,8 @@
 		<hr>
 		<div class="content">
 		로그인 되었습니다. <br>
-		<%= loginInfo %>
+		${loginInfo}
+		<%-- <%= loginInfo %> --%>
 		</div>
 	</div>
 	
