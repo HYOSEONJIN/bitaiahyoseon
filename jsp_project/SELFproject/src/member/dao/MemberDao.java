@@ -25,7 +25,7 @@ public class MemberDao {
 		int result = 0;
 		
 		PreparedStatement pstmt = null;
-		String insert = "INSERT INTO open.memdata(id,password,name,usernumber)VALUES(?,?,?,?)";
+		String insert = "INSERT INTO open.memdata(id,password,name,usernumber,photo)VALUES(?,?,?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(insert);
@@ -33,6 +33,7 @@ public class MemberDao {
 			pstmt.setString(2, member.getUserPw());
 			pstmt.setString(3, member.getUserName());
 			pstmt.setString(4, member.getUserNumber());
+			pstmt.setString(5, member.getUserPhoto());
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

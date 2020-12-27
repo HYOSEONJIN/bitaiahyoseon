@@ -22,7 +22,7 @@
     <div class="contents">
         <div class="memberjoin">
       	  <h1>JOIN US</h1>
-      	  <form action="join.jsp" method="post">
+      	  <form action="join.jsp" method="post" enctype="multipart/form-data">
       	  		<table class="jointable">
       	  			<tr>
       	  			<td>아이디</td>
