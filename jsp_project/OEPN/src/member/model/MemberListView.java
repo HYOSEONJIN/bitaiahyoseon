@@ -10,26 +10,48 @@ public class MemberListView {
 	private int pageTotalCount;
 	private int firstRow;
 	private int pageNumber;
-	
-	public MemberListView(int memberTotalCount, 
-			int memberCountPerPage, 
-			List<Member> memberList, 
-			int firstRow,
+
+	public MemberListView(int memberTotalCount, int memberCountPerPage, List<Member> memberList, int firstRow,
 			int pageNumber) {
 		this.memberTotalCount = memberTotalCount;
 		this.memberCountPerPage = memberCountPerPage;
 		this.memberList = memberList;
 		this.firstRow = firstRow;
 		this.pageNumber = pageNumber;
+		calTotalPageCount();
 	}
-	
-	private void calToTalPageCount() {
-		if(memberTotalCount==0) {
+
+	private void calTotalPageCount() {
+		if (memberTotalCount == 0) {
 			pageTotalCount = 0;
-		}else {
-		pageTotalCount= memberTotalCount/memberCountPerPage;
-		pageTotalCount = memberTotalCount%memberCountPerPage>0? pageTotalCount++ : pageTotalCount;
+		} else {
+			pageTotalCount = memberTotalCount / memberCountPerPage;
+			pageTotalCount = memberTotalCount % memberCountPerPage > 0 ? ++pageTotalCount : pageTotalCount;
 		}
+	}
+
+	public int getMemberTotalCount() {
+		return memberTotalCount;
+	}
+
+	public int getMemberCountPerPage() {
+		return memberCountPerPage;
+	}
+
+	public List<Member> getMemberList() {
+		return memberList;
+	}
+
+	public int getPageTotalCount() {
+		return pageTotalCount;
+	}
+
+	public int getFirstRow() {
+		return firstRow;
+	}
+
+	public int getPageNumber() {
+		return pageNumber;
 	}
 
 	@Override
@@ -40,4 +62,6 @@ public class MemberListView {
 	}
 	
 	
+	
+
 }

@@ -1,9 +1,9 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/css/default.css" var="url_defaultCss" scope="application" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,16 +17,15 @@
 </head>
 <body>
 
-
-
 	<%@ include file="/include/header.jsp"%>
 
 	<%@ include file="/include/nav.jsp"%>
 
 	<div class="contents">
-		<h2 class="content_title">회원정보 리스트</h2>
+		<h2 class="content_title">회원 리스트</h2>
 		<hr>
 		<div class="content">
+
 			<table border="1">
 				<tr>
 					<th>아이디</th>
@@ -37,33 +36,53 @@
 				</tr>
 
 				<c:if test="${empty listView.memberList}">
-					<tr>
-						<td colspan=5>회원 정보가 없습니다</td>
-					</tr>
-
-
+				<tr>
+					<td colspan="5">회원정보가 없습니다.</td>
+				</tr>
 				</c:if>
-<%-- <img alt="회원프로필" height="50" src="<c:url value="/upload/member"${member.userPhoto}/>"> --%>
-				<c:if test="${!empty listView.memberList}">				
-					<c:forEach items="${memberList}" var="member">
-					<tr>
-						<td>${member.userId}</td>
-						<td>${member.password}</td>
-						<td>${member.userName}</td> 
-						<td><img alt="회원프로필" height="50" src="<c:url value="/upload/member/${member.userPhoto}"/>"></td>
-						<td>
-						<fmt:formatDate value="${member.date}" pattern="yyyy.MM.dd HH:mm:ss"/>						
-						</td>
-					</tr>
-					</c:forEach>
+				
+				<c:if test="${!empty listView.memberList}">
+				
+				<c:forEach items="${listView.memberList}" var="member">
+				<tr>
+					<td>${member.userId}</td>
+					<td>${member.password}</td>
+					<td>${member.userName}</td>
+					<td> 
+						<img alt="회원 프로필 사진" height="50" src="<c:url value="/upload/member/${member.userPhoto}"/>">
+					</td>
+					<td>
+						<fmt:formatDate value="${member.date}" pattern="yyyy.MM.dd HH:mm:ss"/>
+					</td>				
+				</tr>
+				</c:forEach>
+				
 				</c:if>
-
+				
+				
 			</table>
+			
+			<div class="paging">
+			<c:forEach var="num" begin="1" end="${listView.pageTotalCount}">
+			[<a href="memberList.jsp?page=${num}">${num}</a> ]
+			
+			</c:forEach>
+			</div>
+
+
 
 		</div>
 	</div>
 
 	<%@ include file="/include/footer.jsp"%>
+
+
+
+
+
+
+
+
 
 
 

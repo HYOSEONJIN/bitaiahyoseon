@@ -84,24 +84,6 @@ if(conn!=null){
 	}
 	
 
-/* 	String userId = request.getParameter("userId");
-	String userPw = request.getParameter("userPw");
-	String userName = request.getParameter("userName");
-	String userPhoto = request.getParameter("userPhoto");
-	String userNumber = request.getParameter("userNumber");
-	
-	Member member = new Member();
-	member.setUserId(userId);
-	member.setUserPw(userPw);
-	member.setUserPhoto(userPhoto);
-	member.setUserName(userName);
-	member.setUserNumber(userNumber);
-	
-	System.out.println(member);
-	
-	Chk = dao.inserMember(conn, member);
-	
-	System.out.println(Chk); */
 }
 
 if(Chk>0){

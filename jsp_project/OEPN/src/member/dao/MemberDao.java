@@ -71,11 +71,8 @@ public class MemberDao {
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				member = makemember(rs);
+				member=makeMember(rs);
 			}
-
-			rs.close();
-			pstmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,102 +81,101 @@ public class MemberDao {
 		return member;		
 	}
 	
-	// 리스트 출력을 위한 select
+	
+	// 전체 리스트를 반환하는 select
 	public List<Member> selectMember(Connection conn){
 		
 		List<Member> list = new ArrayList<Member>();
 		
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; 
+		ResultSet rs = null;
 		
-		String sql="select * from member";
+		String sql = "select * from member";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()){
-				/*
-				 * list.add(new Member( rs.getString("memberid"), rs.getString("password"),
-				 * rs.getString("membername"), rs.getString("memberphoto"),
-				 * rs.getTimestamp("regdate")));
-				 */
-				list.add(makemember(rs));
+			while(rs.next()) {
+				list.add(makeMember(rs));
 			}
 			
 			rs.close();
 			pstmt.close();
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
 		return list;
 	}
+
+	public List<Member> selectMember(Connection conn, int firstRow, int count) throws SQLException {
+		
+		List<Member> memberList = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from member order by memberid limit ?, ?";
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, firstRow);
+			pstmt.setInt(2, count);
+			
+			rs = pstmt.executeQuery();
+			
+			memberList = new ArrayList<Member>();
+			
+			while(rs.next()) {
+				memberList.add(makeMember(rs));
+			}
+			
+		} finally {
+			rs.close();
+			pstmt.close();
+		}
+		
+		return memberList;
+	}
 	
-	private Member makemember(ResultSet rs) throws SQLException {
+	
+	
+	
+	
+	
+	
+	private Member makeMember(ResultSet rs) throws SQLException {
 		return new Member(
-						rs.getString("memberid"), 
-						rs.getString("password"), 
-						rs.getString("membername"),
-						rs.getString("memberphoto"),
-						rs.getTimestamp("regdate"));
+				rs.getString("memberid"),
+				rs.getString("password"),
+				rs.getString("membername"),
+				rs.getString("memberphoto"),
+				rs.getTimestamp("regdate")
+				);
 	}
 
-	public int selectMemberToTalCount(Connection conn) throws SQLException {
-		int resultCnt =  0;
+	public int selectMemberTotalCount(Connection conn) throws SQLException {
+		
+		int resultCnt = 0;
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select count(*) from open.member";
+		String sql = "select count(*) from member";
 		
 		try {
-			stmt= conn.createStatement();
+			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
 				resultCnt = rs.getInt(1);
 			}
 			
-		}finally {
+		} finally {
 			rs.close();
 			stmt.close();
 		}
 		
 		return resultCnt;
 	}
-
-	public List<Member> selectMember(Connection conn, int firstRow, int memberCountPerPage) throws SQLException {
-		List<Member> memberList = null;
-		
-		PreparedStatement pstmt =null;
-		ResultSet rs = null;
-		
-		String sql = "select * from open.member by memberid limit ?,?";
-		
-		try {
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, firstRow);
-		pstmt.setInt(2, memberCountPerPage);
-		
-		rs = pstmt.executeQuery();
-		
-		memberList = new ArrayList<Member>();
-		
-		while(rs.next()) {
-			memberList.add(makemember(rs));
-		}
-		
-		}finally {
-			rs.close();
-			pstmt.close();
-		}
-				
-		
-		return memberList;
-	}
+	
 }
-
-
