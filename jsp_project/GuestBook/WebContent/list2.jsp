@@ -1,4 +1,3 @@
-
 <%@page import="guestbook.model.MessageListView"%>
 <%@page import="guestbook.service.GetMessageListService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

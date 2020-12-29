@@ -6,7 +6,7 @@ public class MessageListView {
 	
 	private int messageTotalcount; // 게시물의 전체 갯수 : 페이지 갯수
 	private int currentPageNumber; // 현재 페이지 번호 : List<message> 구하기 위해
-	private List<Message> MessgeList; // 페이지 번호에 맞는 게시물의 리스트 3개씩
+	private List<Message> messageList; // 페이지 번호에 맞는 게시물의 리스트 3개씩
 	private int pageTotalCount; // 페이지의 갯수
 	private int messageCountPerpage; // 한 페이지에 출력할 메시지의 수
 	private int firstRow; // 시작 : DB에서 테이블의 시작 행
@@ -20,7 +20,7 @@ public class MessageListView {
 							int endRow) {
 		this.messageTotalcount = messageTotalcount;
 		this.currentPageNumber = currentPageNumber;
-		MessgeList = messgeList;
+		messageList = messgeList;
 		this.messageCountPerpage = messageCountPerpage;
 		this.firstRow = firstRow;
 		this.endRow = endRow;
@@ -58,8 +58,8 @@ public class MessageListView {
 	}
 
 
-	public List<Message> getMessgeList() {
-		return MessgeList;
+	public List<Message> getMessageList() {
+		return messageList;
 	}
 
 
@@ -80,6 +80,14 @@ public class MessageListView {
 
 	public int getEndRow() {
 		return endRow;
+	}
+
+
+	@Override
+	public String toString() {
+		return "MessageListView [messageTotalcount=" + messageTotalcount + ", currentPageNumber=" + currentPageNumber
+				+ ", messageList=" + messageList + ", pageTotalCount=" + pageTotalCount + ", messageCountPerpage="
+				+ messageCountPerpage + ", firstRow=" + firstRow + ", endRow=" + endRow + "]";
 	}
 	
 	

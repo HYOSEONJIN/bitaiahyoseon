@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import guestbook.model.Message;
@@ -27,7 +28,7 @@ public class MessageDao {
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
 		try {
-			// 입력을 위함 sql문
+			// 입력을 위한 sql문
 			String sql = " INSERT INTO `open`.`guestbook_message` (guest_name,password,message) VALUES (?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, message.getGuestName());
@@ -67,39 +68,80 @@ public class MessageDao {
 	}
 
 	public List<Message> selectList(Connection conn, int firstrow, int messageCountPerPage) throws SQLException {
-		
-		List<Message> list = null;
-		
+
+		List<Message> list = new ArrayList<Message>();
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		String sql="select * from open.guestbook_message order by message_id desc limit ?,?";
+
+		String sql = "select * from open.guestbook_message order by message_id desc limit ?,?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, firstrow);
 			pstmt.setInt(2, messageCountPerPage);
-			
+
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				list.add(makeMessage(rs));
 			}
 		} finally {
 			jdbcUtil.close(rs);
-			jdbcUtil.close(pstmt);			
+			jdbcUtil.close(pstmt);
 		}
-		
+
 		return list;
 	}
 
 	private Message makeMessage(ResultSet rs) throws SQLException {
-		
+
 		Message message = new Message();
 		message.setId(rs.getInt(1));
 		message.setGuestName(rs.getString(2));
 		message.setPassword(rs.getNString(3));
 		message.setMessage(rs.getNString(4));
 		message.setWritedate(rs.getTimestamp(5));
+
 		return message;
+	}
+
+	public Message selectMessage(Connection conn, int mid) throws SQLException {
+
+		Message message = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from open.guestbook_message where message_id=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mid);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				message = makeMessage(rs);
+			}
+		} finally {
+			jdbcUtil.close(rs);
+			jdbcUtil.close(pstmt);
+		}
+		return message;
+	}
+
+	public int deleteMessage(Connection conn, int mid) throws SQLException {
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM `open`.`guestbook_message` WHERE message_id=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mid);
+
+			resultCnt = pstmt.executeUpdate();
+
+		} finally {
+			jdbcUtil.close(pstmt);
+		}
+		return resultCnt;
 	}
 }
