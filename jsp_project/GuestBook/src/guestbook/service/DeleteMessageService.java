@@ -23,7 +23,7 @@ public class DeleteMessageService {
 	}
 
 	// 게시물의 아이디, 비밀번호를 받아서 삭제하고 결과를 반환
-	public int deleteMessage(int mid, String pw) throws SQLException {
+	public int deleteMessage(int mid, String pw) throws SQLException, MessageNotfoundexception, InvalidMessagePasswordException {
 		int resultCnt = 0;
 
 		// Connection, MessageDao,
@@ -69,9 +69,11 @@ public class DeleteMessageService {
 		} catch (MessageNotfoundexception e) {
 			jdbcUtil.rollback(conn);
 			e.printStackTrace();
+			throw e;
 		} catch (InvalidMessagePasswordException e) {
 			jdbcUtil.rollback(conn);
 			e.printStackTrace();
+			throw e;
 		}
 
 		return resultCnt;

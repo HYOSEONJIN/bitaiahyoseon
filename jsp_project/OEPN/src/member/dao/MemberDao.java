@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import member.Member;
+import member.model.Member;
 
 public class MemberDao {
 	
@@ -125,6 +126,59 @@ public class MemberDao {
 						rs.getString("membername"),
 						rs.getString("memberphoto"),
 						rs.getTimestamp("regdate"));
+	}
+
+	public int selectMemberToTalCount(Connection conn) throws SQLException {
+		int resultCnt =  0;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select count(*) from open.member";
+		
+		try {
+			stmt= conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				resultCnt = rs.getInt(1);
+			}
+			
+		}finally {
+			rs.close();
+			stmt.close();
+		}
+		
+		return resultCnt;
+	}
+
+	public List<Member> selectMember(Connection conn, int firstRow, int memberCountPerPage) throws SQLException {
+		List<Member> memberList = null;
+		
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		
+		String sql = "select * from open.member by memberid limit ?,?";
+		
+		try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, firstRow);
+		pstmt.setInt(2, memberCountPerPage);
+		
+		rs = pstmt.executeQuery();
+		
+		memberList = new ArrayList<Member>();
+		
+		while(rs.next()) {
+			memberList.add(makemember(rs));
+		}
+		
+		}finally {
+			rs.close();
+			pstmt.close();
+		}
+				
+		
+		return memberList;
 	}
 }
 

@@ -36,7 +36,7 @@
 					<th>가입일시</th>
 				</tr>
 
-				<c:if test="${empty memberList}">
+				<c:if test="${empty listView.memberList}">
 					<tr>
 						<td colspan=5>회원 정보가 없습니다</td>
 					</tr>
@@ -44,7 +44,7 @@
 
 				</c:if>
 <%-- <img alt="회원프로필" height="50" src="<c:url value="/upload/member"${member.userPhoto}/>"> --%>
-				<c:if test="${!empty memberList}">				
+				<c:if test="${!empty listView.memberList}">				
 					<c:forEach items="${memberList}" var="member">
 					<tr>
 						<td>${member.userId}</td>
