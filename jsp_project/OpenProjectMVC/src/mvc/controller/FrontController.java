@@ -17,10 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.Command;
-import mvc.command.DateCommand;
-import mvc.command.GreetingCommand;
-import mvc.command.InvalidCommand;
-import mvc.command.MemberLoginCommand;
 
 public class FrontController extends HttpServlet {
 	
@@ -81,23 +77,6 @@ public class FrontController extends HttpServlet {
 			}
 			
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		 * commands = new HashMap<String, Command>(); 
-		 * commands.put("/", new GreetingCommand()); 
-		 * commands.put("/greeting", new GreetingCommand());
-		 * commands.put("/date", new DateCommand()); 
-		 * commands.put("/member/login", new MemberLoginCommand());
-		 */
-		
 	}
 
 	@Override
@@ -132,7 +111,7 @@ public class FrontController extends HttpServlet {
 		Command cmd = commands.get(command);
 		
 		if(cmd==null) {
-			cmd = new InvalidCommand();
+			cmd = null;// new InvalidCommand();
 		}
 		String viewPage = cmd.getViewPage(request, response);
 		
