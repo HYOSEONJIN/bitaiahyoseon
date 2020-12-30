@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,11 +9,8 @@
 </head>
 <body>
 
-
 	<%
-		// 오류발생 구문
-	String name = request.getParameter("name").toUpperCase();
-	
+			String name = request.getParameter("name").toUpperCase();
 	%>
 
 </body>

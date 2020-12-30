@@ -8,26 +8,35 @@
 </head>
 <body>
 
-	<jsp:useBean id="product" class="test.Product" scope="session"/>
-	
-	<%-- ${product} <br> --%>
+	<jsp:useBean id="product" class="test.Product" scope="session" />
+
 	<%-- ${sessionScope.product} --%>
 	
 	<form action="selectProduct.jsp" method="post">
 	
 		<select name="sel">
-		
-		<%
-			for(String item:product.getProductList()){
-				out.println("<option>"+item+"</option>");
-			}
-		%>
 			
+			<%
+				for(String item : product.getProductList() ){
+					out.println("<option>"+item+"</option>");
+				}
+			%>
+			
+					
 		</select>
 		
 		<input type="submit" value="선택">
-		
+	
+	
 	</form>
+	
 
 </body>
 </html>
+
+
+
+
+
+
+

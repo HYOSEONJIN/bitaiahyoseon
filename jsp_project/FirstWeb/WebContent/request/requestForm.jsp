@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,43 +11,53 @@
 	<h1>Request Form</h1>
 	<hr>
 	
-	
-	<!-- 중요 -->
 	<!-- <form action="requestResult.jsp" method="get"> -->
 	<form action="result.jsp" method="get">
-	
-	<table>
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="userName" id="userName"></td>
-		</tr>
-		<tr>
-			<td>직업</td>
-			<td>
-			<select name="job">
-					<option value="프로그래머">프로그래머</option>
-					<option value="디자이너">디자이너</option>
-					<option value="엔지니어">엔지니어</option>	
-			</select>
-			</td>
-		</tr>
-		<tr>
-			<td>관심사</td>
-			<td>
-				<input type="checkbox" name="interest" value="java">JAVA<br>
-				<input type="checkbox" name="interest" value="html5">html5<br>
-				<input type="checkbox" name="interest" value="css3">css3<br>
-				<input type="checkbox" name="interest" value="javascript">javascript<br>
-				<input type="checkbox" name="interest" value="jsp">jsp<br>
-			
-			</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="submit" value="보내기"><input type="reset" value="초기화"></td>
-		</tr>
-	</table>
-
+		<table>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="userName" id="userName"> </td>
+			</tr>
+			<tr>
+				<td>직업</td>
+				<td>
+					<select name="job">
+						<option value="프로그래머">프로그래머</option>
+						<option value="디자이너">디자이너</option>
+						<option value="시스템엔지니어">시스템엔지니어</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>관심사항</td>
+				<td>
+					<input type="checkbox" name="interest" value="JAVA">JAVA <br>
+					<input type="checkbox" name="interest" value="HTML5">HTML5 <br> 
+					<input type="checkbox" name="interest" value="CSS3">CSS3 <br>
+					<input type="checkbox" name="interest" value="Javascript">Javascript
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="보내기"> <input type="reset"> </td>
+			</tr>
+		</table>
 	</form>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

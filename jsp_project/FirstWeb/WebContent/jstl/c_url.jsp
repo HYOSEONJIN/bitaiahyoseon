@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,21 +9,15 @@
 </head>
 <body>
 
-	<!-- context경로/index.jsp -->
-	<c:url value="/index.jsp"/><br>
-	
-	<c:url value="/index.jsp"/><br>
-	<c:url value="/index.jsp"/><br>
-	<c:url value="/index.jsp" var="indexLink"/><br>
-	
-	${indexLink}
-	
-	<br>
+	<c:url value="/index.jsp"/> <br>
+	<c:url value="index.jsp"/> <br>
+	<c:url value="/index.jsp" var="indexLink"/>
+	${indexLink} <br>
 	<c:url value="/index.jsp">
-		<c:param name="pageNumber" value="1"/>
+		<c:param name="pageNUmber" value="1"/>
 		<c:param name="keyword" value="jstl"/>
 	</c:url>
 	
-	
+
 </body>
 </html>

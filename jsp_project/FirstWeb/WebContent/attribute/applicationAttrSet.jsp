@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
+    
 <%
-   application.setAttribute("name", "김태형");
-application.setAttribute("age", "26");
-   %>
+	application.setAttribute("name", "KING");
+	application.setAttribute("age", 12);
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,12 @@ application.setAttribute("age", "26");
 <body>
 
 	<h1><a href="applicationAttrView.jsp">application 속성 확인</a></h1>
-	
+
 </body>
 </html>
+
+
+
+
+
+

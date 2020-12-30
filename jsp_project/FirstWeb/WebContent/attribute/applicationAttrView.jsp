@@ -9,19 +9,18 @@
 </head>
 <body>
 
-
-<%
-	Enumeration<String> attrNames = application.getAttributeNames();
-	
-	while(attrNames.hasMoreElements()){
+	<%
+		Enumeration<String> attrNames = application.getAttributeNames();
 		
-		String attrName = attrNames.nextElement();
-		Object value = application.getAttribute(attrName);
-		out.println(attrName + " = " + value.toString()+"<br>");
-				
-	}
-	
-%>
+		while(attrNames.hasMoreElements()){
+			
+			String attrName = attrNames.nextElement();
+			Object value = application.getAttribute(attrName);
+			
+			out.println( attrName+"="+value.toString()+"<br>" );
+		}
+		
+	%>
 
 </body>
 </html>

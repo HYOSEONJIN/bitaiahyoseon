@@ -11,6 +11,7 @@
 	
 	// 파라미터 이름이 title인 데이터를 저장할 변수
 	String title = null;
+
 	// 1. multipart/form-data 여부 확인
 	boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 	
@@ -91,6 +92,8 @@
 	}
 	
 	
+
+
 		
 %>
 

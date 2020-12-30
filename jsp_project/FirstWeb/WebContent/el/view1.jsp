@@ -7,11 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
-<h1>
-${sessionScope.userId}, ${userId}
-
-</h1>
+	<h1>
+					${sessionScope.userId}, ${userId},  
+	</h1>
 </body>
 </html>

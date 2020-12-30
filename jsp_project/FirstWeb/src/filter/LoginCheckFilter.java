@@ -15,39 +15,34 @@ import javax.servlet.http.HttpSession;
 public class LoginCheckFilter implements Filter {
 
 	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void doFilter(ServletRequest request,
-						ServletResponse response,
-						FilterChain chain)
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		System.out.println("로그인 체크필터 실행");
-		
-		// 회원이 로그인 되어있는지 확인하는 Filter를 생성하려고 한다.
-		// 서블릿리퀘스트를 http서블릿리퀘스트로
+		System.out.println("LoginCheckFilter 실행");
+
+		// 로그인이 여부 확인하는 Filter
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
-		
-//		boolean loginCheck = false;
-		
-		if(session!=null && session.getAttribute("loginInfo")!=null) {
-			chain.doFilter(request, response); // 정상실행
-//			loginCheck =true;
+
+		// boolean loginCheck = false;
+
+		if (session != null && session.getAttribute("loginInfo") != null) {
+			chain.doFilter(request, response);
 		} else {
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../member/loginForm.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/member/loginForm.jsp");
 			dispatcher.forward(request, response);
 		}
 
 	}
 
 	@Override
-	public void init(FilterConfig arg0) throws ServletException {
+	public void destroy() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
 
 	}
