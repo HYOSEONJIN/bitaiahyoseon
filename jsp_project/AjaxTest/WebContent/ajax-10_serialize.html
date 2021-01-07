@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 제이쿼리 DSK로드 -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	
+
+/* 	 $.ajax({
+	    	url : 'parameter.jsp',
+	    	type : 'get', // http method get, post, put, delete
+	    	data : {	
+	    		pname: $('#pname').val(),
+	    		price: $('#price').val()
+	    	},
+	    	success : function(data) {
+				$('body').append(data);
+			}
+	     });  */
+	     
+	     $('#myform').submit(function(event){
+	    	 
+	    	 console.log($(this).serialize()); // input 파라미터 쿼리스트림을 문자열로 처리
+	    	 console.log($(this).serializeArray());
+	    	 
+	    	 //입력받는게 많을수록 더 편리하다. id가아닌 name으로 캐스팅한다.
+	    	 $.ajax({
+	    		 url : 'parameter.jsp',
+	    		 data : $(this).serialize(),
+	    		 success : function(data){
+	    			  $('body').append(data)
+	    			 
+	    		 }
+	    	
+	    	 });
+	 		return false;
+	     });
+  
+ });
+
+
+</script>
+</head>
+<body>
+	<h3>제품등록</h3>
+	<form id="myform">
+	이름 <input type="text" id="pname" name="pname"><br>
+	가격 <input type="number" id="price" name="price"><br><br>
+	<input type="submit" value="등록"><br>
+	</form>
+	<hr>
+	<br>
+	<h1> 가격표</h1>
+	
+</body>
+</html>

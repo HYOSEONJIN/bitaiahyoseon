@@ -8,12 +8,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
    $(document).ready(function(){
-      //alert('onload');
-      
-      $.get('data.html', function (data) {
-		$('#menu').html(data);
-	});
-      
+
+	   $('#menu').load('data.html');
    });
 
 </script>
