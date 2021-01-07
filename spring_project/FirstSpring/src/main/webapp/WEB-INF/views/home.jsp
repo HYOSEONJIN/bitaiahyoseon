@@ -6,9 +6,13 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Index 
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+
+	<ul> 
+		<li>
+		<c:url value="/hello" var="hello"/><a href="${hello}">/hello</a></li>
+	</ul>
 </body>
 </html>
