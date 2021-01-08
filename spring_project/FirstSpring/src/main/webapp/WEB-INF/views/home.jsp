@@ -55,6 +55,10 @@
  <a href="${search_url}">${search_url}</a>
  </li> 
 
+ <li>
+ <c:url value="/upload/uploadForm" var="fileupload"/>
+ <a href="${fileupload}">${fileupload}</a>
+ </li> 
 
 </ul>
 
