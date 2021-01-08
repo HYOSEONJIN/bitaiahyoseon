@@ -24,14 +24,38 @@
  
  
  <li>
- <c:url value="/member/search" var="search"/>
- <a href="${search}">${search}</a>
+ <c:url value="/member/search" var="member_search"/>
+ <a href="${member_search}">${member_search}</a>
  </li> 
  
  <li>
  <c:url value="/order/order" var="order"/>
  <a href="${order}">${order}</a>
  </li> 
+ 
+  <li>
+ <c:url value="/cookie/make" var="make"/>
+ <a href="${make}">${make}</a>
+ </li> 
+ 
+   <li>
+ <c:url value="/cookie/view" var="cookiewview"/>
+ <a href="${cookiewview}">${cookiewview}</a>
+ </li> 
+ 
+  
+ <li>
+ <c:url value="/header/header" var="header_url"/>
+ <a href="${header_url}">${header_url}</a>
+ </li> 
+
+  
+ <li>
+ <c:url value="/search/search" var="search_url"/>
+ <a href="${search_url}">${search_url}</a>
+ </li> 
+
+
 </ul>
 
 
