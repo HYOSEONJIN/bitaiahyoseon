@@ -1,17 +1,19 @@
 package com.aia.self.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Member {
 	
 	private String userId;
 	private String userPw;
 	private String userName;
 	private String userNumber;
-	private String userPhoto;
+	private MultipartFile userPhoto;
 	
 	public Member() {
 	}
 
-	public Member(String userId, String userPw, String userName, String userNumber, String userPhoto) {
+	public Member(String userId, String userPw, String userName, String userNumber, MultipartFile userPhoto) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
@@ -51,11 +53,13 @@ public class Member {
 		this.userNumber = userNumber;
 	}
 
-	public String getUserPhoto() {
+
+
+	public MultipartFile getUserPhoto() {
 		return userPhoto;
 	}
 
-	public void setUserPhoto(String userPhoto) {
+	public void setUserPhoto(MultipartFile userPhoto) {
 		this.userPhoto = userPhoto;
 	}
 
