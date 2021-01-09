@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="">
 
@@ -16,10 +15,8 @@
 
 <body>
 
-	<!-- 로그인페이지 -->
-	<c:url value="/member/login" var="login" />
-	<!-- 회원가입페이지 -->
 	<c:url value="/member/reg" var="reg" />
+
 
 
 	<%@ include file="/include/header.jsp"%>
@@ -28,10 +25,10 @@
 
 
 	<div class="contents">
-		<div class="memberlogin">
-			<h1>LOGIN</h1>
-			<form action="${login}" method="post">
-				<table class="logintable">
+		<div class="memberjoin">
+			<h1>JOIN US</h1>
+			<form action="${reg}" method="post" enctype="multipart/form-data">
+				<table class="jointable">
 					<tr>
 						<td>아이디</td>
 						<td><input type="text" id="userId" name="userId"></td>
@@ -41,24 +38,32 @@
 						<td>패스워드</td>
 						<td><input type="password" id="userPw" name="userPw"></td>
 					</tr>
-					<!-- 	  			
-      	  			<tr>
-      	  			<td colspan="2"><input type="checkbox">아이디저장</td>   
-      	  			</tr>  -->
 
 					<tr>
-						<td colspan="2"><input type="submit" value="LOGIN"></td>
+						<td>이름</td>
+						<td><input type="text" id="userName" name="userName"></td>
 					</tr>
+
+
+					<tr>
+						<td>전화번호</td>
+						<td><input type="text" id="userNumber" name="userNumber"></td>
+					</tr>
+
+					<!--       	  			<tr>
+      	  			<td>프로필 사진</td>
+      	  			<td class="photo"><input type="file" id="userPhoto" name="userPhoto"></td>
+      	  			</tr>
+                     -->
+					<tr>
+						<td colspan="2"><input type="submit" value="JOIN"></td>
+					</tr>
+
+
 				</table>
+
+
 			</form>
-			
-			<table class="logintable">
-				<tr>
-					<td><a href="${reg}">회원가입</a></td>
-					<td><a>아이디/비밀번호 찾기</a>
-				</tr>
-			
-			</table>
 
 		</div>
 	</div>
