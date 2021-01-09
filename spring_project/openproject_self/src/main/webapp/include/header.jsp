@@ -16,7 +16,6 @@
 	<h1>
 		<font color="rebeccapurple">H</font>YOSEON<font color="rebeccapurple">L</font>OG
 	</h1>
-	
 <%
 	String userId = (String) request.getAttribute("userId");
 System.out.println(userId);
@@ -27,7 +26,7 @@ System.out.println(userId!=null);
 %>
 
 <a href="${login}">로그인</a>
-${member}
+
 <%
 	}else{
 	%>
