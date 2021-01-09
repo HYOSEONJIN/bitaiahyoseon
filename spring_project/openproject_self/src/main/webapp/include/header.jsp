@@ -21,7 +21,7 @@
 	String userId = (String) request.getAttribute("userId");
 System.out.println(userId);
 System.out.println(userId!=null);
-	if (userId==null) 
+	if (userId==null)
 		
 	{
 %>
