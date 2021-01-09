@@ -17,6 +17,9 @@ public class MemberRegService implements MemberService {
 		this.dao = dao;
 	}
 	
+	public MemberRegService() {
+	}
+
 	@Override
 	public Object process() {
 		System.out.println("MemberRegService 실행");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
 <!DOCTYPE html>
 <html lang="">
@@ -14,6 +15,10 @@
 
 <body>
 
+<!-- 로그인페이지 -->
+<c:url value="/member/login" var="login"/>
+
+
 <%@ include file="/include/header.jsp" %>
 <%@ include file="/include/nav.jsp" %>
     
@@ -22,7 +27,7 @@
     <div class="contents">
         <div class="memberlogin">
       	  <h1>LOGIN</h1>
-      	  <form action="login.jsp" method="post">
+      	  <form action="${login}" method="post">
       	  		<table class="logintable">
       	  			<tr>
       	  			<td>아이디</td>

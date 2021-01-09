@@ -47,5 +47,17 @@
 	</filter-mapping>
 
 
+	<!-- 로더 서블릿 등록 / 최소 실행시 1번 실행되도록 -->
+  <servlet>
+  	<servlet-name>Loader</servlet-name>
+  	<servlet-class>jdbc.Loader</servlet-class>
+  	<init-param>
+  		<param-name>driver</param-name>
+  		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
 
 </web-app>
