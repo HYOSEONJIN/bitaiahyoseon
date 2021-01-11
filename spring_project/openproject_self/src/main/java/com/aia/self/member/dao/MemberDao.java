@@ -24,7 +24,7 @@ public class MemberDao {
 	// 회원가입 DAO 메서드
 	public int insertMember(Member member) {
 
-		String sql="insert into memdata (id,password,name,usernumber,photo) values(?,?,?,?,?)";
+		String sql="insert into memdata (userId, userPw, UserName,userNumber,userPhoto) values(?,?,?,?,?)";
 		int result=template.update(sql,
 				member.getUserId(),
 				member.getUserPw(),
@@ -40,7 +40,7 @@ public class MemberDao {
 	// 로그인DAO 메서드
 	public List<LoginMemberInfo> loginMember(Member member) {
 			
-		String sql="select * from open.memdata where id='"+member.getUserId() +"' and password='"+member.getUserPw()+"'";
+		String sql="select * from open.memdata where userId='"+member.getUserId() +"' and userPw='"+member.getUserPw()+"'";
 		System.out.println("로그인 : " +sql);
 		//sql, member.getUserName(), member.getUserPw());
 				
@@ -49,10 +49,10 @@ public class MemberDao {
 			@Override
 			public LoginMemberInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
 				LoginMemberInfo loginInfo = new LoginMemberInfo();
-				loginInfo.setUserId(rs.getString("id"));
-				loginInfo.setUserName(rs.getString("name"));
-				loginInfo.setUserNumber(rs.getString("usernumber"));
-				loginInfo.setUserPhoto(rs.getString("photo"));
+				loginInfo.setUserId(rs.getString("userId"));
+				loginInfo.setUserName(rs.getString("userName"));
+				loginInfo.setUserNumber(rs.getString("userNumber"));
+				loginInfo.setUserPhoto(rs.getString("userPhoto"));
 				return loginInfo;
 			}});
 		
