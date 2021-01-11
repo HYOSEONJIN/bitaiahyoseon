@@ -25,10 +25,8 @@ public class MemberDao {
 				member.getUserPw(),
 				member.getUserName(),
 				member.getUserNumber(),
-				member.getUserPhoto().getOriginalFilename());
-		
-		
-		
+				member.getUserPhoto().getOriginalFilename());	
+				
 		return result;
 	}
 	

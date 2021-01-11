@@ -12,6 +12,12 @@
 	href="<%=request.getContextPath()%>/css/default.css">
 
 <title>HYOSEONLOG</title>
+
+<script>
+
+
+
+</script>
 </head>
 
 <body>
