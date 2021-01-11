@@ -50,4 +50,3 @@ import com.aia.self.service.MemberLoginService;
 		
 		
 	}
-
