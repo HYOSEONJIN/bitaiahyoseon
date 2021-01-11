@@ -29,8 +29,12 @@
 <%
 	}else{
 	%>
-	
+	<img class="userphoto" src="../uploadphoto/${profileFile}" height=50" width=50">
 	<a>${userName}님 안녕하세요</a>
+	
+			<br>
+       <a href="">로그아웃</a>
+       <a href="">마이페이지&nbsp;&nbsp;</a>
 
 <%}
 %>
