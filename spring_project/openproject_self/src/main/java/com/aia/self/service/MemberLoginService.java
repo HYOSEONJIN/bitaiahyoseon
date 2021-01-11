@@ -18,6 +18,5 @@ public class MemberLoginService {
 	public List<LoginMemberInfo> loginMember(Member member) {
 		System.out.println("로그인 :"+dao.loginMember(member));
 		return dao.loginMember(member);		
-	}
-	
+	}	
 }
