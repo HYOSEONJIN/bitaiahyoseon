@@ -15,7 +15,7 @@ import com.aia.self.domain.Member;
 
 @Controller
 @RequestMapping("/member/reg")
-public class memberRegController {
+public class MemberRegController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getLoginForm() {

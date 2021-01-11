@@ -11,7 +11,7 @@ import com.aia.self.domain.Member;
 
 @Controller
 @RequestMapping("/member/login")
-public class memberLoginController {
+public class MemberLoginController {
 
 	
 	// 처음 로그인 창에 진입하려고할 때는 로그인폼을 보여준다
