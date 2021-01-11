@@ -3,6 +3,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,26 +28,28 @@ import com.aia.self.service.MemberLoginService;
 		
 		// 아이디 패스워드를 입력하면 로그인 상태로 view
 		@RequestMapping(method = RequestMethod.POST)
-		public ModelAndView login(HttpServletRequest request,
-					Member member) {
+		public String login(HttpServletRequest request,
+					Member member, Model model) {
 			
 			System.out.println("member :" +member);
 			
 			
 			
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("member/login");
+			String view="member/login";
+			
 			
 			if(loginService.loginMember(member)!=null) {
 			System.out.println();
 			String userName = loginService.loginMember(member).get(0).getUserName();
-			mav.setViewName("home");
-			mav.addObject("userName", userName);
+			view="home";
+			model.addAttribute("userName", userName);
+			model.addAttribute("profileFile", loginService.loginMember(member).get(0).getUserPhoto());
 			}		
 			
-			return mav;
+			return view;
 			
 		}
 		
 		
 	}
+
