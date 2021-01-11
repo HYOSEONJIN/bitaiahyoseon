@@ -35,15 +35,15 @@ import com.aia.self.service.MemberLoginService;
 			
 			
 			
-			String view="member/login";
+			String view="member/loginForm";
 			
 			
 			if(loginService.loginMember(member)!=null) {
 			System.out.println();
-			String userName = loginService.loginMember(member).get(0).getUserName();
+			String userName = loginService.loginMember(member).getUserName();
 			view="home";
 			model.addAttribute("userName", userName);
-			model.addAttribute("profileFile", loginService.loginMember(member).get(0).getUserPhoto());
+			model.addAttribute("profileFile", loginService.loginMember(member).getUserPhoto());
 			}		
 			
 			return view;

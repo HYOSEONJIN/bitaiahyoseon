@@ -15,7 +15,7 @@ public class MemberLoginService {
 	@Autowired
 	private MemberDao dao;
 	
-	public List<LoginMemberInfo> loginMember(Member member) {
+	public LoginMemberInfo loginMember(Member member) {
 		System.out.println("로그인 :"+dao.loginMember(member));
 		return dao.loginMember(member);		
 	}	

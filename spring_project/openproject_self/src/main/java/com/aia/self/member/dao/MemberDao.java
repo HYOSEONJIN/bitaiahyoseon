@@ -38,14 +38,19 @@ public class MemberDao {
 	
 
 	// 로그인DAO 메서드
-	public List<LoginMemberInfo> loginMember(Member member) {
+	public LoginMemberInfo loginMember(Member member) {
 			
 		String sql="select * from open.memdata where userId='"+member.getUserId() +"' and userPw='"+member.getUserPw()+"'";
 		System.out.println("로그인 : " +sql);
 		//sql, member.getUserName(), member.getUserPw());
-				
-		return template.query(sql, new RowMapper<LoginMemberInfo>() {
-
+		
+		
+		LoginMemberInfo loginInfoResult= null;
+		
+		
+		try {
+		List<LoginMemberInfo> InfoList= template.query(sql, new RowMapper<LoginMemberInfo>() {
+					
 			@Override
 			public LoginMemberInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
 				LoginMemberInfo loginInfo = new LoginMemberInfo();
@@ -53,11 +58,20 @@ public class MemberDao {
 				loginInfo.setUserName(rs.getString("userName"));
 				loginInfo.setUserNumber(rs.getString("userNumber"));
 				loginInfo.setUserPhoto(rs.getString("userPhoto"));
+				
+				System.out.println(loginInfo);
+				System.out.println(loginInfo==null);
 				return loginInfo;
+				
 			}});
+			
+			loginInfoResult = InfoList.get(0);
 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 				
-				
+		 return loginInfoResult;
 
 	}
 
