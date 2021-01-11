@@ -17,10 +17,9 @@
 		<font color="rebeccapurple">H</font>YOSEON<font color="rebeccapurple">L</font>OG
 	</h1>
 <%
-	String userId = (String) request.getAttribute("userId");
-System.out.println(userId);
-System.out.println(userId!=null);
-	if (userId==null)
+	String userName = (String) request.getAttribute("userName");
+
+	if (userName==null)
 		
 	{
 %>
@@ -31,7 +30,7 @@ System.out.println(userId!=null);
 	}else{
 	%>
 	
-	<a>${member.userId}님 안녕하세요</a>
+	<a>${userName}님 안녕하세요</a>
 
 <%}
 %>

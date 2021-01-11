@@ -3,13 +3,13 @@ package com.aia.self.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Member {
-	
+
 	private String userId;
 	private String userPw;
 	private String userName;
 	private String userNumber;
 	private MultipartFile userPhoto;
-	
+
 	public Member() {
 	}
 
@@ -53,8 +53,6 @@ public class Member {
 		this.userNumber = userNumber;
 	}
 
-
-
 	public MultipartFile getUserPhoto() {
 		return userPhoto;
 	}
@@ -68,15 +66,9 @@ public class Member {
 		return "Member [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userNumber="
 				+ userNumber + ", userPhoto=" + userPhoto + "]";
 	}
-	
-	
-	/*
-	 * public LoginMemberInfo toLMI() { return new LoginMemberInfo(userId, userName,
-	 * userNumber, userPhoto); }
-	 */
-	
-	
 
+	
+	
 	
 
 }
