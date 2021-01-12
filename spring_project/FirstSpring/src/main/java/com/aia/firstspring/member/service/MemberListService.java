@@ -7,13 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.aia.firstspring.domain.Member;
 import com.aia.firstspring.member.dao.MemberDao;
+import com.aia.firstspring.member.dao.MybatisMemberDao;
 
 @Service
 public class MemberListService {
 	
+	/*
+	 * @Autowired MemberDao dao;
+	 */
 	@Autowired
-	MemberDao dao;
-	
+	MybatisMemberDao dao;
 	/*
 	 * public MemberListService(MemberDao dao) { this.dao=dao; }
 	 */
@@ -25,7 +28,8 @@ public class MemberListService {
 	
 	// 회원수 몇명인지 int로 반환해주는 메서드
 	public int getMemberTotalCount() {		
-		return dao.selectTotalCount();
+		//return dao.selectTotalCount();
+		return 0;
 	}
 
 }

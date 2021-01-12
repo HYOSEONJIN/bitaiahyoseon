@@ -5,12 +5,14 @@ import org.springframework.stereotype.Service;
 
 import com.aia.firstspring.domain.Member;
 import com.aia.firstspring.member.dao.MemberDao;
+import com.aia.firstspring.member.dao.MybatisMemberDao;
 
 @Service
 public class MemberRegService {
 
 	@Autowired
-	private MemberDao dao;
+	private MybatisMemberDao dao;
+	//private MemberDao dao;
 
 	public int insertMember(Member member) {
 		int result=0;

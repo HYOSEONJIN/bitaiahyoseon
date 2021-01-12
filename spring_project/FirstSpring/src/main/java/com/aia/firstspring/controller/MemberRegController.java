@@ -29,6 +29,7 @@ public class MemberRegController {
 		model.addAttribute("resultCnt", resultCnt);
 		
 		if(resultCnt==1) {
+			System.out.println(member);
 			view= "redirect:/member/list";
 		}
 		return view;
