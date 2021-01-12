@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 데이터mapping -->
+<!-- 네임스페이스는 식별을 위해 파일 이름과 패키지 이름을 조합해서만들었다 -->
+<mapper namespace="com.aia.firstspring.member.dao.MemberInterfaceDao">
+
+	<!-- CRUD할수있는 mapper들 -->
+	
+	<!-- 셀렉트를 하게되면 내부적으로 resultSet을 만들어서 바인딩해준다 -->
+	
+	<!-- 인터페이스 dao메서드의이름과 같게 만들긔 -->
+ <select id="selectMemberList" 
+         resultType="com.aia.firstspring.domain.Member"
+         >	
+		select * from member order by membername		
+	</select>
+	
+	<insert id="insertMember"
+					parameterType="com.aia.firstspring.domain.Member"
+					useGeneratedKeys="true"
+					keyProperty="idx">
+ insert into member (memberid,membername, password) 
+ values(#{memberid},#{membername},#{password})
+	</insert>
+	
+	<select id="totalCount" resultType="int">
+		select count(*) from member
+	</select>
+	
+
+
+</mapper>
+
+
+
