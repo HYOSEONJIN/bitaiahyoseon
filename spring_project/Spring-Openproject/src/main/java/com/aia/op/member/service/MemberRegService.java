@@ -5,15 +5,21 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aia.op.member.dao.MemberDao;
 import com.aia.op.member.domain.Member;
 import com.aia.op.member.domain.MemberRegRequest;
 
 @Service
 public class MemberRegService {
 	
-	//private memb
+	private MemberDao dao;
+	
+	@Autowired
+	SqlSessionTemplate template;
 	
 	// 파일 업로드, 데이터베이스 저장
 	public int memberReg(
@@ -30,12 +36,16 @@ public class MemberRegService {
 		
 		
 		File newFile = new File(saveDirPath, newfileName);
-		
+		int result = 0;
 		try {
 			/*파일저장*/
 			regRequest.getUserPhoto().transferTo(newFile);
 			Member member = regRequest.toMember();
 			member.setMemberphoto(newfileName);
+			
+			// db입력
+			dao = template.getMapper(MemberDao.class);
+			result = dao.insertMember(member);
 			
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
@@ -43,10 +53,17 @@ public class MemberRegService {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+			// 현재 저장된 파일이 있다면 > 삭제
+			if(newFile.exists()) {
+				newFile.delete();
+			}
 		}
 		
 		
-		return 0;
+		return result;
 	}
 
 }

@@ -3,10 +3,26 @@
 
 <mapper namespace="com.aia.op.member.dao.MemberDao">
 
-<insert id="insertMember"
-				parameterType="com.aia.op.member.domain.MemberRegRequest"
->
+	<resultMap type="com.aia.op.member.domain.Member"
+		id="memberResult">
+		<id column="idx" property="idx" />
+		<result column="memberid" property="memberid" />
+		<result column="membername" property="membername" />
+		<result column="password" property="password" />
+		<result column="memberphoto" property="memberphoto" />
+		<result column="regdate" property="regdate" />
 
-</insert>
+	</resultMap>
 
+	<insert id="insertMember"
+		parameterType="com.aia.op.member.domain.Member">
+
+		INSERT INTO member (memberid, password, membername, memberphoto)
+		VALUES (#{memberid},#{password},#{membername},#{memberphoto})
+
+	</insert>
+
+	<select id="selectLogin" resultMap="memberResult">
+		select * from member where memberid=#{param1} and password=#{param2}
+	</select>
 </mapper>
