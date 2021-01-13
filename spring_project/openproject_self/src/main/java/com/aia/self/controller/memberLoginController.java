@@ -37,12 +37,12 @@ import com.aia.self.service.MemberLoginService;
 			String view="member/loginForm";
 			
 			model.addAttribute("loginCheck",loginService.login(request, response));
+			System.out.println(loginService.login(request, response));
 			
 			if(loginService.login(request, response)) {
 			System.out.println("로그인성공");
 			view="home";
-			}		
-			
+			}
 			return view;
 			
 		}

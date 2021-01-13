@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<c:if test="${loginCheck ne null && not loginCheck}">
+<script>
+	alert("아이디 또는 비밀번호가 틀립니다.");
+</script>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="">
 
