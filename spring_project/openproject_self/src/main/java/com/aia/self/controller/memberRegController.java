@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aia.self.domain.Member;
+import com.aia.self.domain.MemberReg;
 import com.aia.self.service.MemberRegService;
 
 @Controller
@@ -30,33 +31,27 @@ public class memberRegController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String regSumbit(
-				Member member,
+				MemberReg memberReg,
 				Model model,
 				HttpServletRequest request) throws IllegalStateException, IOException {
+
 		
-		int resultCnt=regservice.inserMember(member);
+		System.out.println("컨트롤러의 meberreg : "+ memberReg);
+		String view="member/regForm";	
+		int resultCnt=regservice.insertMember(memberReg, request);
+		
 		model.addAttribute("resultCnt",resultCnt);
 		
-		String view="member/regForm";
-		
-		if(resultCnt==1) {
-		//사진파일 저장
-		member.getUserPhoto().transferTo(getFile(request, uri, member.getUserPhoto().getOriginalFilename()));
-		view= "redirect:/member/login";
-		
+		if(resultCnt>0) {		
+			System.out.println("가입성공");
+			view="redirect:/member/login";
+		}else {
+			System.out.println("가입실패");
 		}
+		
+
 				
 		return view;
 	}
 
-
-	String uri = "/uploadphoto";
-	
-	private File getFile(HttpServletRequest request, String uri, String fileName) {
-		
-		String rpath = request.getSession().getServletContext().getRealPath(uri);
-		File newFile = new File(rpath, fileName);
-		
-		return newFile;
-	}
 }

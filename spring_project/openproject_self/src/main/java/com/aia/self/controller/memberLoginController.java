@@ -1,5 +1,6 @@
 package com.aia.self.controller;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,21 +30,17 @@ import com.aia.self.service.MemberLoginService;
 		// 아이디 패스워드를 입력하면 로그인 상태로 view
 		@RequestMapping(method = RequestMethod.POST)
 		public String login(HttpServletRequest request,
-					Member member, Model model) {
-			
-			System.out.println("member :" +member);
-			
+				HttpServletResponse response, Model model) {
+	
 			
 			
 			String view="member/loginForm";
 			
+			model.addAttribute("loginCheck",loginService.login(request, response));
 			
-			if(loginService.loginMember(member)!=null) {
-			System.out.println();
-			String userName = loginService.loginMember(member).getUserName();
+			if(loginService.login(request, response)) {
+			System.out.println("로그인성공");
 			view="home";
-			model.addAttribute("userName", userName);
-			model.addAttribute("profileFile", loginService.loginMember(member).getUserPhoto());
 			}		
 			
 			return view;

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aia.self.member.dao.MemberDao">
+
+
+
+	<resultMap type="com.aia.self.domain.Member"
+		id="memberResult">
+		<result column="userid" property="userid" />
+		<result column="username" property="username" />
+		<result column="userpw" property="userpw" />
+		<result column="usernumber" property="usernumber" />
+		<result column="userphoto" property="userphoto" />
+		
+
+	</resultMap>
+
+
+
+	<!-- 회원가입 -->
+	<insert id="insertMember"
+		parameterType="com.aia.self.domain.Member">
+		insert into open.memdata (userid, userpw, username,usernumber,userphoto)
+		values (#{userid},#{userpw},#{username},#{usernumber},#{userphoto})
+	</insert>
+
+
+
+	<!-- 로그인하기 -->
+	<select id="loginMember" resultMap="memberResult">
+		select * from memdata where
+		userid=#{param1} and userpw=#{param2}
+	</select>
+
+
+
+</mapper>
+
+	

@@ -5,62 +5,57 @@ import org.springframework.web.multipart.MultipartFile;
 public class LoginMemberInfo {
 	
 
-		private String userId;
-		private String userName;
-		private String userNumber;
-		private String userPhoto;
+		private String userid;
+		private String username;
+		private String usernumber;
+		private String userphoto;
 		
 
 		public LoginMemberInfo() {
 		
 		}
 
-		public LoginMemberInfo(String userId, String userName, String userNumber, String userPhoto) {
-	
-			this.userId = userId;
-			this.userName = userName;
-			this.userNumber = userNumber;
-			this.userPhoto = userPhoto;
-		}
 
-		public String getUserId() {
-			return userId;
-		}
+		public LoginMemberInfo(String userid, String username, String usernumber, String userphoto) {
 
-		public void setUserId(String userId) {
-			this.userId = userId;
+			this.userid = userid;
+			this.username = username;
+			this.usernumber = usernumber;
+			this.userphoto = userphoto;
 		}
 
 
-		public String getUserName() {
-			return userName;
-		}
 
-		public void setUserName(String userName) {
-			this.userName = userName;
-		}
-
-		public String getUserNumber() {
-			return userNumber;
-		}
-
-		public void setUserNumber(String userNumber) {
-			this.userNumber = userNumber;
+		public String getUserid() {
+			return userid;
 		}
 
 
-		public String getUserPhoto() {
-			return userPhoto;
+
+
+		public String getUsername() {
+			return username;
 		}
 
-		public void setUserPhoto(String userPhoto) {
-			this.userPhoto = userPhoto;
+
+
+		public String getUsernumber() {
+			return usernumber;
 		}
+
+
+
+
+		public String getUserphoto() {
+			return userphoto;
+		}
+
+
 
 		@Override
 		public String toString() {
-			return "LoginMemberInfo [userId=" + userId + ", userName=" + userName + ", userNumber=" + userNumber
-					+ ", userPhoto=" + userPhoto + "]";
+			return "LoginMemberInfo [userId=" + userid + ", userName=" + username + ", userNumber=" + usernumber
+					+ ", userPhoto=" + userphoto + "]";
 		}
 
 

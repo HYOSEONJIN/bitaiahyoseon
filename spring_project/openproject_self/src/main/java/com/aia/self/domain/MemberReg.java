@@ -1,89 +1,86 @@
 package com.aia.self.domain;
 
-public class Member {
+import org.springframework.web.multipart.MultipartFile;
+
+public class MemberReg {
 
 	private String userid;
 	private String userpw;
 	private String username;
 	private String usernumber;
-	private String userphoto;
+	private MultipartFile userphoto;
 
-	public Member() {
+	public MemberReg() {
 	}
+	
+	
 
-
-	public Member(String userid, String userpw, String username, String usernumber, String userphoto) {
-
+	public MemberReg(String userid, String userpw, String username, String usernumber, MultipartFile userphoto) {
 		this.userid = userid;
 		this.userpw = userpw;
 		this.username = username;
 		this.usernumber = usernumber;
 		this.userphoto = userphoto;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "MemberReg [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", usernumber="
+				+ usernumber + ", userphoto=" + userphoto + "]";
+	}
+
 
 
 	public String getUserid() {
 		return userid;
 	}
 
-
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-
 
 	public String getUserpw() {
 		return userpw;
 	}
 
-
 	public void setUserpw(String userpw) {
 		this.userpw = userpw;
 	}
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 
 	public String getUsernumber() {
 		return usernumber;
 	}
 
-
 	public void setUsernumber(String usernumber) {
 		this.usernumber = usernumber;
 	}
 
-
-	public String getUserphoto() {
+	public MultipartFile getUserphoto() {
 		return userphoto;
 	}
 
-
-	public void setUserphoto(String userphoto) {
+	public void setUserphoto(MultipartFile userphoto) {
 		this.userphoto = userphoto;
 	}
 
-	
-	public LoginMemberInfo toLoginInfo() {
-		return new LoginMemberInfo(userid, username, usernumber, userphoto);
+	public Member toMember() {
+		Member member = new Member();
+		member.setUserid(userid);
+		member.setUserpw(userpw);
+		member.setUsername(username);
+		member.setUsernumber(usernumber);
+		return member;
 	}
-	
-	
-
-	@Override
-	public String toString() {
-		return "Member [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", usernumber="
-				+ usernumber + ", userphoto=" + userphoto + "]";
-	}
-
 
 	
 	

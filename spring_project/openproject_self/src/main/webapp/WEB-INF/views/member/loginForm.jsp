@@ -40,17 +40,18 @@
 				<table class="logintable">
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" id="userId" name="userId"></td>
+						<td><input type="text" id="userid" name="userid"></td>
 					</tr>
 
 					<tr>
 						<td>패스워드</td>
-						<td><input type="password" id="userPw" name="userPw"></td>
+						<td><input type="password" id="userpw" name="userpw"></td>
 					</tr>
-					<!-- 	  			
+						  			
       	  			<tr>
-      	  			<td colspan="2"><input type="checkbox">아이디저장</td>   
-      	  			</tr>  -->
+      	  			<td colspan="2"><input type="checkbox" name="chk" value="on"
+							${cookie.uid ne null? 'chekce':'' }>아이디저장</td>   
+      	  			</tr> 
 
 					<tr>
 						<td colspan="2"><input type="submit" value="LOGIN"></td>

@@ -31,28 +31,28 @@
 				<table class="jointable">
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" id="userId" name="userId"></td>
+						<td><input type="text" id="userid" name="userid"></td>
 					</tr>
 
 					<tr>
 						<td>패스워드</td>
-						<td><input type="password" id="userPw" name="userPw"></td>
+						<td><input type="password" id="userpw" name="userpw"></td>
 					</tr>
 
 					<tr>
 						<td>이름</td>
-						<td><input type="text" id="userName" name="userName"></td>
+						<td><input type="text" id="username" name="username"></td>
 					</tr>
 
 
 					<tr>
 						<td>전화번호</td>
-						<td><input type="text" id="userNumber" name="userNumber"></td>
+						<td><input type="text" id="usernumber" name="usernumber"></td>
 					</tr>
 					<tr>
 						<td>프로필 사진</td>
-						<td class="photo"><input type="file" id="userPhoto"
-							name="userPhoto"></td>
+						<td class="photo"><input type="file" id="userphoto"
+							name="userphoto"></td>
 					</tr>
 
 					<tr>
