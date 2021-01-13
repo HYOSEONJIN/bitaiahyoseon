@@ -12,7 +12,7 @@ public class MemberLogoutController {
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
-		System.out.println("로그아웃");
+		System.out.println("로그아웃 성공");
 		return "redirect:/";
 		
 	}

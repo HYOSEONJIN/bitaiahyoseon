@@ -7,6 +7,7 @@
 
 <!-- 로그인페이지 -->
 <c:url value="/member/login" var="login"/>
+<c:url value="/member/logout" var="logout"/>
 
 
 
@@ -27,7 +28,7 @@
 	<a>${loginInfo.username}님 안녕하세요</a>
 	
 			<br>
-       <a href="/member/logout">로그아웃</a>
+       <a href="${logout}">로그아웃</a>
        <a href="">마이페이지&nbsp;&nbsp;</a>
 
 </c:if>
