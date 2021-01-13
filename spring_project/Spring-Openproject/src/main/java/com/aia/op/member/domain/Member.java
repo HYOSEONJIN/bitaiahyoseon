@@ -12,6 +12,7 @@ public class Member {
 	private String memberphoto; // db에는 파일명이 필요하기 때문에 String 타입으로 저장
 	private Timestamp regdate;
 	
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -47,6 +48,10 @@ public class Member {
 	}
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
+	}
+	
+	public LoginInfo toLoginInfo() {
+		return new LoginInfo(memberid, membername, memberphoto);
 	}
 	
 			

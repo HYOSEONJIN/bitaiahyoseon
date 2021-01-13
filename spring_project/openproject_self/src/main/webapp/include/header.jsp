@@ -33,7 +33,7 @@
 	<a>${userName}님 안녕하세요</a>
 	
 			<br>
-       <a href="">로그아웃</a>
+       <a href="/member/logout">로그아웃</a>
        <a href="">마이페이지&nbsp;&nbsp;</a>
 
 <%}
