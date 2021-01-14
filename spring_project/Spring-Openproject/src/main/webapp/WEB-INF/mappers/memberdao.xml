@@ -103,7 +103,7 @@
 	
 	
 	<delete id="deleteMemberByIdx">
-		delete from member where idx=#{idx}			
+		delete from member where idx = #{idx}			
 	</delete>
 
 </mapper>
