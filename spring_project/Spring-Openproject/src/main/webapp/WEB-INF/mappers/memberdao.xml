@@ -100,5 +100,10 @@
 	<sql id="searchName">
 		or membername like concat('%',#{searchParam.keyword},'%')
 	</sql>
+	
+	
+	<delete id="deleteMemberByIdx">
+		delete from member where idx=#{idx}			
+	</delete>
 
 </mapper>

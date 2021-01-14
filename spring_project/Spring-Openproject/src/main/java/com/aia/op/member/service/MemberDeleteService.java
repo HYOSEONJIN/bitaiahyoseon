@@ -14,5 +14,10 @@ public class MemberDeleteService {
 	@Autowired
 	SqlSessionTemplate template;
 	
+	public int deleteMember(int idx) {
+		
+		return dao.deleteMemberByIdx(idx);
+	}
+	
 
 }
