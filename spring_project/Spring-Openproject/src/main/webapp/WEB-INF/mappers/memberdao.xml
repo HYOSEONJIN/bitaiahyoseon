@@ -3,16 +3,26 @@
 
 <mapper namespace="com.aia.op.member.dao.MemberDao">
 
+ <!-- 멤버타입의 resultMap : 로그인시 사용 -->
 	<resultMap type="com.aia.op.member.domain.Member"
 		id="memberResult">
 		<id column="idx" property="idx" />
 		<result column="memberid" property="memberid" />
 		<result column="membername" property="membername" />
-		<result column="password" property="password" />
+		<result column="memberphoto" property="memberphoto" />
+	</resultMap>
+	
+	
+	<!-- 회원리스트출력때 사용 -->
+	<resultMap type="com.aia.op.member.domain.Member"
+		id="memberListResult">
+		<id column="idx" property="idx" />
+		<result column="memberid" property="memberid" />
+		<result column="membername" property="membername" />
 		<result column="memberphoto" property="memberphoto" />
 		<result column="regdate" property="regdate" />
-
 	</resultMap>
+	
 
 	<insert id="insertMember"
 		parameterType="com.aia.op.member.domain.Member">
@@ -24,5 +34,34 @@
 
 	<select id="selectLogin" resultMap="memberResult">
 		select * from member where memberid=#{param1} and password=#{param2}
+	</select>
+	
+	<!-- 회원 몇명인지 -->
+	<select id="selectTatalCount" resultType="int">
+		select count(*) from member;
+	</select>
+	
+	<select id="SelectMemberList"
+					resultMap="memberListResult">
+		select * from member limit #{param1}, #{param2}
+	</select>
+	
+	<select id="selectSearchMemberCount"
+					parameterType="com.aia.op.member.domain.SearchParam">
+					
+					selecet count(*) from member
+					
+					<where>
+					<if test="SearchType==id">
+						memberid like concat('%',#{keyword},'%') 
+					</if>					
+					<if test="SearchType==name">
+						membername like concat('%',#{keyword},'%') 
+					</if>		
+					<if test="SearchType==both">
+						memberid like concat('%',#{keyword},'%') or membername like concat('%',#{keyword},'%')
+					</if>
+					</where>
+	
 	</select>
 </mapper>
