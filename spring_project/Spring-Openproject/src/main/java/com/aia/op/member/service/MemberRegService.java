@@ -32,10 +32,10 @@ public class MemberRegService {
 		// 시스템의 실제 경로
 		String saveDirPath = request.getSession().getServletContext().getRealPath(uploadPath);
 		// 새로운 파일 이름
-		String newfileName = regRequest.getUserid()+System.currentTimeMillis();
-		
+		String newfileName = regRequest.getUserid()+System.currentTimeMillis();		
 		
 		File newFile = new File(saveDirPath, newfileName);
+		
 		int result = 0;
 		try {
 			/*파일저장*/

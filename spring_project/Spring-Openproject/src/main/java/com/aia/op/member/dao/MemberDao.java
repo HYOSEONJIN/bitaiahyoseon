@@ -24,5 +24,11 @@ public interface MemberDao {
 	
 	// 회원정보 삭제~
 	int deleteMemberByIdx(int idx);
+	
+	// idx로 회원정보 조회하기
+	Member selectMemberByIdx(int idx);
+	
+	// 회원정보 수정
+	int updateMember(Member member);
 
 }

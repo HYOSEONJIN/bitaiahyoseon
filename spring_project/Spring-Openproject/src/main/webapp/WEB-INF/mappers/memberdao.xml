@@ -105,5 +105,20 @@
 	<delete id="deleteMemberByIdx">
 		delete from member where idx = #{idx}			
 	</delete>
+	
+	
+	<select id="selectMemberByIdx" resultMap="memberListResult">
+	
+		select * from member where idx= #{idx}
+	</select>
+	
+	<update id="updateMember"
+					parameterType="com.aia.op.member.domain.Member">
+					
+					update member set membername=${membername},
+								password=#{password}, memberphoto=#{memberphoto}					
+					where idx=#{idx}
+	
+	</update>
 
 </mapper>
