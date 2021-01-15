@@ -30,6 +30,9 @@ public class MemberEditService {
 	public int editMember(MemberEditRequest editRequest,
 			HttpServletRequest request) {
 
+		
+		
+		
 		int result = 0;
 		// 파일 저장할 웹 경로
 		String uploadPath = "/fileupload/member";

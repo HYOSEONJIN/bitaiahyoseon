@@ -38,6 +38,8 @@ public class MemberEditController {
 		System.out.println(editRequest);
 		model.addAttribute("result", editService.editMember(editRequest, request));
 		
+		
+		
 		return "member/edit";
 	}
 }

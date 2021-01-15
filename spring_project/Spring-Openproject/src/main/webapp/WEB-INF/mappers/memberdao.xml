@@ -27,12 +27,27 @@
 	<insert id="insertMember"
 		parameterType="com.aia.op.member.domain.Member">
 
+
+	<if test="memberphoto==null">
+		INSERT INTO member (memberid, password, membername)
+		VALUES
+		(#{memberid},#{password},#{membername})
+	
+	</if>
+	
+		<if test="memberphoto!=null">
+	
 		INSERT INTO member (memberid, password, membername,
 		memberphoto)
 		VALUES
 		(#{memberid},#{password},#{membername},#{memberphoto})
+	</if>
+	
+	
+	
 
 	</insert>
+	
 
 	<select id="selectLogin" resultMap="memberResult">
 		select * from member where
