@@ -19,73 +19,71 @@ public class MemberEditService {
 	private MemberDao dao;
 
 	@Autowired
-	SqlSessionTemplate template;
+	private SqlSessionTemplate template;
 
 	public Member getMember(int idx) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.selectMemberByIdx(idx);
 	}
 
-	/* request 경로처리를 위해받음 */
-	public int editMember(MemberEditRequest editRequest,
+	public int editMember(
+			MemberEditRequest editRequest, 
 			HttpServletRequest request) {
 
-		
-		
-		
 		int result = 0;
-		// 파일 저장할 웹 경로
+
+		// 웹 경로
 		String uploadPath = "/fileupload/member";
 		// 시스템의 실제 경로
 		String saveDirPath = request.getSession().getServletContext().getRealPath(uploadPath);
-		String newfileName = null;
+		
+		String newFileName = null;
 		File newFile = null;
-
-		// 1. 파일처리 : 새로운 파일이 존재하면
+		
+		// 1. 파일 처리 : 업로드할 새로운 파일이 존재하면
 		if (!editRequest.getUserPhoto().isEmpty()) {
 			// 새로운 파일 이름
-			newfileName = editRequest.getUserid() + System.currentTimeMillis();
-			newFile = new File(saveDirPath, newfileName);
-
-			// 저장
+			newFileName = editRequest.getUserid() + System.currentTimeMillis();
+			newFile = new File(saveDirPath, newFileName);
+			// 파일 저장
 			try {
 				editRequest.getUserPhoto().transferTo(newFile);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
-
+		
+		// 수정할 데이터를 가지는 Member -> MemberDao
 		Member member = editRequest.getToMember();
+		
 		// 수정할 파일 이름 설정
-		if (newfileName == null) {
+		if(newFileName == null) {
 			member.setMemberphoto(editRequest.getOldPhoto());
 		} else {
-			member.setMemberphoto(newfileName);
-		}
+			member.setMemberphoto(newFileName);
+		}		
 
 		try {
-			// 2. DB : update
-
-			dao = template.getMapper(MemberDao.class);
-			result = dao.updateMember(member);
+		// 2. DB : update
+		dao = template.getMapper(MemberDao.class);
+		
+		result = dao.updateMember(member);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
-			if (newFile !=null && newFile.exists()) {
+			
+			// 저장된 파일을 삭제
+			if(newFile !=null && newFile.exists()) {
 				newFile.delete();
 			}
 		}
-
-	// 새로운 파일 생겻으면 구파일 삭제
-		if (newFile != null && !editRequest.getOldPhoto().equals("default.png")) {
-			new File(saveDirPath,editRequest.getOldPhoto()).delete();			
-			
-		}
 		
+		if(newFile != null && !editRequest.getOldPhoto().equals("default.png") ) {
+			new File(saveDirPath,editRequest.getOldPhoto()).delete();
+		}
+
 		return result;
 	}
 

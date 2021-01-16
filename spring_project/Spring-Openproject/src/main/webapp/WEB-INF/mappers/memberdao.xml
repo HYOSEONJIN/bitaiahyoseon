@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.aia.op.member.dao.MemberDao">
 
-	<!-- 멤버타입의 resultMap : 로그인시 사용 -->
-	<resultMap type="com.aia.op.member.domain.Member"
-		id="memberResult">
+	<!-- Member 타입의 resultMap : 로그인시 사용 -->
+	<resultMap id="memberResult"
+		type="com.aia.op.member.domain.Member">
 		<id column="idx" property="idx" />
 		<result column="memberid" property="memberid" />
 		<result column="membername" property="membername" />
+		<result column="password" property="password" />
 		<result column="memberphoto" property="memberphoto" />
+		<result column="regdate" property="regdate" />
 	</resultMap>
 
-
-	<!-- 회원리스트출력때 사용 -->
-	<resultMap type="com.aia.op.member.domain.Member"
-		id="memberListResult">
+	<resultMap id="memberListResult"
+						 type="com.aia.op.member.domain.Member">
 		<id column="idx" property="idx" />
 		<result column="memberid" property="memberid" />
 		<result column="membername" property="membername" />
@@ -24,116 +26,153 @@
 	</resultMap>
 
 
+
+
+	<!-- 회원가입 -->
 	<insert id="insertMember"
 		parameterType="com.aia.op.member.domain.Member">
-
-
-	<if test="memberphoto==null">
-		INSERT INTO member (memberid, password, membername)
-		VALUES
+		
+		INSERT INTO member
+		
+		<if test="memberphoto == null">		
+		(memberid, password, membername)
+		VALUES 
 		(#{memberid},#{password},#{membername})
-	
-	</if>
-	
-		<if test="memberphoto!=null">
-	
-		INSERT INTO member (memberid, password, membername,
-		memberphoto)
-		VALUES
+		</if>
+		
+		<if test="memberphoto != null">
+		(memberid, password, membername, memberphoto)
+		VALUES 
 		(#{memberid},#{password},#{membername},#{memberphoto})
-	</if>
-	
-	
-	
-
+		</if>
+		
+		
+		
 	</insert>
 	
+	
+	
+	
 
+	<!-- 로그인 -->
 	<select id="selectLogin" resultMap="memberResult">
-		select * from member where
-		memberid=#{param1} and password=#{param2}
+		select * from member where memberid=#{param1} and password=#{param2}
 	</select>
 
-	<!-- 회원 몇명인지 -->
-	<select id="selectTatalCount" resultType="int">
+
+	<!-- 회원의 총 수 -->
+	<select id="selectTotalCount" resultType="int">
 		select count(*) from
-		member;
+		member
 	</select>
 
 
+<!-- 멤버 리스트 구하기 -->
+	<select id="selectMemberList"
+					parameterType="map"
+					resultMap="memberListResult">
 
-
-	<!-- 알아서 자바맵으로 -->
-	<select id="SelectMemberList" parameterType="map"
-		resultMap="memberListResult">
-		select * from member
-
-		<where> 
-		
-		<if test="searchParam !=null">
-			<if test="searchParam.searchType=='id'">
-				<include refid="searchId" />
-			</if>
-			<if test="searchParam.searchType=='name'">
-				<include refid="searchName" />
-			</if>
-			<if test="searchParam.searchType=='both'">
-				<include refid="searchId" />
-				<include refid="searchName" />
-			</if>
-			</if>
-		</where>
-
-
-		limit #{startRow}, #{cntPerPage}
-	</select>
-
-
-	<select id="selectSearchMemberCount"
-		parameterType="com.aia.op.member.domain.SearchParam" resultType="int">
-
-		select count(*) from member
-
+		select * from member 
 		<where>
-			<if test="searchParam.searchType=='id'">
-				<include refid="searchId" />
-			</if>
-			<if test="searchParam.searchType=='name'">
-				<include refid="searchName" />
-			</if>
-			<if test="searchParam.searchType=='both'">
-				<include refid="searchId" />
-				<include refid="searchName" />
+			<if test="searchParam != null">
+				<if test="searchParam.searchType == 'id'">
+					<include refid="searchId"/>
+				</if>
+				<if test="searchParam.searchType == 'name'">
+					<include refid="searchName"/>
+				</if>
+				<if test="searchParam.searchType == 'both'">
+					<include refid="searchId"/>
+					<include refid="searchName"/>
+				</if>
 			</if>
 		</where>
+		
+		
+		limit #{index}, #{count}
 
 	</select>
-
+	
+	
+	
+	<!-- 검색 시 검색 결과에 나오는 회원의 수 구하기 -->
+	<select id="selectSearchMemberCount" 
+	        parameterType="com.aia.op.member.domain.SearchParam"
+	        resultType="int"
+	        >
+	        
+		select count(*) from member
+		
+		<!-- where idx>0  -->
+		
+		<where>
+			<if test="searchParam.searchType == 'id'">
+				  <!-- memberid like	concat('%',#{keyword},'%') -->
+				  <include refid="searchId"/>
+			</if>
+			
+			<if test="searchParam.searchType == 'name'">
+				 <!-- membername like	concat('%',#{keyword},'%') -->
+				 <include refid="searchName"/>
+			</if>
+			
+			<if test="searchParam.searchType == 'both'">
+				 <!-- membername like	concat('%',#{keyword},'%') 				 
+				 or 
+				 memberid like	concat('%',#{keyword},'%') --> 
+				 <include refid="searchId"/>
+				 <include refid="searchName"/>
+			</if>
+		</where>
+		
+			
+	</select>
+	
+	
+<!-- 가져다가 쓸수 있는 반복적인 sql문 만들기 / 아이디찾기 이름으로찾기 -->
 	<sql id="searchId">
-		or memberid like concat('%',#{searchParam.keyword},'%')
+		or memberid like	concat('%',#{searchParam.keyword},'%')
 	</sql>
+	
 	<sql id="searchName">
-		or membername like concat('%',#{searchParam.keyword},'%')
+	  or membername like	concat('%',#{searchParam.keyword},'%')
 	</sql>
 	
 	
+<!-- 삭제 -->
 	<delete id="deleteMemberByIdx">
-		delete from member where idx = #{idx}			
+		delete from member where idx=#{idx}
 	</delete>
-	
-	
-	<select id="selectMemberByIdx" resultMap="memberListResult">
-	
-		select * from member where idx= #{idx}
+
+
+<!-- IDX를 기반으로 멤버찾기 -->
+	<select id="selectMemberByIdx"
+	        resultMap="memberListResult">
+																		<!-- no를 쓴이유는 #{idx}가 아니어도 된다는 것을 보여주기위해 -->
+		select * from member where idx=#{no}
+		
 	</select>
-	
+
+
+
+	<!-- 수정하기 -->
 	<update id="updateMember"
 					parameterType="com.aia.op.member.domain.Member">
-					
-					update member set membername=${membername},
-								password=#{password}, memberphoto=#{memberphoto}					
-					where idx=#{idx}
+	
+		update member 
+		set membername=#{membername}, 
+				password=#{password}, 
+				memberphoto=#{memberphoto}
+		where idx=#{idx}  
 	
 	</update>
+
+
+
+
+
+
+
+
 
 </mapper>
