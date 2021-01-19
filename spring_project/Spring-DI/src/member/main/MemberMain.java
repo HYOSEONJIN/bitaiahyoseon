@@ -8,23 +8,30 @@ import member.service.MemberRegService;
 public class MemberMain {
 
 	public static void main(String[] args) {
-
 		
-		//1. Spring 컨테이너 생성
-//		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("classpath:appCtx4.xml");
+		// 1. Spring 컨테이너 생성
+//		GenericXmlApplicationContext ctx = 
+//				new GenericXmlApplicationContext("classpath:appCtx.xml");
+//		GenericXmlApplicationContext ctx = 
+//				new GenericXmlApplicationContext("classpath:appCtx2.xml");
+//		GenericXmlApplicationContext ctx = 
+//				new GenericXmlApplicationContext("classpath:appCtx3.xml");
+		GenericXmlApplicationContext ctx = 
+				new GenericXmlApplicationContext("classpath:appCtx4.xml");
+				
 		
-		//2. MemberRegService 객체가 필요
+		// 2. MemberRegService 객체가 필요
 		MemberRegService regService = ctx.getBean("memberRegService", MemberRegService.class);
-
-		//3. MemberRegService 프로세스 메서드 실행
+		
+		// 3. MemberRegService -> process() 실행
 		regService.process();
 		
-		//4. MemberinfoService 객체가 필요
+		// 4. MemberInforService 객체 
 		MemberInfoService infoService = ctx.getBean("memberInfoService", MemberInfoService.class);
 		
-		//5. MemberInfoService 프로세스 메서드 실행
+		// 5. MemberInforService -> process()
 		infoService.process();
+
 	}
 
 }
