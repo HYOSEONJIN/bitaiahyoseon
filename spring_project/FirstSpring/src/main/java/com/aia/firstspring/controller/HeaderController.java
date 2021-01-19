@@ -18,7 +18,7 @@ public class HeaderController {
 		
 		model.addAttribute("re", re);
 		
-		
 		return "header/headerInfo";
 	}
+	
 }

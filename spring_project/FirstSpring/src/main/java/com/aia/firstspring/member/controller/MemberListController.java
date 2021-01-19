@@ -1,4 +1,4 @@
-package com.aia.firstspring.controller;
+package com.aia.firstspring.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,14 +13,15 @@ public class MemberListController {
 	@Autowired
 	private MemberListService listService;
 	
-	
 	@RequestMapping("/member/list")
-	public String getMemberList(Model model) {	
+	public String getMemberList(Model model) {
 		
-		model.addAttribute("members",listService.getMemberList());
-		model.addAttribute("memberCnt", listService.getMemberTotalCount());
 		
-		return "member/list";		
+		model.addAttribute("members", listService.getMemberList());
+		model.addAttribute("memberCnt", listService.getmemberTotalCount());
+		
+		
+		return "member/list";
 	}
 
 }

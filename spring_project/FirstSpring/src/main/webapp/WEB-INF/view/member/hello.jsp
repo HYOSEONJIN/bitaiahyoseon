@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 폼</title>
+<title>인사</title>
 </head>
 <body>
 
-<h1>회원 가입 완료</h1>
-${resultCnt}
+	<h1>
+				${greeting}
+	</h1>
 
-
-</form>
 </body>
 </html>

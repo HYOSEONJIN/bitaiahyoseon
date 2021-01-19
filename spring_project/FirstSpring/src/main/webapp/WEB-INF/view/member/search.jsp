@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<h1> 학생 1 학번 : ${sno} , 리포트 파일 : ${reportFile}</h1>
-<img alt="레포트이미지" src="../uploadfile/${reportFile}">
-
+	<h1>회원 검색</h1>
 </body>
 </html>

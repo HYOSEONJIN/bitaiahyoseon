@@ -10,18 +10,20 @@
 <body>
 
 	<h1>검색</h1>
-	<h3>최근 검색어 : 
+	<h3>최근 관심 검색어 : 
 	<c:forEach items="${queryList}" var="query">
-	${query} ,
+		${query} ,	
 	</c:forEach>
-	</h3>
-	<select>
 	
-	<c:forEach items="${searchTypeList}" var="searchtype">
-		<option value="${searchTypeList}">${searchtype.label}</option>
+	
+	</h3>
+	
+	<select>
+		<c:forEach items="${searchTypeList}" var="searchType">
+			<option value="${searchType.value}">${searchType.label}</option>
 		</c:forEach>
 	</select>
 	<input>
-	
+
 </body>
 </html>

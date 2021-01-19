@@ -1,4 +1,4 @@
-package com.aia.firstspring.controller;
+package com.aia.firstspring.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.aia.firstspring.domain.Member;
+import com.aia.firstspring.member.domain.Member;
 import com.aia.firstspring.member.service.MemberRegService;
 
 @Controller
@@ -15,7 +15,7 @@ public class MemberRegController {
 	
 	@Autowired
 	private MemberRegService regService;
-
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getRegForm() {
 		return "member/regForm";
@@ -24,14 +24,28 @@ public class MemberRegController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String memberReg(Member member, Model model) {
 		
+		System.out.println(member);
 		int resultCnt = regService.insertMember(member);
-		String view="member/reg";
+		
+		System.out.println(member);
+		
 		model.addAttribute("resultCnt", resultCnt);
 		
+		String view = "member/reg";
+		
 		if(resultCnt==1) {
-			System.out.println(member);
-			view= "redirect:/member/list";
+			view = "redirect:/member/list";
 		}
+		
 		return view;
 	}
+	
+
 }
+
+
+
+
+
+
+

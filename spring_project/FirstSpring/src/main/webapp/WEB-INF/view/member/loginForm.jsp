@@ -8,13 +8,14 @@
 </head>
 <body>
 
-<h1>Login Form</h1>
+	<h1>Login Form</h1>
 	
 	<form method="POST">
-	id <input type="text" name="uid"><br>
-	비번 <input type="password" name="pw"><br>
-	<input type="submit">
+		id <input type="text" name="uid"> <br>
+		pw <input type="password" name="pw"> <br>
+		<input type="submit">
 	</form>
+
 
 </body>
 </html>

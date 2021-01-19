@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1>써치페이지!</h1>
+	<h1>
+			${re}
+	</h1>
 </body>
 </html>

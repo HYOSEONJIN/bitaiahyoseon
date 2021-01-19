@@ -16,21 +16,25 @@ public class SearchController {
 	public String search() {
 		return "search/search";
 	}
-
 	
 	@ModelAttribute("searchTypeList")
 	public List<SearchType> getSearchType(){
 		List<SearchType> options = new ArrayList<SearchType>();
-		options.add(new SearchType(1, "팀이름 + 가수이름"));
+		options.add(new SearchType(1, "팀이름+선수이름"));
 		options.add(new SearchType(2, "팀이름"));
-		options.add(new SearchType(3, "가수이름"));
-		
+		options.add(new SearchType(3, "선수이름"));
 		return options;
 	}
 	
-	
 	@ModelAttribute("queryList")
-	public String[] getQueryList() {		
-		return new String[] {"김태형","박지민","민윤기"};
+	public String[] getqueryList() {
+		return new String[] {"손흥민", "메시", "호날두"};
 	}
+
 }
+
+
+
+
+
+
