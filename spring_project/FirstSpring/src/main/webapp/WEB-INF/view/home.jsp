@@ -64,6 +64,16 @@
 			<a href="${simple}">${simple}</a>
 		</li>
 		
+				<li>
+			<c:url value="/message/listXml" var="listXml"/>
+			<a href="${listXml}">${listXml}</a>
+		</li>
+		
+						<li>
+			<c:url value="/message/listJson" var="listJson"/>
+			<a href="${listJson}">${listJson}</a>
+		</li>
+		
 		
 	</ul>
 
