@@ -7,14 +7,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name="message-list") // <message-list></message-list>
+@XmlRootElement(name = "message-list") // <message-list></message-list>
 public class GuestMessageList {
-	
-	
-	@XmlElement(name="message")
+
+	@XmlElement(name = "message")
 	private List<GuestMessage> message;
+	
+	public GuestMessageList() {
+	}
 
 	public GuestMessageList(List<GuestMessage> message) {
 		this.message = message;
@@ -27,11 +28,5 @@ public class GuestMessageList {
 	public void setMessage(List<GuestMessage> message) {
 		this.message = message;
 	}
-
-	public GuestMessageList() {
-	}
-	
-	
-	
 
 }

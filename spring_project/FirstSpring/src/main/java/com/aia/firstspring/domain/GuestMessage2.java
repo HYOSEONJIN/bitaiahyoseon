@@ -44,6 +44,7 @@ public class GuestMessage2 {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	
+	
+
 }
-	
-	

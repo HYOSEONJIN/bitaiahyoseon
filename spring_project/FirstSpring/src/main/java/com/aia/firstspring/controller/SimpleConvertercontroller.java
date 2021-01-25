@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/mc/simple")
-public class SimpleConvertercontroller {
-	
-	
+public class SimpleConverterController {
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
-		
 		return "simple/form";
 	}
 	
@@ -21,9 +19,11 @@ public class SimpleConvertercontroller {
 	@ResponseBody
 	public String simple(@RequestBody String body) {
 		
-		System.out.println(body + " @ResponseBody 어노태이션은 일반객체도응답처리가된다 ");
-		return body;
-	}
+		System.out.println(body+" @ResponseBody 어노테이션은 일반 객체도 응답 처리가 됩니다.");
 		
-
+		return body+" @ResponseBody 어노테이션은 일반 객체도 응답 처리가 됩니다.";
+		
+	}
+	
+	
 }
