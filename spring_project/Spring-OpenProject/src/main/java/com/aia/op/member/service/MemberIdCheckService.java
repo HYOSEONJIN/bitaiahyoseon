@@ -7,26 +7,20 @@ import org.springframework.stereotype.Service;
 import com.aia.op.member.dao.MemberDao;
 
 @Service
-public class MemberDeleteService {
-
+public class MemberIdCheckService {
+	
 	private MemberDao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
-	
-	public int deleteMember(int idx) {
-		
+
+	public String chekId(String id) {
+
 		dao = template.getMapper(MemberDao.class);
 		
-		return dao.deleteMemberByIdx(idx);
+		return dao.selectMemberByIdCount(id)>0 ? "N" : "Y" ;
 		
 	}
 	
+	
 }
-
-
-
-
-
-
-

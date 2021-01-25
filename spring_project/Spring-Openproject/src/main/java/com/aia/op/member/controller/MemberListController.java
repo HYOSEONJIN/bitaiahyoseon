@@ -6,28 +6,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.aia.op.member.domain.MemberListView;
 import com.aia.op.member.domain.SearchParam;
 import com.aia.op.member.service.MemberListService;
 
 @Controller
-public class MemberListcontroller {
-	
+public class MemberListController {
+
 	@Autowired
-	MemberListService listService;
+	private MemberListService listService;
 	
-	@RequestMapping("/member/list") // member/list?p=1	
+	@RequestMapping("/member/list") // /member/list
 	public String memberList(
-			//@RequestParam(value="p", defaultValue="1") int page,
+			//@RequestParam(value = "p", defaultValue = "1") int page,
 			SearchParam param,
-			Model model) {
-			
+			Model model 
+			) {
+		
 		System.out.println(param);
-		//MemberListView listview = listService.getListView(page);
-		//System.out.println(listview);
-		model.addAttribute("listView",listService.getListView(param));
+		
+		//MemberListView listView = listService.getListView(page);
+		//System.out.println(listView);
+		model.addAttribute("listView", listService.getListView(param));
 		
 		return "member/list";
 	}
-
+	
 }

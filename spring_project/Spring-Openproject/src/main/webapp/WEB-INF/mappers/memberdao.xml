@@ -30,21 +30,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원가입 -->
 	<insert id="insertMember"
-		parameterType="com.aia.op.member.domain.Member">
+		parameterType="com.aia.op.member.domain.Member"
+		useGeneratedKeys="true"
+		keyProperty="idx">
 		
 		INSERT INTO member
 		
+		
+		<!-- 인증을 위해 code컬럼추가 -->
 		<if test="memberphoto == null">		
-		(memberid, password, membername)
+		(memberid, password, membername, code)
 		VALUES 
-		(#{memberid},#{password},#{membername})
+		(#{memberid},#{password},#{membername}, #{code})
 		</if>
 		
 		<if test="memberphoto != null">
-		(memberid, password, membername, memberphoto)
+		(memberid, password, membername, memberphoto, code)
 		VALUES 
-		(#{memberid},#{password},#{membername},#{memberphoto})
+		(#{memberid},#{password},#{membername},#{memberphoto}, #{code})
 		</if>
+		
 		
 		
 		
@@ -59,15 +64,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member where memberid=#{param1} and password=#{param2}
 	</select>
 
-
 	<!-- 회원의 총 수 -->
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from
 		member
 	</select>
 
-
-<!-- 멤버 리스트 구하기 -->
 	<select id="selectMemberList"
 					parameterType="map"
 					resultMap="memberListResult">
@@ -93,9 +95,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
-	
-	
-	<!-- 검색 시 검색 결과에 나오는 회원의 수 구하기 -->
 	<select id="selectSearchMemberCount" 
 	        parameterType="com.aia.op.member.domain.SearchParam"
 	        resultType="int"
@@ -125,11 +124,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 		
-			
+		<!-- <if test="searchType == 'id'">
+			where memberid like	concat('%',#{keyword},'%')
+		</if>
+		<if test="searchType == 'name'">
+			where membername like	concat('%',#{keyword},'%')
+		</if>
+		<if test="searchType == 'both'">
+			where membername like	concat('%',#{keyword},'%') or memberid like	concat('%',#{keyword},'%')
+		</if> -->
+		
+	
 	</select>
-	
-	
-<!-- 가져다가 쓸수 있는 반복적인 sql문 만들기 / 아이디찾기 이름으로찾기 -->
+
 	<sql id="searchId">
 		or memberid like	concat('%',#{searchParam.keyword},'%')
 	</sql>
@@ -138,24 +145,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  or membername like	concat('%',#{searchParam.keyword},'%')
 	</sql>
 	
-	
-<!-- 삭제 -->
+
 	<delete id="deleteMemberByIdx">
 		delete from member where idx=#{idx}
 	</delete>
 
 
-<!-- IDX를 기반으로 멤버찾기 -->
 	<select id="selectMemberByIdx"
 	        resultMap="memberListResult">
-																		<!-- no를 쓴이유는 #{idx}가 아니어도 된다는 것을 보여주기위해 -->
+		
 		select * from member where idx=#{no}
 		
 	</select>
 
 
 
-	<!-- 수정하기 -->
 	<update id="updateMember"
 					parameterType="com.aia.op.member.domain.Member">
 	
@@ -167,11 +171,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</update>
 
+<!-- // id 존재 유무 확인 -->
+
+	<select id="selectMemberByIdCount"
+					resultType="int"
+	>
+	select count(*) from member where memberid=#{id}
+	</select>
 
 
 
-
-
+ <!-- 인증코드 -->
+ 
+	
+	<select id="selectMemberByIdxVerify"
+					resultType="int"
+	>
+		select count(*) from member where idx=#{idx} and verify='Y'
+	</select>
+	
+	
+	<!-- 인증 -->
+	<update id="updateMemberVerify">
+		update member set verify='Y' where idx=#{param1} and code=#{param2}
+	</update>
 
 
 

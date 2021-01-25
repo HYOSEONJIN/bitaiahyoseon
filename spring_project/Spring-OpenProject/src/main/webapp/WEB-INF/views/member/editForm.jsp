@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 
 <style>
 
@@ -20,7 +20,7 @@
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
 	<div class="contents">
-		<h2 class="content_title">수정폼</h2>
+		<h2 class="content_title">회원 수정 폼</h2>
 		<hr>
 		<div class="content">
 		
@@ -28,10 +28,10 @@
 				<table>
 					<tr>
 						<th><label for="userid">아이디(email)</label></th>
-						<td><input type="email" id="userid" name="userid" value="${member.memberid}" readonly>
-								<input type="text" name="idx" value="${member.idx}">
+						<td>
+							<input type="email" id="userid" name="userid" value="${member.memberid}" readonly>
+							<input type="text" name="idx" value="${member.idx}">						
 						</td>
-					
 					</tr>
 					<tr>
 						<th><label for="pw">비밀번호</label></th>
@@ -45,10 +45,10 @@
 					<tr>
 						<th><label for="userPhoto">현재 사진</label></th>
 						<td>
-						<img alt="now photo" src="<c:url value="fileupload/member/${member.memberphoto}"/>"> 
-						<input type="text" id="oldPhoto" name="oldPhoto" value="${member.memberphoto}">
+							<img height="40" alt="현재 프로필 사진" src="<c:url value="/fileupload/member/${member.memberphoto}" />"> 
+							<input type="text" id="oldPhoto" name="oldPhoto" value="${member.memberphoto}">
 						</td>
-					</tr>
+					</tr>					
 					<tr>
 						<th><label for="userPhoto">사진</label></th>
 						<td><input type="file" id="userPhoto" name="userPhoto">
@@ -56,7 +56,7 @@
 					</tr>
 					<tr>
 						<th></th>
-						<td><input type="submit" value="수정"></td>
+						<td><input type="submit" value="회원 정보 수정"></td>
 					</tr>
 				</table>
 			</form>

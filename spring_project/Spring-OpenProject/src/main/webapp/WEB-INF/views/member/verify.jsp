@@ -8,24 +8,43 @@
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <style>
+
 	img {
 		width:100px;
 		border-radius: 50%;
 	}
+
+
 </style>
 </head>
 <body >
+
+
 	<%@ include file="/WEB-INF/views/include/header.jsp"  %>
+		
 	<%@ include file="/WEB-INF/views/include/nav.jsp"  %>
+	
 	<div class="contents">
-		<h2 class="content_title">My Page</h2>
+		<h2 class="content_title">Email 인증</h2>
+		
+		<c:if test="${result==0}">
+		<h1>인증 실패</h1>
+		</c:if> 
+		
+		<c:if test="${result==1}">
+		<h1>인증 성공</h1>
+		</c:if> 
+		
+		<c:if test="${result==3}">
+		<h1>이미 인증되었습니다.</h1>
+		</c:if> 
 		<hr>
 		<div class="content">
-		My Page 입니다.<br>
-		${loginInfo} <br>
-		<img alt="회원사진" src="<c:url value="/fileupload/member/${loginInfo.memberphoto}"/>"> 
+		 
 		</div>
 	</div>
+	
 	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 </body>
 </html>

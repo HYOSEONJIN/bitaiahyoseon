@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/mc/simple")
-public class SimpleConverterController {
+public class SimpleConvertercontroller {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {

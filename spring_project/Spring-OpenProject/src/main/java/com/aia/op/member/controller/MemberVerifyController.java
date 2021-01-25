@@ -6,24 +6,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.aia.op.member.service.MemberDeleteService;
+import com.aia.op.member.service.MemberVerifyService;
 
 @Controller
-public class MemberDeleteController {
+public class MemberVerifyController {
 	
 	@Autowired
-	private MemberDeleteService deleteService;
+	MemberVerifyService verifyService;
 	
-	@RequestMapping("/member/delete")
-	public String deleteMember(
+	@RequestMapping("/member/verify")
+	public void memberVerify(
 			@RequestParam("idx") int idx,
+			@RequestParam("code") String code,
 			Model model
 			) {
 		
-		// 0 or 1
-		model.addAttribute("result", deleteService.deleteMember(idx));
+		model.addAttribute("result", verifyService.memberVerify(idx, code));
 		
-		return "member/delete";
+
+		
+		
+		// /WEB-INF/views/member/verify.jsp
 	}
 
 }

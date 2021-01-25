@@ -15,15 +15,13 @@ import com.aia.op.member.service.MemberLoginService;
 @RequestMapping("/member/login")
 public class MemberLoginController {
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String loginForm() {
-		
-		return "member/loginForm";
-	}
-
-	
 	@Autowired
 	private MemberLoginService loginService;
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String loginForm() {
+		return "member/loginForm";
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String login(
@@ -31,10 +29,21 @@ public class MemberLoginController {
 			HttpServletResponse response,
 			Model model
 			) {
-		model.addAttribute("loginCheck",loginService.login(request, response));
 		
-		
+		model.addAttribute("loginCheck", loginService.login(request, response));
 		
 		return "member/loginView";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

@@ -20,6 +20,9 @@ public class MemberRegService {
 
 	@Autowired
 	private SqlSessionTemplate template;
+	
+	@Autowired
+	private MailSenderService mailSenderService;
 
 	// 파일을 업로드, 데이터베이스 저장
 	public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) {
@@ -58,6 +61,12 @@ public class MemberRegService {
 			// 데이터 베이스 입력
 			dao = template.getMapper(MemberDao.class);
 			result = dao.insertMember(member);
+			
+			// 인증처리페이지 메일방송
+			int mailResult = mailSenderService.send(member);
+			System.out.println("메일발송 처리 횟수 : " + mailResult);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			// 현재 저장한 파일이 있다면??!! -> 삭제

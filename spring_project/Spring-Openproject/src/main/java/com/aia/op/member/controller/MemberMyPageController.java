@@ -6,24 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/mypage")
-public class MemberMypageController {
+public class MemberMyPageController {
+
+	@RequestMapping("/mypage1") // /op/mypage/mypage1
+	public String myPage1() {
+		return "member/mypage";
+	}
 	
-	@RequestMapping("/mypage1") // op/mypage/mypage1
-	public String mypage1() {
-		
+	@RequestMapping("/mypage2") // /op/mypage/mypage2
+	public String myPage2() {
 		return "member/mypage";
 	}
-
-	@RequestMapping("/mypage2") // op/mypage/mypage2
-	public String mypage2() {
+	
+	@RequestMapping("/mypage3") // /op/mypage/mypage3
+	public String myPage3() {
 		
-		return "member/mypage";
-	}
-
-	@RequestMapping("/mypage3") // op/mypage/mypage3
-	public String mypage3() {
-		
-		String str=null;
+		String str = "null";
 		str.charAt(1);
 		
 		return "member/mypage";
@@ -31,8 +29,13 @@ public class MemberMypageController {
 	
 	@ExceptionHandler(NullPointerException.class)
 	public String handleNullPointerException(NullPointerException e) {
-		
+		e.printStackTrace();
 		return "error/nullPointer";
 	}
-
+	
 }
+
+
+
+
+
