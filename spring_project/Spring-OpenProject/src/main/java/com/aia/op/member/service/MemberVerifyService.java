@@ -9,27 +9,26 @@ import com.aia.op.member.dao.MemberDao;
 @Service
 public class MemberVerifyService {
 	
-	
 	private MemberDao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
-	
+
 	public int memberVerify(int idx, String code) {
 		
-		int result=0; //0  잘못된 요청, 1 인증완료 , 3 이미 인증완료
-		
 		dao = template.getMapper(MemberDao.class);
-		int isVerify = dao.selectMemberByIdxVerify(idx); // 0 or 1
 		
-		if(isVerify==1) {
+		int result = 0;  // 0-> 잘못된 요청, 1->인증 완료, 3->이미 인증
+		
+		int isVerify = dao.selectMemberByIdxVerify(idx);  
+		// 0 or 1
+		if(isVerify == 1) {
 			result = 3;
-		}else {
+		} else {
 			result = dao.updateMemberVerify(idx, code);
 		}
 		
-		
 		return result;
 	}
-
+	
 }

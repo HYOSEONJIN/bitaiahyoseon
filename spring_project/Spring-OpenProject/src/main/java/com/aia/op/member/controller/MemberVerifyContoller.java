@@ -9,24 +9,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.aia.op.member.service.MemberVerifyService;
 
 @Controller
-public class MemberVerifyController {
+public class MemberVerifyContoller {
 	
 	@Autowired
-	MemberVerifyService verifyService;
-	
+	private MemberVerifyService verifyService;
+
 	@RequestMapping("/member/verify")
 	public void memberVerify(
-			@RequestParam("idx") int idx,
+			@RequestParam("id") int idx,
 			@RequestParam("code") String code,
 			Model model
 			) {
 		
 		model.addAttribute("result", verifyService.memberVerify(idx, code));
 		
-
-		
-		
 		// /WEB-INF/views/member/verify.jsp
 	}
-
+	
 }

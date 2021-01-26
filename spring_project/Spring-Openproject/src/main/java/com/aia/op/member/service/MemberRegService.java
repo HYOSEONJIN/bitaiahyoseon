@@ -62,10 +62,9 @@ public class MemberRegService {
 			dao = template.getMapper(MemberDao.class);
 			result = dao.insertMember(member);
 			
-			// 인증처리페이지 메일방송
-			int mailResult = mailSenderService.send(member);
-			System.out.println("메일발송 처리 횟수 : " + mailResult);
-			
+			// 메일발송 : 인증 처리를 하는 페이지 /op/member/verify?id=40&code=난수
+			int mailsendCnt = mailSenderService.send(member);
+			System.out.println("메일 발송 처리 횟수 : " + mailsendCnt);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +72,6 @@ public class MemberRegService {
 			if (newFile != null && newFile.exists()) {
 				newFile.delete();
 			}
-
 		}
 
 		return result;

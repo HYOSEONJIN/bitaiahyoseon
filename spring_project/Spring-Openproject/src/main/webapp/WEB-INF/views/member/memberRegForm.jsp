@@ -9,6 +9,7 @@
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 
 <style>
+
 	.font_red{
 		color : red;
 	}
@@ -28,6 +29,8 @@
 	#idcheck {
 		display: none;
 	}
+
+
 </style>
 </head>
 <body>
@@ -42,7 +45,7 @@
 		<hr>
 		<div class="content">
 		
-			<form method="post" enctype="multipart/form-data">
+			<form id="regForm" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th><label for="userid">아이디(email)</label></th>
@@ -81,21 +84,25 @@
 
 
 <script>
+
 	$(document).ready(function(){
 		
 		
 		$('#regForm').submit(function(){
 			
-			
 			var chk = $('#idcheck').is(':checked');
 			
-			
 			if(!chk){
-			  alert('아이디 중복여부가 체크되어야 합니다.');
-			  return false;
+				alert('아이디 중복여부가 체크되어야 합니다.');
+				return false;
 			}
-		
+			
+			
+			
+			
 		});
+		
+		
 		
 		
 		$('#userid').focusout(function(){
@@ -159,6 +166,10 @@
 		
 		
 	});
+
+
+
+
 </script>
 
 

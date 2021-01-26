@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 <%-- <link rel="styleSheet"
 	href="${pageContext.request.contextPath}/css/default.css"> --%>
-	<%-- <link rel="styleSheet" href="<c:url value="/css/default.css"/>"> --%>
-<%@ include file="/WEB-INF/views/include/basicset.jsp" %>
+<%-- <link rel="styleSheet" href="<c:url value="/css/default.css"/>"> --%>
+<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <style>
 </style>
 </head>
@@ -22,25 +22,24 @@
 
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
-<main class="container">
+	<main class="container">
+		<div
+			class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+			<div class="lh-1">
+				<h1 class="h2 mb-0 text-white lh-1">Index</h1>
+			</div>
+		</div>
 
-  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-    <img class="me-3" src="../assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38">
-    <div class="lh-1">
-      <h1 class="h6 mb-0 text-white lh-1">INDEX</h1>
-      <small>졸려</small>
-    </div>
-  </div>
-<!-- 	<div class="contents">
-		<h2 class="content_title">index</h2>
-		<hr>
-		<div class="content">인텍스 페이지 입니다.</div>
-	</div> -->
-
-</main>
-
+		<div class="my-3 p-3 bg-white rounded shadow-sm">
+			<h3 class="border-bottom pb-2 mb-0">Recent updates</h3>
+			<div class="d-flex text-muted pt-3">
+					INDEX				
+			</div>
+		</div>
+	</main>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+
 
 
 
