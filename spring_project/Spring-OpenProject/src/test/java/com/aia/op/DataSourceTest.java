@@ -22,37 +22,44 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 //@Log4j
 public class DataSourceTest {
-
-	// @Autowired
-	// @Setter(onMethod_ = { @Autowired })
+	
+	//@Autowired
+	//@Setter(onMethod_ = { @Autowired })
 	@Autowired
-	private DataSource dataSource;
-
+	private DataSource dataSource; 
+	
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
-
+	
+	
 	@Test
 	public void testMybatis() {
-
-		try (SqlSession session = sqlSessionFactory.openSession(); Connection con = session.getConnection();) {
+		
+		try(
+				SqlSession session = sqlSessionFactory.openSession(); 
+				Connection con = session.getConnection(); ){
+			
 			System.out.println(session);
 			System.out.println(con);
+			
 		} catch (Exception e) {
 			fail(e.getMessage());
-			// e.printStackTrace();
+			//e.printStackTrace();
 		}
+		
 	}
-
+	
+	
 	@Test
 	public void testConnection() {
-
-		try (Connection con = dataSource.getConnection();) {
-			// log.info(con);
+		
+		try(Connection con = dataSource.getConnection();){
+			//log.info(con);
 			System.out.println("!!!! Connection : " + con);
-		} catch (Exception e) {
+		} catch (Exception e ) {
 			fail(e.getMessage());
 		}
-
+		
 	}
 
 }
