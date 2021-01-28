@@ -22,6 +22,9 @@ public interface MemberDao {
 	//List<Member> selectMemberList(int startRow, int cntPerPage);
 	List<Member> selectMemberList(Map<String , Object> param);
 	
+	// 01.28 : rest api : get
+	List<Member> selectAllMemberList();
+	
 	// 검색한 회원의 수
 	int selectSearchMemberCount(Map<String, Object> listMap);
 
