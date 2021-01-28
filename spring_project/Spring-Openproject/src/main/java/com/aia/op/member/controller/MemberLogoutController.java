@@ -8,12 +8,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class MemberLogoutController {
-   
-   @RequestMapping("/member/logout")
-   public String logout(HttpSession session, RedirectAttributes rda) {
-      session.invalidate();
-      rda.addAttribute("type", "delete");
-      rda.addAttribute("result", "ok");
-      return "redirect:/";
-   }
+	
+	@RequestMapping("/member/logout")
+	public String logout(HttpSession session, RedirectAttributes rda) {
+		session.invalidate();
+		System.out.println("로그아웃!!!");
+		
+		rda.addAttribute("type", "delete");
+		rda.addAttribute("result", "ok");
+		
+		return "redirect:/";
+	}
+
 }

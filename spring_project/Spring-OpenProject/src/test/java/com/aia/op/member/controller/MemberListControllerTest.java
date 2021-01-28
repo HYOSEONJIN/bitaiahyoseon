@@ -14,13 +14,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.aia.op.DataSourceTest;
-
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
-@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 @Log4j
@@ -36,24 +34,37 @@ public class MemberListControllerTest {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 
-	//@Test
+	@Test
 	public void testMemberList() throws Exception {
-		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/member/reg")).andReturn().getModelAndView()
+		
+		log.info( mockMvc.perform(MockMvcRequestBuilders.get("/member/list"))
+				.andReturn()
+				.getModelAndView()
 				.getModelMap());
+		
 	}
-
-
-
-
+	
 	@Test
 	public void testReg() throws Exception {
 		
 		log.info(
-				
-				mockMvc.perform(MockMvcRequestBuilders.post("/member/reg")
-				.param("userid","tomnmo@naver.com")
-				.param("pw","0000")
-				.param("username", "tester1234"))
-				.andReturn().getModelAndView().getModelMap());
+				mockMvc.perform( MockMvcRequestBuilders.post("/member/reg")
+						.param("userid", "aia.jin.202009@gmail.com")
+						.param("pw", "1111")
+						.param("username", "tester1234")
+						).andReturn().getModelAndView().getModelMap()
+				);
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
