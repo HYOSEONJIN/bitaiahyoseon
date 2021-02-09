@@ -60,6 +60,7 @@ public class MemberListService {
 		return listView;
 	}
 	
+	
 	public List<Member> getListView() {
 
 		List<Member> list = null;

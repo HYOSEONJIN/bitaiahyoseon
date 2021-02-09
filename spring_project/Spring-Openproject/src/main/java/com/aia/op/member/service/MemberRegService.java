@@ -1,6 +1,7 @@
 package com.aia.op.member.service;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aia.op.member.dao.MemberDao;
 import com.aia.op.member.domain.Member;
 import com.aia.op.member.domain.MemberRegRequest;
+
+import net.coobird.thumbnailator.Thumbnailator;
 
 @Service
 public class MemberRegService {
@@ -45,7 +48,18 @@ public class MemberRegService {
 			
 			/* 파일 저장 */
 			try {
-				regRequest.getUserPhoto().transferTo(newFile);
+				//regRequest.getUserPhoto().transferTo(newFile);
+				
+				FileOutputStream thumnail = new FileOutputStream(new File(saveDirPath, "s_"+newFileName));
+				
+				// 썸네일 저장 100X100
+				Thumbnailator.createThumbnail(
+						regRequest.getUserPhoto().getInputStream(), 
+						thumnail, 
+						50, 50);
+				
+				thumnail.close();
+				
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -59,7 +73,7 @@ public class MemberRegService {
 			member.setMemberphoto(newFileName);
 		}
 
-		try {
+		//try {
 			// 데이터 베이스 입력
 			dao = template.getMapper(MemberDao.class);
 			
@@ -73,13 +87,13 @@ public class MemberRegService {
 			int mailsendCnt = mailSenderService.send(member);
 			System.out.println("메일 발송 처리 횟수 : " + mailsendCnt);
 			
-		} catch (Exception e) {
+		/*} catch (Exception e) {
 			e.printStackTrace();
 			// 현재 저장한 파일이 있다면??!! -> 삭제
 			if (newFile != null && newFile.exists()) {
 				newFile.delete();
 			}
-		}
+		}*/
 
 		return result;
 	}
