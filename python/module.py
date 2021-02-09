@@ -16,3 +16,53 @@ print(float(123.456))
 #로드하는 모듈의 별칭 정의
 import math as m
 print(m.pi)
+
+import random
+
+# random()
+print(random.uniform(10,20))
+
+print(random.randrange(10)) #정수값랜덤
+print(random.randrange(10,20))
+
+import sys
+print(sys.argv)
+print(sys.getwindowsversion())
+
+import os
+print(os.name)
+print(os.getcwd())
+print(os.listdir())
+
+
+import datetime
+
+print('NOW TIME~')
+now=datetime.datetime.now()
+print(now.year, end=".")
+print(now.month, end=".")
+print(now.day, end=".")
+print(now.hour, end=".")
+print(now.minute, end=".")
+print(now.second, end=".")
+print(now)
+
+after = now + datetime.timedelta(weeks=1, days=1, hours=1, minutes=1, seconds=1)
+print(after.strftime('%Y.%m.%d.%H:%M:%S'))
+
+output = now.replace(year=(now.year+1))
+print(output)
+
+import time
+for i in range(5):
+    print(i)
+
+from urllib import request
+target = request.urlopen('http://google.com')
+output = target.read()
+print(output)
+
+
+
+
+from bs4 import BeautifulSoup
